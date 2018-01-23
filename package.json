@@ -46,6 +46,7 @@
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.5.6",
     "systemjs": "^0.20.19",
+    "typings": "^2.1.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
