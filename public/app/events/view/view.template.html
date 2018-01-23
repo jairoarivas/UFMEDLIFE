@@ -1,0 +1,11 @@
+<section *ngIf="event && event.creator">
+	<h1>{{event.eventName}}</h1>
+
+	<div *ngIf="allowEdit">
+	    <a [routerLink]="['/events', event._id, 'edit']">edit</a>
+	    <button (click)="delete()">delete</button>
+	</div>
+	<small>
+	    <em>Created on {{event.created}} by {{event.creator.fullName}}</em>
+	</small>
+</section>

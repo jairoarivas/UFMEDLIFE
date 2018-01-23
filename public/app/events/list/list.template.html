@@ -1,0 +1,13 @@
+<h1>Events</h1>
+<ul>
+	<li *ngFor="let event of events">
+		<a [routerLink]="['/events', event._id]">{{event.eventName}}</a>
+		<br>
+		<small>{{event.created}}/{{event.creator.fullName}}</small>
+		<p>{{event.content}}</p>
+	</li>
+</ul>
+
+<div *ngIf="events && events.length === 0">
+	No events yet, why don't you <a [routerLink]="['/events/create']">create one</a>?
+</div>

@@ -1,0 +1,14 @@
+<h1>New Event</h1>
+<form (ngSubmit)="create()" novalidate>
+	<div>
+		<label for="eventName">Event Name</label>
+		<div>
+			<input type="text" required [(ngModel)]="event.eventName" name="eventName" placeholder="Event Name">
+		</div>
+	</div>
+	<div>
+		<input type="submit">
+	</div>
+
+	<strong id="error">{{errorMessage}}</strong>
+</form>

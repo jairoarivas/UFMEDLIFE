@@ -1,0 +1,14 @@
+<h1>Edit Event</h1>
+<form (ngSubmit)="update()" novalidate>
+    <div>
+        <label for="eventName">Event Name</label>
+        <div>
+            <input type="text" required [(ngModel)]="event.eventName" name="eventName" placeholder="Event Name">
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Update">
+    </div>
+
+    <strong>{{errorMessage}}</strong>
+</form>
