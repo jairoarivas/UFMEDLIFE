@@ -1,35 +1,61 @@
 /*-----header----*/
+/* .headerBackground{
+  background: url('./images/texture-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+} */
 
 .headerStyle {
-  background-color: rgba(10, 44, 133, 0.7);
+  background-color: rgba(10, 44, 133, .7);
 }
 
-.headerLogo{
-  max-width:20vw;
+.headerLogo {
+  max-width: 20vw;
   height: auto;
 }
 
+.logoText {
+  display: none;
+  color: white;
+}
+
+@media screen and (max-width:480px) {
+  .headerLogo {
+    display: none;
+  }
+  .logoText {
+    display: inline;
+  }
+}
+
 /*----------------------Buttons-----------------------------*/
-.medDropdown{
-  background-color: rgba(10, 44, 133, 0.0);
-  border-color: rgba(10, 44, 133, 0.9);
-  border-style: inset;
-  border-width: medium;
+
+.medDropdown {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.medDropdownButton {
+  color:white;
+}
+.medDropdownButton:hover{
+  background-color: #f2b111;
+  rgb(23, 23, 23);
 }
 .medButton {
   background-color: rgba(71, 72, 75, 0);
   color: white;
-  border:none;
+  border: none;
+  border-radius: 5px;
 }
 
 .medButton:hover {
   background-color: #f2b111;
-  color: #47484b;
+  rgb(23, 23, 23);
 }
 
 .medButton:focus {
   background-color: #f2b111;
-  color: #47484b;
+  rgb(23, 23, 23);
 }
 
 .medButton.homeButton {
@@ -63,11 +89,10 @@
   background: url('./images/stock1-min.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 0px 0px,center;
-  background-size:
-  width: 100vw;
+  background-position: center;
+  background-size: width: 100vw;
   height: 80vh;
-  margin:0;
+  margin: 0;
   padding: 0;
   border-width: 0;
 }
@@ -76,11 +101,10 @@
   background: url('./images/stock2-min.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 0px 0px,center;
-  background-size:
-  width: 100vw;
+  background-position: center;
+  background-size: width: 100vw;
   height: 80vh;
-  margin:0;
+  margin: 0;
   padding: 0;
   border-width: 0;
 }
@@ -89,26 +113,153 @@
   background: url('./images/stock3-min.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 0px 0px,center;
-  background-size:
-  width: 100vw;
+  background-position: center;
+  background-size: width: 100vw;
   height: 80vh;
-  margin:0;
+  margin: 0;
   padding: 0;
   border-width: 0;
 }
 
-.carousel-custom{
+.carousel-custom {
   padding: 0;
-  margin:0;
+  margin: 0;
   width: 100vw;
   overflow-x: hidden;
 }
-.grayFilter{
+
+.grayFilter {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 80vh;
 }
-.ourgoal-custom{
-  background-color: rgb(246, 246, 246);
+
+@media screen and (max-width:1040px) {
+  .slide-image1 {
+    background: url('./images/stock1-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    background-size: width: 100vw;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .slide-image2 {
+    background: url('./images/stock2-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .slide-image3 {
+    background: url('./images/stock3-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .carousel-custom {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  .grayFilter {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 60vh;
+  }
+}
+
+/* if screen size is smaller */
+
+@media screen and (max-width:480px) {
+  .slide-image1 {
+    background: url('./images/stock1-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    background-size: width: 100vw;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .slide-image2 {
+    background: url('./images/stock2-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .slide-image3 {
+    background: url('./images/stock3-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .carousel-custom {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  .grayFilter {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 40vh;
+  }
+  /* to make captions smaller for small screens */
+  .cap {
+    font-size: 80%;
+  }
+}
+
+/*----General-----*/
+
+.div-color {
+  background-color: rgb(248, 255, 208);
+  color: rgb(23, 23, 23);
+}
+
+.pageImage{
+  width: 100vw;
+  padding-right: 0;
+  padding-left:0;
+  overflow-x: hidden;
+}
+
+.pageImageText{
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* signin page */
+
+.medSignin {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top:25vh;
 }

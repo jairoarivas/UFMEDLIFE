@@ -48,7 +48,7 @@ body,html {
 /* background */
 
 .background {
-    background:url('./images/background.JPG');
+    background:url('./images/background-min.JPG');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
