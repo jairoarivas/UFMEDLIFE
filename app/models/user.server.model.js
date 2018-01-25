@@ -49,6 +49,7 @@ const UserSchema = new Schema({
 		// Create a default 'created' value
 		default: Date.now
 	}
+
 });
 
 // Set the 'fullname' virtual property
@@ -69,6 +70,7 @@ UserSchema.pre('save', function(next) {
 
 	next();
 });
+
 
 // Create an instance method for hashing a password
 UserSchema.methods.hashPassword = function(password) {
