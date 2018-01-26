@@ -11,6 +11,7 @@ export class SignupComponent {
   errorMessage: string;
   user: any = {};
   roles = ['Admin', 'Officer', 'Member'];
+  private showPassword = false;
 
   constructor (private _authenticationService: AuthenticationService, private _router: Router) { }
 

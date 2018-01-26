@@ -17,7 +17,14 @@
   </div>
   <div>
     <label>Password:</label>
-    <input type="password" [(ngModel)]="user.password" name="password">
+    <div *ngIf="!(this.showPassword)">
+      <input type="password" [(ngModel)]="user.password" name="password">
+      <button (click)="this.showPassword = true">Show</button>
+    </div>
+    <div *ngIf="(this.showPassword)">
+      <input type="text" [(ngModel)]="user.password" name="password">
+      <button (click)="this.showPassword = false">Hide</button>
+    </div>
   </div>
   <div>
     <label>Member role:</label>
