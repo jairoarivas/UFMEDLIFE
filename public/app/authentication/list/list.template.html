@@ -1,0 +1,12 @@
+<h1>Members</h1>
+<ul>
+	<li *ngFor="let member of members">
+		<a [routerLink]="['/authentication/members', member._id]">{{member.firstName}}{{member.lastName}}</a>
+		<br>
+		<p>{{member.role}}</p>
+	</li>
+</ul>
+
+<div *ngIf="members && members.length === 0">
+	No members yet, why don't you <a [routerLink]="['/authentication/signup']">create one</a>?
+</div>

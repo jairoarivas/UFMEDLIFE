@@ -1,0 +1,11 @@
+<section *ngIf="member && user.role === 'Admin'">
+	<h1>{{member.firstName}}{{member.lastName}}</h1>
+
+	<div *ngIf="allowEdit">
+	    <a [routerLink]="['/authentication/members', member._id, 'edit']">edit</a>
+	    <button (click)="delete()">delete</button>
+	</div>
+	<p>Email: {{member.email}}</p>
+	<p>Username: {{member.username}}</p>
+	<p>Member role: {{member.role}}</p>
+</section>

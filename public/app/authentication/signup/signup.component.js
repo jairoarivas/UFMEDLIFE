@@ -17,6 +17,7 @@ var SignupComponent = /** @class */ (function () {
         this._authenticationService = _authenticationService;
         this._router = _router;
         this.user = {};
+        this.roles = ['Admin', 'Officer', 'Member'];
     }
     SignupComponent.prototype.signup = function () {
         var _this = this;

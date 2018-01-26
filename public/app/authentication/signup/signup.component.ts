@@ -10,8 +10,9 @@ import{ AuthenticationService } from '../authentication.service';
 export class SignupComponent {
   errorMessage: string;
   user: any = {};
+  roles = ['Admin', 'Officer', 'Member'];
 
-  constructor (private _authenticationService: AuthenticationService, private _router: Router) {  }
+  constructor (private _authenticationService: AuthenticationService, private _router: Router) { }
 
   signup() {
     this._authenticationService.signup(

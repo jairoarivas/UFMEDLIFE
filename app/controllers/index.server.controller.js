@@ -5,7 +5,8 @@ exports.render = function(req, res) {
   const user = (!req.user) ? null : {
     _id: req.user.id,
     firstName: req.user.firstName,
-    lastName: req.user.lastName
+    lastName: req.user.lastName,
+    role: req.user.role
   };
   res.render('index', {
     title: 'ufmedlife',

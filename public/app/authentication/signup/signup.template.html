@@ -1,4 +1,4 @@
-<form (ngSubmit) = "signup()">
+<form (ngSubmit)="signup()">
   <div>
     <label>First Name:</label>
     <input type="text" [(ngModel)]="user.firstName" name="firstName">
@@ -20,7 +20,14 @@
     <input type="password" [(ngModel)]="user.password" name="password">
   </div>
   <div>
-    <input type="submit" value = "Sign Up">
+    <label>Member role:</label>
+    <select class="form-control" id="role" required [(ngModel)]="user.role" name = "role">
+      <option *ngFor = "let role of roles" [value] = "role">{{role}}
+      </option>
+    </select>
+  </div>
+  <div>
+    <input type="submit" value="Sign Up">
   </div>
   <span>{{errorMessage}}</span>
 </form>

@@ -100,3 +100,76 @@ exports.requiresLogin = function(req, res, next) {
 	// Call the next middleware
 	next();
 };
+
+exports.list = function(req, res){
+	User.find().exec((err, users) => {
+		if(err){
+			return res.status(400).send({
+				message:getErrorMessage(err)
+			});
+		} else {
+			res.json(users);
+		}
+	});
+};
+
+exports.read = function(req,res){
+	res.json(req.user);
+};
+
+exports.update = function(req, res){
+	const user = req.user;
+	user.firstName = req.body.firstName;
+	user.lastName = req.body.lastName;
+	user.email = req.body.email;
+	user.username = req.body.username;
+	user.password = req.body.password;
+	user.role = req.body.role;
+
+	user.save((err) => {
+		if(err) {
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.json(user);
+		}
+	});
+
+};
+
+exports.delete = function(req, res){
+	const user = req.user;
+
+	user.remove((err) => {
+		if(err) {
+			return res.status(400).send({
+				messsage: getErrorMessage(err)
+			});
+		} else {
+			res.json(user);
+		}
+	});
+
+};
+
+exports.userByID = function(req, res,next ,id){
+	User.findById(id).exec((err, user) => {
+		if(err) return next(err);
+		if(!user) return next(new Error('Failed to load user' + id));
+
+		req.user = user;
+
+		next();
+	});
+};
+
+exports.hasAuthorization = function(req, res,next){
+	if(req.user.role !== 'Admin'){
+		return res.status(403).send({
+			message: 'User is not authorized'
+		});
+	}
+
+	next();
+};

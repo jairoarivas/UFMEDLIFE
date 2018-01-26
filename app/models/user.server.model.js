@@ -42,7 +42,9 @@ const UserSchema = new Schema({
 	providerData: {},
 	role: {
 		type: String,
-		enum: ['President', 'Officer', 'Member']
+		required: 'Member role must be specified',
+		enum: ['Admin', 'Officer', 'Member'],
+		default: 'Member'
 	},
 	created: {
 		type: Date,

@@ -7,13 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var members_service_1 = require("./members.service");
 var AuthenticationComponent = /** @class */ (function () {
     function AuthenticationComponent() {
     }
     AuthenticationComponent = __decorate([
         core_1.Component({
             selector: 'authentication',
-            templateUrl: 'app/authentication/authentication.template.html'
+            templateUrl: 'app/authentication/authentication.template.html',
+            providers: [members_service_1.MembersService]
         })
     ], AuthenticationComponent);
     return AuthenticationComponent;

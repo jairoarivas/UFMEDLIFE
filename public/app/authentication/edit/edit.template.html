@@ -1,0 +1,45 @@
+<h1>Edit Member</h1>
+<form (ngSubmit)="update()" novalidate>
+    <div>
+        <label for="firstName">First Name:</label>
+        <div>
+            <input type="text" required [(ngModel)]="member.firstName" name="firstName" placeholder="First Name">
+        </div>
+    </div>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <div>
+            <input type="text" required [(ngModel)]="member.lastName" name="lastName" placeholder="Last Name">
+        </div>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <div>
+            <input type="text" required [(ngModel)]="member.email" name="email" placeholder="Email">
+        </div>
+    </div>
+    <div>
+        <label for="username">Username:</label>
+        <div>
+            <input type="text" required [(ngModel)]="member.username" name="username" placeholder="Username">
+        </div>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <div>
+            <input type="password" required [(ngModel)]="member.password" name="password" placeholder="Password">
+        </div>
+    </div>
+    <div>
+      <label>Member role:</label>
+      <select class="form-control" id="role" required [(ngModel)]="member.role" name = "role">
+        <option *ngFor = "let role of roles" [value] = "role">{{role}}
+        </option>
+      </select>
+    </div>
+    <div>
+        <input type="submit" value="Update">
+    </div>
+
+    <strong>{{errorMessage}}</strong>
+</form>
