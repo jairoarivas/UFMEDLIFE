@@ -4,7 +4,8 @@ import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'resetPassword',
-  templateUrl: 'app/authentication/resetPassword/resetPassword.template.html'
+  templateUrl: 'app/authentication/resetPassword/resetPassword.template.html',
+  styleUrls: ['app/app.styles.css']
 })
 export class ResetPasswordComponent {
   user: any = {};

@@ -38,7 +38,8 @@ var ResetPasswordComponent = /** @class */ (function () {
     ResetPasswordComponent = __decorate([
         core_1.Component({
             selector: 'resetPassword',
-            templateUrl: 'app/authentication/resetPassword/resetPassword.template.html'
+            templateUrl: 'app/authentication/resetPassword/resetPassword.template.html',
+            styleUrls: ['app/app.styles.css']
         }),
         __metadata("design:paramtypes", [router_1.Router,
             router_1.ActivatedRoute,

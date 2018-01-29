@@ -271,3 +271,9 @@
   border-radius: 5px;
   margin-top:25vh;
 }
+
+.medSignup {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top:15vh;
+}

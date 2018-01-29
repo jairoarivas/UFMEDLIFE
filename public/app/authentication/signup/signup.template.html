@@ -1,40 +1,65 @@
-<form (ngSubmit)="signup()">
-  <div>
-    <label>First Name:</label>
-    <input type="text" [(ngModel)]="user.firstName" name="firstName">
-  </div>
-  <div>
-    <label>Last Name:</label>
-    <input type="text" [(ngModel)]="user.lastName" name="lastName">
-  </div>
-  <div>
-    <label>Email:</label>
-    <input type="text" [(ngModel)]="user.email" name="email">
-  </div>
-  <div>
-    <label>Username:</label>
-    <input type="text" [(ngModel)]="user.username" name="username">
-  </div>
-  <div>
-    <label>Password:</label>
-    <div *ngIf="!(this.showPassword)">
-      <input type="password" [(ngModel)]="user.password" name="password">
-      <button (click)="this.showPassword = true">Show</button>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center medSignup">
+      <h4 class = "py-3">Sign Up</h4>
+      <form (ngSubmit)="signup()">
+        <div class="form-group row justify-content-center">
+          <label class=" col-form-label col-4">First Name:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Last Name:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Email:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.email" name="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Username:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.username" name="username" placeholder="Username">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Password:</label>
+          <div class="col-6" *ngIf="!(this.showPassword)">
+            <input class = "form-control" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
+          </div>
+          <div class = "col-2" *ngIf="!(this.showPassword)">
+            <button class = "medButton" (click)="this.showPassword = true">Show</button>
+          </div>
+          <div class="col-6" *ngIf="(this.showPassword)">
+            <input  class = "form-control"type="text" [(ngModel)]="user.password" name="password" placeholder="Password">
+          </div>
+          <div class = "col-2" *ngIf="(this.showPassword)">
+          <button class = "medButton"(click)="this.showPassword = false">Hide</button>
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Member role:</label>
+          <div class="col-8">
+            <select class="form-control" id="role" required [(ngModel)]="user.role" name="role">
+            <option *ngFor = "let role of roles" [value] = "role">{{role}}
+            </option>
+          </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4 mx-auto">
+            <button type="submit" class="medButton">Sign up</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <span>{{errorMessage}}</span>
+        </div>
+      </form>
     </div>
-    <div *ngIf="(this.showPassword)">
-      <input type="text" [(ngModel)]="user.password" name="password">
-      <button (click)="this.showPassword = false">Hide</button>
-    </div>
   </div>
-  <div>
-    <label>Member role:</label>
-    <select class="form-control" id="role" required [(ngModel)]="user.role" name = "role">
-      <option *ngFor = "let role of roles" [value] = "role">{{role}}
-      </option>
-    </select>
-  </div>
-  <div>
-    <input type="submit" value="Sign Up">
-  </div>
-  <span>{{errorMessage}}</span>
-</form>
+</div>
