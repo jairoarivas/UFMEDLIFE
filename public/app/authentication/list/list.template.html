@@ -1,12 +1,51 @@
-<h1>Members</h1>
-<ul>
-	<li *ngFor="let member of members">
-		<a [routerLink]="['/authentication/members', member._id]">{{member.firstName}}{{member.lastName}}</a>
-		<br>
-		<p>{{member.role}}</p>
-	</li>
-</ul>
-
-<div *ngIf="members && members.length === 0">
-	No members yet, why don't you <a [routerLink]="['/authentication/signup']">create one</a>?
+<div class="container-fluid pageImage">
+	<div class="row">
+		<div class="col-md-12 p-0">
+			<div class="grayFilterSmall">
+				<h1 class="text-center pageImageText">
+      		Members
+        </h1>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid div-color">
+	<div class="row list-group">
+		<h3 class="pt-5 text-center">President</h3>
+		<div *ngFor="let member of members">
+			<a class=" col-12 list-group-item memberButton" *ngIf="member.role ==='Admin' " [routerLink]="['/authentication/members', member._id]">
+				<div class="row py-3">
+					<h4 class="col-8 capitalize text-center">{{member.firstName}} {{member.lastName}}</h4>
+					<p class="col-4 text-center">{{member.role}}</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<br>
+	<div class="row list-group">
+		<h3 class="text-center">Officers</h3>
+		<div *ngFor="let member of members">
+			<a class=" col-12 list-group-item memberButton" *ngIf="member.role ==='Officer' " [routerLink]="['/authentication/members', member._id]">
+				<div class="row py-3">
+					<h4 class="col-8 capitalize text-center">{{member.firstName}} {{member.lastName}}</h4>
+					<p class="col-4 text-center">{{member.role}}</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<br>
+	<div class="row list-group pb-3">
+		<h3 class="text-center">Members</h3>
+		<div *ngFor="let member of members">
+			<a class=" col-12 list-group-item memberButton" *ngIf="member.role ==='Member' " [routerLink]="['/authentication/members', member._id]">
+				<div class="row py-3">
+					<h4 class=" capitalize text-center col-8">{{member.firstName}} {{member.lastName}}</h4>
+					<p class="col-4 text-center">{{member.role}}</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div *ngIf="members && members.length === 0">
+		No members yet, why don't you <a [routerLink]="['/authentication/signup']">create one</a>?
+	</div>
 </div>

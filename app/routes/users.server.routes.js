@@ -12,7 +12,7 @@ module.exports = function(app){
 
   app.route('/api/members/:userId')
     .get(users.read)
-    .put(users.requiresLogin, users.hasAuthorization,users.update)
+    .put(users.requiresLogin,users.update)
     .delete(users.requiresLogin, users.hasAuthorization, users.delete);
 
   app.route('/api/forgotPassword')

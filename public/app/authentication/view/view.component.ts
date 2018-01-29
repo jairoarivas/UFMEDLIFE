@@ -6,6 +6,7 @@ import { MembersService } from '../members.service';
 @Component({
   selector: 'view',
   templateUrl: 'app/authentication/view/view.template.html',
+  styleUrls: ['app/app.styles.css']
 })
 export class ViewComponent {
 	user: any;

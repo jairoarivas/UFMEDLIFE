@@ -4,7 +4,8 @@ import {MembersService} from '../members.service';
 
 @Component({
 	selector: 'list',
-	templateUrl: 'app/authentication/list/list.template.html'
+	templateUrl: 'app/authentication/list/list.template.html',
+  styleUrls: ['app/app.styles.css']
 })
 export class ListComponent{
 	members: any;

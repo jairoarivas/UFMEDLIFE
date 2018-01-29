@@ -1,11 +1,32 @@
-<section *ngIf="member && user.role === 'Admin'">
-	<h1>{{member.firstName}}{{member.lastName}}</h1>
-
-	<div *ngIf="allowEdit">
-	    <a [routerLink]="['/authentication/members', member._id, 'edit']">edit</a>
-	    <button (click)="delete()">delete</button>
+<div class="container-fluid pageImage " *ngIf="member && user.role === 'Admin'">
+	<div class="row">
+		<div class="col-md-12 p-0">
+			<div class="grayFilterSmall">
+				<h1 class="text-center capitalize pageImageText">
+      		{{member.firstName}} {{member.lastName}}
+        </h1>
+			</div>
+		</div>
 	</div>
-	<p>Email: {{member.email}}</p>
-	<p>Username: {{member.username}}</p>
-	<p>Member role: {{member.role}}</p>
-</section>
+</div>
+<div class="container-fluid div-color">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<section class="row" *ngIf="member && user.role === 'Admin'">
+					<div class="col-8 py-5 text-justify">
+						<p>Email: {{member.email}}</p>
+						<p>Username: {{member.username}}</p>
+						<p>Member role: {{member.role}}</p>
+					</div>
+					<div class="col-4 text-center" *ngIf="allowEdit">
+						<div class="row" style="height: 100%">
+							<button class="memberButton col-6" style="height: 100%; border-top:none; border-bottom:none;" [routerLink]="['/authentication/members', member._id, 'edit']">edit</button>
+							<button class="memberButton col-6" style="height: 100%;  border-top:none; border-bottom:none;;" (click)="delete()">delete</button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>

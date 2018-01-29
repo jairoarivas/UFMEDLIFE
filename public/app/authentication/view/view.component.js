@@ -45,6 +45,7 @@ var ViewComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'view',
             templateUrl: 'app/authentication/view/view.template.html',
+            styleUrls: ['app/app.styles.css']
         }),
         __metadata("design:paramtypes", [router_1.Router,
             router_1.ActivatedRoute,

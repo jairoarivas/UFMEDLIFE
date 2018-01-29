@@ -51,16 +51,13 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li *ngIf="_authenticationService.isLoggedIn()" class="nav-item dropdown">
-            <button class="medButton dropdown-toggle  btn-block capitilize" type="button" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="medButton dropdown-toggle  btn-block capitalize" type="button" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-user" aria-hidden="true"></i>
               {{_authenticationService.user.firstName}} {{_authenticationService.user.lastName}}
             </button>
             <div class="dropdown-menu dropdown-menu-right medDropdown" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item medDropdownButton text-center" href="/api/auth/signout">Signout</a>
             </div>
-          </li>
-          <li *ngIf="!(_authenticationService.isLoggedIn())" class="nav-item">
-            <button class="medButton homeButton  btn-block" type="button" [routerLink]="['/authentication/signup']">Sign up</button>
           </li>
           <li *ngIf="!(_authenticationService.isLoggedIn())" class="nav-item">
             <button class="medButton lastButton  btn-block" type="button" [routerLink]="['/authentication/signin']">Sign in</button>

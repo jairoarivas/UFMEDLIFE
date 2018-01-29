@@ -4,7 +4,8 @@ import { MembersService } from '../members.service';
 
 @Component({
   selector: 'edit',
-  templateUrl: 'app/authentication/edit/edit.template.html'
+  templateUrl: 'app/authentication/edit/edit.template.html',
+  styleUrls: ['app/app.styles.css']
 })
 export class EditComponent {
 	member: any = {};

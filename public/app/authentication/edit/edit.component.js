@@ -39,7 +39,8 @@ var EditComponent = /** @class */ (function () {
     EditComponent = __decorate([
         core_1.Component({
             selector: 'edit',
-            templateUrl: 'app/authentication/edit/edit.template.html'
+            templateUrl: 'app/authentication/edit/edit.template.html',
+            styleUrls: ['app/app.styles.css']
         }),
         __metadata("design:paramtypes", [router_1.Router,
             router_1.ActivatedRoute,

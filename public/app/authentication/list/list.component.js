@@ -22,7 +22,8 @@ var ListComponent = /** @class */ (function () {
     ListComponent = __decorate([
         core_1.Component({
             selector: 'list',
-            templateUrl: 'app/authentication/list/list.template.html'
+            templateUrl: 'app/authentication/list/list.template.html',
+            styleUrls: ['app/app.styles.css']
         }),
         __metadata("design:paramtypes", [members_service_1.MembersService])
     ], ListComponent);
