@@ -10,6 +10,8 @@ import { SignupComponent } from './signup/signup.component';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
+import { ForgotPasswordComponent } from './forgotPassword/forgotPassword.component';
+import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
 
 @NgModule ({
   imports: [
@@ -24,6 +26,8 @@ import { EditComponent } from './edit/edit.component';
     ListComponent,
     ViewComponent,
     EditComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ]
 })
 export class AuthenticationModule {}

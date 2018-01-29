@@ -46,6 +46,8 @@ const UserSchema = new Schema({
 		enum: ['Admin', 'Officer', 'Member'],
 		default: 'Member'
 	},
+	resetPasswordToken: String,
+	resetPasswordExpires: Date,
 	created: {
 		type: Date,
 		// Create a default 'created' value

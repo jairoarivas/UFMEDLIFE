@@ -15,5 +15,13 @@ module.exports = function(app){
     .put(users.requiresLogin, users.hasAuthorization,users.update)
     .delete(users.requiresLogin, users.hasAuthorization, users.delete);
 
+  app.route('/api/forgotPassword')
+    .post(users.forgotPassword);
+
+  app.route('/api/resetPassword/:token')
+    .get(users.resetPassword)
+    .post(users.reset);
+
   app.param('userId', users.userByID);
+  app.param('token', users.userByToken);
 };

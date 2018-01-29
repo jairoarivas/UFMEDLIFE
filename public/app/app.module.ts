@@ -18,7 +18,8 @@ import { contactUsComponent } from './contactUs/contactUs.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { CarouselComponent } from './carousel/carousel.component';
-
+import { itResetComponent } from './resetConfirmations/itReset.component';
+import { itSentComponent } from './resetConfirmations/itSent.component';
 
 import { EventsModule } from './events/events.module';
 
@@ -39,6 +40,8 @@ import { EventsModule } from './events/events.module';
     HeaderComponent,
     CarouselComponent,
     contactUsComponent,
+    itSentComponent,
+    itResetComponent,
     AppComponent
   ],
   providers: [

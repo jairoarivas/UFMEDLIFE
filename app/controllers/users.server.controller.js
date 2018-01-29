@@ -1,6 +1,10 @@
 // Load the module dependencies
 const User = require('mongoose').model('User');
 const passport = require('passport');
+const async = require('async');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+const flash = require('express-flash');
 
 // Create a new error handling controller method
 const getErrorMessage = function(err) {
@@ -28,6 +32,59 @@ const getErrorMessage = function(err) {
 
 	// Return the message error
 	return message;
+};
+
+exports.forgotPassword = function(req, res, next) {
+  async.waterfall([
+    function(done) {
+      crypto.randomBytes(20, function(err, buf) {
+        var token = buf.toString('hex');
+        done(err, token);
+      });
+    },
+    function(token, done) {
+      User.findOne({ email: req.body.email }, function(err, user) {
+        if (!user) {
+          return res.status(400).send({message: 'No user with that email.'});
+          //return res.redirect('/api/forgotPassword');
+        }
+
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+        user.save(function(err) {
+          done(err, token, user);
+        });
+      });
+    },
+    function(token, user, done) {
+      var smtpTransport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'jairoalbertorivas@gmail.com',
+          pass: 'ilostmyphone553'
+        }
+      });
+      var mailOptions = {
+        to: user.email,
+        from: 'jairoalbertorivas@gmail.com',
+        subject: 'UF MEDLIFE Password Reset',
+        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+          'http://' + req.headers.host + '/authentication/resetPassword/' + token + '\n\n' +
+          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+      };
+      smtpTransport.sendMail(mailOptions, function(err) {
+				req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        done(err, 'done');
+      });
+    }
+  ], function(err) {
+    if (err){
+			return res.status(400).send(err);
+		}
+    res.status(200).send({message: 'Password reset email sent succesfully'});
+  });
 };
 
 // Create a new controller method that signin users
@@ -116,6 +173,80 @@ exports.list = function(req, res){
 exports.read = function(req,res){
 	res.json(req.user);
 };
+
+exports.resetPassword = function(req, res){
+	res.json(req.user);
+};
+
+exports.userByToken = function(req, res, next) {
+	User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }).exec((err, user) => {
+		if(err) return next(err);
+		if(!user) return next(new Error('Failed to load user with that token'));
+
+		req.user = user;
+
+		next();
+	});
+};
+
+exports.reset = function(req, res) {
+  async.waterfall([
+    function(done) {
+      User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+          return res.status(400).send({message: 'Token invalid or expired'});
+        }
+
+        user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+
+        user.save(function(err) {
+          req.login(user, function(err) {
+						done(err, user);
+          });
+        });
+      });
+    },
+    function(user, done) {
+      var smtpTransport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'jairoalbertorivas@gmail.com',
+          pass: 'ilostmyphone553'
+        }
+      });
+      var mailOptions = {
+        to: user.email,
+        from: 'jairoalbertorivas@gmail.com',
+        subject: 'Your password has been changed',
+        text: 'Hello,\n\n' +
+          'This is a confirmation that the password for your account ' + user.username + ' has just been changed.\n'
+      };
+      smtpTransport.sendMail(mailOptions, function(err) {
+        req.flash('success', 'Success! Your password has been changed.');
+        done(err);
+      });
+    }
+  ], function(err) {
+		if (err){
+			return res.status(400).send(err);
+		}
+		res.status(200).send({message: 'Password reset succesfully'});
+  });
+}
+
+exports.userByID = function(req, res,next ,id){
+	User.findById(id).exec((err, user) => {
+		if(err) return next(err);
+		if(!user) return next(new Error('Failed to load user' + id));
+
+		req.user = user;
+
+		next();
+	});
+};
+
 
 exports.update = function(req, res){
 	const user = req.user;
