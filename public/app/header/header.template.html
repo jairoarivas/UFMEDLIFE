@@ -52,7 +52,7 @@
         <ul class="navbar-nav ml-auto">
           <li *ngIf="_authenticationService.isLoggedIn()" class="nav-item dropdown">
             <button class="medButton dropdown-toggle  btn-block capitalize" type="button" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-user" aria-hidden="true"></i>
+              <img src="./images/user-icon.png" style= "max-width: 18px; height: auto;"alt="">
               {{_authenticationService.user.firstName}} {{_authenticationService.user.lastName}}
             </button>
             <div class="dropdown-menu dropdown-menu-right medDropdown" aria-labelledby="navbarDropdownMenuLink">

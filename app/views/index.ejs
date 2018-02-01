@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>UF MEDLIFE</title>
 	<base href="/">
-	<script src="https://use.fontawesome.com/542f846b0a.js"></script>
 	<link rel="shortcut icon" type="image/x-con" href="images/tabPic.ico" />
 	<!--bootstrap-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -31,7 +30,9 @@
 		window.user = <%- user || 'null' %>;
 	</script>
 
-	<script src="lib/core-js/client/shim.min.js"></script>
+	<!-- systemJS scrips -->
+
+	<!-- <script src="lib/core-js/client/shim.min.js"></script>
 	<script src="lib/zone.js/dist/zone.js"></script>
 	<script src="lib/reflect-metadata/Reflect.js"></script>
 	<script src="lib/systemjs/dist/system.js"></script>
@@ -39,7 +40,12 @@
 	<script src="systemjs.config.js"></script>
 	<script>
 		System.import('app').catch(function(err){ console.error(err); });
-	</script>
+	</script> -->
+
+	<!-- Webpack scripts -->
+	<script src = "./build/polyfills.js"></script>
+	<script src = "./build/vendor.js"></script>
+	<script src = "./build/bootstrap.js"></script>
 
 	<!--Bootstrap-->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
