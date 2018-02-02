@@ -1,13 +1,26 @@
-<h1>Events</h1>
-<ul>
-	<li *ngFor="let event of events">
-		<a [routerLink]="['/events', event._id]">{{event.eventName}}</a>
-		<br>
-		<small>{{event.created}}/{{event.creator.fullName}}</small>
-		<p>{{event.content}}</p>
-	</li>
-</ul>
-
-<div *ngIf="events && events.length === 0">
-	No events yet, why don't you <a [routerLink]="['/events/create']">create one</a>?
+<div class="container-fluid pageImage">
+	<div class="row">
+		<div class="col-md-12 p-0">
+			<div class="grayFilterSmall">
+				<h1 class="text-center pageImageText">
+      		Events
+        </h1>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid div-color">
+	<div class="row list-group pb-3">
+		<div *ngFor="let event of events">
+			<a class=" col-12 list-group-item memberButton" [routerLink]="['/events', event._id]">
+				<div class="row py-3">
+					<h4 class=" capitalize text-center col-8">{{event.eventName}}</h4>
+					<p class="col-4 text-center">{{event.description}}</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div *ngIf="events && events.length === 0">
+		No events yet, why don't you <a [routerLink]="['/events/create']">create one</a>?
+	</div>
 </div>

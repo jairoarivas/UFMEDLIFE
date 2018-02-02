@@ -6,6 +6,7 @@ import { EventsService } from '../events.service';
 @Component({
   selector: 'view',
   templateUrl: 'app/events/view/view.template.html',
+  styleUrls: ['app/app.styles.css']
 })
 export class ViewComponent {
 	user: any;
@@ -30,7 +31,7 @@ export class ViewComponent {
 				.subscribe(
 					event => {
 						this.event = event;
-						this.allowEdit = (this.user && this.user._id === this.event.creator._id);
+						this.allowEdit = (this.user && this.user._id === 'Admin');
 		 			},
 					error => this._router.navigate(['/events'])
 				);

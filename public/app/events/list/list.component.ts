@@ -4,7 +4,8 @@ import {EventsService} from '../events.service';
 
 @Component({
 	selector: 'list',
-	templateUrl: 'app/events/list/list.template.html'
+	templateUrl: 'app/events/list/list.template.html',
+  styleUrls: ['app/app.styles.css']
 })
 export class ListComponent{
 	events: any;

@@ -1,11 +1,30 @@
-<section *ngIf="event && event.creator">
-	<h1>{{event.eventName}}</h1>
-
-	<div *ngIf="allowEdit">
-	    <a [routerLink]="['/events', event._id, 'edit']">edit</a>
-	    <button (click)="delete()">delete</button>
+<div class="container-fluid pageImage " *ngIf="event && user.role === 'Admin'">
+	<div class="row">
+		<div class="col-md-12 p-0">
+			<div class="grayFilterSmall">
+				<h1 class="text-center capitalize pageImageText">
+      		{{event.eventName}}
+        </h1>
+			</div>
+		</div>
 	</div>
-	<small>
-	    <em>Created on {{event.created}} by {{event.creator.fullName}}</em>
-	</small>
-</section>
+</div>
+<div class="container-fluid div-color">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<section class="row" *ngIf="event && user.role === 'Admin'">
+					<div class="col-8 py-5 text-justify">
+						<p>Description: {{event.description}}</p>
+					</div>
+					<div class="col-4 text-center" *ngIf="allowEdit">
+						<div class="row" style="height: 100%">
+							<button class="memberButton col-6" style="height: 100%; border-top:none; border-bottom:none;" [routerLink]="['/events', event._id, 'edit']">edit</button>
+							<button class="memberButton col-6" style="height: 100%;  border-top:none; border-bottom:none;;" (click)="delete()">delete</button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>

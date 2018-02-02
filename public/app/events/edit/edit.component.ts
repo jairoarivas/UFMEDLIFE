@@ -6,7 +6,8 @@ import { EventsService } from '../events.service';
 
 @Component({
   selector: 'edit',
-  templateUrl: 'app/events/edit/edit.template.html'
+  templateUrl: 'app/events/edit/edit.template.html',
+  styleUrls: ['app/app.styles.css']
 })
 export class EditComponent {
 	event: any = {};

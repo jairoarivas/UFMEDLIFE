@@ -5,7 +5,8 @@ import {EventsService} from '../events.service';
 
 @Component({
   selector: 'create',
-  templateUrl: 'app/events/create/create.template.html'
+  templateUrl: 'app/events/create/create.template.html',
+  styleUrls: ['app/app.styles.css']
 })
 export class CreateComponent {
 	event: any = {};

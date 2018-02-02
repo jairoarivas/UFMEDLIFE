@@ -12,9 +12,10 @@ const EventSchema = new Schema({
     trim: true,
     required: 'Event must be given a name'
   },
-  creator: {
-    type: Schema.ObjectId,
-    ref: 'User'
+  description: {
+    type: String,
+    default: '',
+    trim: true
   }
 });
 mongoose.model('Event', EventSchema);
