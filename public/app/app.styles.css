@@ -137,6 +137,42 @@
 
 /* Home Page */
 
+.contactUsImage {
+  background: url('./images/piggy-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-size: width: 100vw;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+
+.alreadyMemberImage {
+  background: url('./images/volunteer-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-size: width: 100vw;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+
+.becomeMemberImage {
+  background: url('./images/test2-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-size: width: 100vw;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+
 .slide-image1 {
   background: url('./images/stock1-min.jpg');
   background-repeat: no-repeat;
@@ -150,7 +186,7 @@
 }
 
 .slide-image2 {
-  background: url('./images/stock2-min.jpg');
+  background: url('./images/test1-min.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -162,7 +198,7 @@
 }
 
 .slide-image3 {
-  background: url('./images/stock3-min.jpg');
+  background: url('./images/test3-min.JPG');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -192,6 +228,41 @@
 }
 
 @media screen and (max-width:1040px) {
+  .contactUsImage {
+    background: url('./images/piggy-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
+  .becomeMemberImage {
+    background: url('./images/test2-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .alreadyMemberImage {
+    background: url('./images/volunteer-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
   .slide-image1 {
     background: url('./images/stock1-min.jpg');
     background-repeat: no-repeat;
@@ -204,7 +275,7 @@
     border-width: 0;
   }
   .slide-image2 {
-    background: url('./images/stock2-min.jpg');
+    background: url('./images/test1-min.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -215,10 +286,10 @@
     border-width: 0;
   }
   .slide-image3 {
-    background: url('./images/stock3-min.jpg');
+    background: url('./images/test3-min.JPG');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: left;
     background-size: width: 100vw;
     height: 60vh;
     margin: 0;
@@ -246,6 +317,42 @@
 /* if screen size is smaller */
 
 @media screen and (max-width:480px) {
+  .contactUsImage {
+    background: url('./images/piggy-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
+  .alreadyMemberImage {
+    background: url('./images/volunteer-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
+  .becomeMemberImage {
+    background: url('./images/test2-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: width: 100vw;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
   .slide-image1 {
     background: url('./images/stock1-min.jpg');
     background-repeat: no-repeat;
@@ -258,7 +365,7 @@
     border-width: 0;
   }
   .slide-image2 {
-    background: url('./images/stock2-min.jpg');
+    background: url('./images/test1-min.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -269,10 +376,10 @@
     border-width: 0;
   }
   .slide-image3 {
-    background: url('./images/stock3-min.jpg');
+    background: url('./images/test3-min.JPG');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: left;
     background-size: width: 100vw;
     height: 40vh;
     margin: 0;
