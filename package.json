@@ -6,8 +6,9 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "start": "concurrently \"npm run webpack\" \"npm run app\"",
+    "webpack": "webpack --watch",
     "app": "node server",
-    "start": "concurrently \"npm run tsc:w\" \"npm run app\"",
     "postinstall": "typings install"
   },
   "keywords": [
