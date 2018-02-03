@@ -11,15 +11,25 @@ module.exports = {
   resolve: {
     extensions:['.js','.ts']
   },
+  devServer: {
+     contentBase: './public'
+  },
   output: {
-    path: path.resolve(__dirname, 'public/build'),
     filename: '[name].js',
+    path: path.resolve(__dirname, 'public/build'),
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader']
+        use: 'awesome-typescript-loader'
+      },
+      {
+        test:/\.css$/,
+        use:[
+          'style-loader',
+          'css-loader'
+        ]
       }
     ]
   },

@@ -17,10 +17,30 @@ var MembersService = /** @class */ (function () {
     function MembersService(_http) {
         this._http = _http;
         this._baseURL = 'api/members';
+        this._pointURL = 'api/addPoint';
+        this._removeURL = 'api/removePoint';
     }
     MembersService.prototype.read = function (userId) {
         return this._http
             .get(this._baseURL + "/" + userId)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    MembersService.prototype.pointList = function () {
+        return this._http
+            .get(this._pointURL)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    MembersService.prototype.addPoint = function (user) {
+        return this._http
+            .put(this._pointURL + "/" + user._id, user)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    MembersService.prototype.removePoint = function (user) {
+        return this._http
+            .put(this._removeURL + "/" + user._id, user)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };

@@ -9,6 +9,8 @@ import {Http, Headers, Request, RequestMethod, Response} from '@angular/http';
 export class MembersService {
 
   private _baseURL = 'api/members';
+  private _pointURL= 'api/addPoint';
+  private _removeURL= 'api/removePoint';
 
 	constructor (private _http: Http) {}
 
@@ -18,6 +20,27 @@ export class MembersService {
 			.map((res: Response) => res.json())
 			.catch(this.handleError);
 	}
+
+  pointList(): Observable<any> {
+    return this._http
+    .get(this._pointURL)
+    .map((res:Response) => res.json())
+    .catch(this.handleError);
+  }
+
+  addPoint(user: any): Observable<any> {
+		return this._http
+			.put(`${this._pointURL}/${user._id}`, user)
+			.map((res: Response) => res.json())
+			.catch(this.handleError);
+  	}
+
+  removePoint(user: any): Observable<any> {
+  	return this._http
+  		.put(`${this._removeURL}/${user._id}`, user)
+  		.map((res: Response) => res.json())
+  		.catch(this.handleError);
+    }
 
 	update(user: any): Observable<any> {
 		return this._http

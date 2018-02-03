@@ -25,7 +25,8 @@ var CreateComponent = /** @class */ (function () {
     CreateComponent = __decorate([
         core_1.Component({
             selector: 'create',
-            templateUrl: 'app/events/create/create.template.html'
+            templateUrl: 'app/events/create/create.template.html',
+            styleUrls: ['app/app.styles.css']
         }),
         __metadata("design:paramtypes", [router_1.Router,
             events_service_1.EventsService])

@@ -61,13 +61,13 @@ exports.forgotPassword = function(req, res, next) {
       var smtpTransport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'jairoalbertorivas@gmail.com',
-          pass: 'ilostmyphone553'
+          user: 'medlifeufl@gmail.com',
+          pass: 'gogators2016'
         }
       });
       var mailOptions = {
         to: user.email,
-        from: 'jairoalbertorivas@gmail.com',
+        from: 'medlifeufl@gmail.com',
         subject: 'UF MEDLIFE Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -113,26 +113,13 @@ exports.signin = function(req, res, next) {
 exports.signup = function(req, res) {
 	const user = new User(req.body);
 	user.provider = 'local';
-
-	// Try saving the User
 	user.save((err) => {
-		if (err) {
+		if(err) {
 			return res.status(400).send({
 				message: getErrorMessage(err)
 			});
 		} else {
-			// Remove sensitive data before login
-			user.password = undefined;
-			user.salt = undefined;
-
-			// Login the user
-			req.login(user, function(err) {
-				if (err) {
-					res.status(400).send(err);
-				} else {
-					res.json(user);
-				}
-			});
+			res.json(user);
 		}
 	});
 };
@@ -212,13 +199,13 @@ exports.reset = function(req, res) {
       var smtpTransport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'jairoalbertorivas@gmail.com',
-          pass: 'ilostmyphone553'
+          user: 'medlifeufl@gmail.com',
+          pass: 'gogators2016'
         }
       });
       var mailOptions = {
         to: user.email,
-        from: 'jairoalbertorivas@gmail.com',
+        from: 'medlifeufl@gmail.com',
         subject: 'Your password has been changed',
         text: 'Hello,\n\n' +
           'This is a confirmation that the password for your account ' + user.username + ' has just been changed.\n'
@@ -247,6 +234,44 @@ exports.userByID = function(req, res,next ,id){
 	});
 };
 
+
+exports.removePoint = function(req, res){
+	const user= req.user;
+	user.tempEvent = req.body.tempEvent;
+
+	var index = user.attendedEvents.indexOf(user.tempEvent);
+	if(index > -1){
+		user.attendedEvents.splice(index,1);
+	}
+
+	user.save((err) => {
+		if(err) {
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.json(user);
+		}
+	});
+
+};
+
+exports.addPoint = function(req, res){
+	const user= req.user;
+	user.tempEvent = req.body.tempEvent;
+	user.attendedEvents.push(user.tempEvent);
+
+	user.save((err) => {
+		if(err) {
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.json(user);
+		}
+	});
+
+};
 
 exports.update = function(req, res){
 	const user = req.user;

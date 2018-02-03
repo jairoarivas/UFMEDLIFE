@@ -46,11 +46,47 @@
   background-color: rgba(71, 72, 75, 0);
   color: rgb(23,23,23);
   border-color: rgb(23,23,23);
+  border-width: 5px;
+  border-radius: 5px;
 }
 
 .memberButton:hover{
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
+}
+
+.selportalButton {
+  background-color: #f2b111;
+  color: rgb(23, 23, 23);
+  border-style: solid;
+  border-color: rgba(71, 72, 75, .5) ;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.portalButton {
+  background-color: rgba(71, 72, 75, 0);
+  color: white;
+  border-style: solid;
+  border-color: rgba(71, 72, 75, .5) ;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.portalButton:hover {
+  background-color: #f2b111;
+  color:rgb(23, 23, 23);
+}
+
+.portalButton:focus {
+  background-color: #f2b111;
+  color:rgb(23, 23, 23);
 }
 
 .medButton {
@@ -66,12 +102,12 @@
 
 .medButton:hover {
   background-color: #f2b111;
-  rgb(23, 23, 23);
+  color: rgb(23, 23, 23);
 }
 
 .medButton:focus {
   background-color: #f2b111;
-  rgb(23, 23, 23);
+  color: rgb(23, 23, 23);
 }
 
 .medButton.homeButton {
@@ -273,7 +309,7 @@
 }
 
 .pageImage{
-  width: 100vw;
+  width: 100%;
   padding-right: 0;
   padding-left:0;
   overflow-x: hidden;
@@ -302,7 +338,19 @@
 .medSignup {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
+  margin-top:10vh;
+}
+
+.medCreateEvent {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
   margin-top:15vh;
+}
+
+.medPointMenu {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top:5vh;
 }
 
 .listMemberDiv{

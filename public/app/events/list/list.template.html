@@ -9,16 +9,22 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid div-color">
-	<div class="row list-group pb-3">
-		<div *ngFor="let event of events">
-			<a class=" col-12 list-group-item memberButton" [routerLink]="['/events', event._id]">
-				<div class="row py-3">
-					<h4 class=" capitalize text-center col-8">{{event.eventName}}</h4>
-					<p class="col-4 text-center">{{event.description}}</p>
-				</div>
-			</a>
+<div class="pt-3 container-fluid div-color">
+	<div class="row list-group pb-1">
+		<div class=" col-12 list-group-item" style="background-color: rgba(0,0,0,0); border: none;">
+			<div class="row pt-3">
+				<h4 class="text-center col-6">Name of Event</h4>
+				<h4 class="col-6 text-center">Description</h4>
+			</div>
 		</div>
+	</div>
+	<div class="row pb-1" *ngFor="let event of events">
+		<a class=" col-12 list-group-item memberButton btn" [routerLink]="['/events', event._id]">
+			<div class="row pt-3">
+				<h4 class=" capitalize text-center col-6">{{event.eventName}}</h4>
+				<p class="col-6 text-center">{{event.description}}</p>
+			</div>
+		</a>
 	</div>
 	<div *ngIf="events && events.length === 0">
 		No events yet, why don't you <a [routerLink]="['/events/create']">create one</a>?

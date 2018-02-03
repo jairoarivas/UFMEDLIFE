@@ -12,6 +12,9 @@ import { ViewComponent } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
 import { ForgotPasswordComponent } from './forgotPassword/forgotPassword.component';
 import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
+import { PointListComponent } from './pointList/pointList.component';
+import { AddPointComponent } from './addPoint/addPoint.component';
+
 
 @NgModule ({
   imports: [
@@ -26,6 +29,8 @@ import { ResetPasswordComponent } from './resetPassword/resetPassword.component'
     ListComponent,
     ViewComponent,
     EditComponent,
+    PointListComponent,
+    AddPointComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
   ]

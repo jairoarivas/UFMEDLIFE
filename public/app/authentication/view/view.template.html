@@ -11,21 +11,26 @@
 </div>
 <div class="container-fluid div-color">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<section class="row" *ngIf="member && user.role === 'Admin'">
-					<div class="col-8 py-5 text-justify">
-						<p>Email: {{member.email}}</p>
-						<p>Username: {{member.username}}</p>
-						<p>Member role: {{member.role}}</p>
-					</div>
-					<div class="col-4 text-center" *ngIf="allowEdit">
-						<div class="row" style="height: 100%">
-							<button class="memberButton col-6" style="height: 100%; border-top:none; border-bottom:none;" [routerLink]="['/authentication/members', member._id, 'edit']">edit</button>
-							<button class="memberButton col-6" style="height: 100%;  border-top:none; border-bottom:none;;" (click)="delete()">delete</button>
-						</div>
-					</div>
-				</section>
+		<div class="row" style="height :50vh;" *ngIf="member && user.role === 'Admin'">
+			<div class="col-8 text-justify">
+				<div class="row py-5">
+					<h4 class="col">Basic Info</h4>
+				</div>
+				<div class="row pb-3">
+					<p class="col">Email: {{member.email}}</p>
+				</div>
+				<div class="row pb-3">
+					<p class="col">Username: {{member.username}}</p>
+				</div>
+				<div class="row pb-3">
+					<p class="col">Member role: {{member.role}}</p>
+				</div>
+			</div>
+			<div class="col-4 text-center" *ngIf="allowEdit">
+				<div class="row" style = "padding-top:20vh;">
+					<button class="memberButton btn col-6" [routerLink]="['/authentication/members', member._id, 'edit']">Edit</button>
+					<button class="memberButton btn col-6" (click)="delete()">Delete</button>
+				</div>
 			</div>
 		</div>
 	</div>

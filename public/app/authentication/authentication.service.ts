@@ -58,12 +58,8 @@ export class AuthenticationService {
   }
 
   signup(user: any): Observable<any> {
-    let body = JSON.stringify(user);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this._signupURL, body, options)
-      .map(res => this.user = res.json())
+    return this.http.post(this._signupURL, user)
+      .map((res: Response) => res.json())
       .catch(this.handleError)
   }
 

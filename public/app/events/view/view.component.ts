@@ -31,7 +31,7 @@ export class ViewComponent {
 				.subscribe(
 					event => {
 						this.event = event;
-						this.allowEdit = (this.user && this.user._id === 'Admin');
+						this.allowEdit = (this.user && this.user.role === 'Admin');
 		 			},
 					error => this._router.navigate(['/events'])
 				);

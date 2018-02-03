@@ -24,6 +24,7 @@ var header_component_1 = require("./header/header.component");
 var carousel_component_1 = require("./carousel/carousel.component");
 var itReset_component_1 = require("./resetConfirmations/itReset.component");
 var itSent_component_1 = require("./resetConfirmations/itSent.component");
+var viewProfile_component_1 = require("./viewProfile/viewProfile.component");
 var events_module_1 = require("./events/events.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -47,6 +48,7 @@ var AppModule = /** @class */ (function () {
                 carousel_component_1.CarouselComponent,
                 contactUs_component_1.contactUsComponent,
                 itSent_component_1.itSentComponent,
+                viewProfile_component_1.ViewProfileComponent,
                 itReset_component_1.itResetComponent,
                 app_component_1.AppComponent
             ],

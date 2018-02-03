@@ -33,13 +33,13 @@
             <input class = "form-control" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
           </div>
           <div class = "col-2" *ngIf="!(this.showPassword)">
-            <button class = "medButton" (click)="this.showPassword = true">Show</button>
+            <button class = "medButton btn" (click)="this.showPassword = true">Show</button>
           </div>
           <div class="col-6" *ngIf="(this.showPassword)">
             <input  class = "form-control"type="text" [(ngModel)]="user.password" name="password" placeholder="Password">
           </div>
           <div class = "col-2" *ngIf="(this.showPassword)">
-          <button class = "medButton"(click)="this.showPassword = false">Hide</button>
+          <button class = "medButton btn"(click)="this.showPassword = false">Hide</button>
           </div>
         </div>
         <div class="form-group justify-content-center row">
@@ -53,7 +53,7 @@
         </div>
         <div class="form-group row">
           <div class="col-4 mx-auto">
-            <button type="submit" class="medButton">Create</button>
+            <button type="submit" class="portalButton btn">Create</button>
           </div>
         </div>
         <div class="form-group row">

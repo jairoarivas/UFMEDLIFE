@@ -19,7 +19,7 @@ export class SignupComponent {
   signup() {
     this._authenticationService.signup(
       this.user).subscribe(result =>
-      this._router.navigate(['/']),
+      this._router.navigate(['/authentication/members']),
       error => this.errorMessage = error );
   }
 }

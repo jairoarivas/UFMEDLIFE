@@ -113,7 +113,7 @@ exports.eventByID = function(req, res, next, id) {
 // Create a new controller middleware that is used to authorize an event operation
 exports.hasAuthorization = function(req, res, next) {
     // If the current user is not the creator of the event send the appropriate error message
-    if (!(req.user.id === 'Admin')) {
+    if (!(req.user.role === 'Admin')) {
         return res.status(403).send({
             message: 'User is not authorized'
         });

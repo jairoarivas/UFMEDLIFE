@@ -8,6 +8,8 @@ var view_component_1 = require("./view/view.component");
 var edit_component_1 = require("./edit/edit.component");
 var forgotPassword_component_1 = require("./forgotPassword/forgotPassword.component");
 var resetPassword_component_1 = require("./resetPassword/resetPassword.component");
+var pointList_component_1 = require("./pointList/pointList.component");
+var addPoint_component_1 = require("./addPoint/addPoint.component");
 exports.AuthenticationRoutes = [{
         path: 'authentication',
         component: authentication_component_1.AuthenticationComponent,
@@ -19,6 +21,8 @@ exports.AuthenticationRoutes = [{
             { path: 'members/:userId/edit', component: edit_component_1.EditComponent },
             { path: 'forgotPassword', component: forgotPassword_component_1.ForgotPasswordComponent },
             { path: 'resetPassword/:token', component: resetPassword_component_1.ResetPasswordComponent },
+            { path: 'addPoint', component: pointList_component_1.PointListComponent },
+            { path: 'addPoint/:userId', component: addPoint_component_1.AddPointComponent }
         ],
     }];
 //# sourceMappingURL=authentication.routes.js.map

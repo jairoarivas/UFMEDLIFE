@@ -30,7 +30,7 @@ var ViewComponent = /** @class */ (function () {
                 .read(eventId)
                 .subscribe(function (event) {
                 _this.event = event;
-                _this.allowEdit = (_this.user && _this.user._id === _this.event.creator._id);
+                _this.allowEdit = (_this.user && _this.user.role === 'Admin');
             }, function (error) { return _this._router.navigate(['/events']); });
         });
     };
@@ -45,6 +45,7 @@ var ViewComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'view',
             templateUrl: 'app/events/view/view.template.html',
+            styleUrls: ['app/app.styles.css']
         }),
         __metadata("design:paramtypes", [router_1.Router,
             router_1.ActivatedRoute,

@@ -7,6 +7,10 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 	firstName: String,
 	lastName: String,
+	attendedEvents: [{
+		type: String
+	}],
+	tempEvent: String,
 	email: {
 		type: String,
 		// Validate the email format
@@ -63,6 +67,15 @@ UserSchema.virtual('fullName').get(function() {
 	const splitName = fullName.split(' ');
 	this.firstName = splitName[0] || '';
 	this.lastName = splitName[1] || '';
+});
+
+UserSchema.virtual('points').get(function(){
+	var arrayLength = this.attendedEvents.length;
+	var count = 0;
+	for (var i = 0; i < arrayLength; i++) {
+	   	count++;
+	}
+	return count;
 });
 
 // Use a pre-save middleware to hash the password

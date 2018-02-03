@@ -23,7 +23,7 @@ var SignupComponent = /** @class */ (function () {
     SignupComponent.prototype.signup = function () {
         var _this = this;
         this._authenticationService.signup(this.user).subscribe(function (result) {
-            return _this._router.navigate(['/']);
+            return _this._router.navigate(['/authentication/members']);
         }, function (error) { return _this.errorMessage = error; });
     };
     SignupComponent = __decorate([

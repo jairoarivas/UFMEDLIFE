@@ -57,12 +57,8 @@ var AuthenticationService = /** @class */ (function () {
             .catch(this.handleError);
     };
     AuthenticationService.prototype.signup = function (user) {
-        var _this = this;
-        var body = JSON.stringify(user);
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(this._signupURL, body, options)
-            .map(function (res) { return _this.user = res.json(); })
+        return this.http.post(this._signupURL, user)
+            .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     AuthenticationService.prototype.handleError = function (error) {

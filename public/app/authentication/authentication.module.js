@@ -19,6 +19,8 @@ var view_component_1 = require("./view/view.component");
 var edit_component_1 = require("./edit/edit.component");
 var forgotPassword_component_1 = require("./forgotPassword/forgotPassword.component");
 var resetPassword_component_1 = require("./resetPassword/resetPassword.component");
+var pointList_component_1 = require("./pointList/pointList.component");
+var addPoint_component_1 = require("./addPoint/addPoint.component");
 var AuthenticationModule = /** @class */ (function () {
     function AuthenticationModule() {
     }
@@ -36,6 +38,8 @@ var AuthenticationModule = /** @class */ (function () {
                 list_component_1.ListComponent,
                 view_component_1.ViewComponent,
                 edit_component_1.EditComponent,
+                pointList_component_1.PointListComponent,
+                addPoint_component_1.AddPointComponent,
                 forgotPassword_component_1.ForgotPasswordComponent,
                 resetPassword_component_1.ResetPasswordComponent,
             ]

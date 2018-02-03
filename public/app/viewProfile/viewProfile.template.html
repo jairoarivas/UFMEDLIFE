@@ -1,0 +1,39 @@
+<div class="container-fluid pageImage " *ngIf="user">
+	<div class="row">
+		<div class="col-md-12 p-0">
+			<div class="grayFilterSmall">
+				<h1 class="text-center capitalize pageImageText">
+      		{{_authenticationService.user.firstName}} {{_authenticationService.user.lastName}}
+        </h1>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid div-color">
+	<div class="container">
+		<div class="row" style = "height: 50vh;" *ngIf="user">
+			<div class="col-8 text-justify">
+				<div class = "row py-5">
+					<h4 class = "col">Basic Info</h4>
+				</div>
+				<div class = "row pb-3">
+					<p class = "col">Email: {{_authenticationService.user.email}}</p>
+				</div>
+				<div class = "row pb-3">
+					<p class = "col">Username: {{_authenticationService.user.username}}</p>
+				</div>
+				<div class = "row pb-3">
+					<p class = "col">Member role: {{_authenticationService.user.role}}</p>
+				</div>
+			</div>
+			<div class="col-4 text-center">
+				<div class = "row py-5">
+					<h4 class = "col text-center">Points</h4>
+				</div>
+				<div class = "row pb-3">
+					<h1 class="col text-center" style = "padding-top: 5vh;">{{_authenticationService.user.points}}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

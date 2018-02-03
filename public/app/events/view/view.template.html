@@ -11,19 +11,20 @@
 </div>
 <div class="container-fluid div-color">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<section class="row" *ngIf="event && user.role === 'Admin'">
-					<div class="col-8 py-5 text-justify">
-						<p>Description: {{event.description}}</p>
-					</div>
-					<div class="col-4 text-center" *ngIf="allowEdit">
-						<div class="row" style="height: 100%">
-							<button class="memberButton col-6" style="height: 100%; border-top:none; border-bottom:none;" [routerLink]="['/events', event._id, 'edit']">edit</button>
-							<button class="memberButton col-6" style="height: 100%;  border-top:none; border-bottom:none;;" (click)="delete()">delete</button>
-						</div>
-					</div>
-				</section>
+		<div class="row" style="height :50vh;" *ngIf="event && user.role === 'Admin'">
+			<div class="col-8 text-center">
+				<div class="row pt-5 pb-3">
+					<h3 class="col">Description</h3>
+				</div>
+				<div class="row pb-5">
+					<h4 class="col">{{event.description}}</h4>
+				</div>
+			</div>
+			<div class="col-4 text-center" *ngIf="allowEdit">
+				<div class="row" style="padding-top:20vh;">
+					<button class="memberButton btn col-6" [routerLink]="['/events', event._id, 'edit']">Edit</button>
+					<button class="memberButton btn col-6" (click)="delete()">Delete</button>
+				</div>
 			</div>
 		</div>
 	</div>

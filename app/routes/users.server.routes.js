@@ -13,14 +13,24 @@ module.exports = function(app){
   app.route('/api/members/:userId')
     .get(users.read)
     .put(users.requiresLogin,users.update)
-    .delete(users.requiresLogin, users.hasAuthorization, users.delete);
-
+    .delete(users.requiresLogin, users.delete);
+  
   app.route('/api/forgotPassword')
     .post(users.forgotPassword);
 
   app.route('/api/resetPassword/:token')
     .get(users.resetPassword)
     .post(users.reset);
+
+  app.route('/api/addPoint')
+  .get(users.list);
+
+  app.route ('/api/removePoint/:userId')
+    .put(users.requiresLogin, users.removePoint);
+
+  app.route('/api/addPoint/:userId')
+    .get(users.read)
+    .put(users.requiresLogin, users.addPoint);
 
   app.param('userId', users.userByID);
   app.param('token', users.userByToken);
