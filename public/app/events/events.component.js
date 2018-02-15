@@ -14,7 +14,7 @@ var EventsComponent = /** @class */ (function () {
     EventsComponent = __decorate([
         core_1.Component({
             selector: 'events',
-            template: '<router-outlet></router-outlet>',
+            template: "<div style = \"overflow: auto;\">\n      <router-outlet></router-outlet>\n  </div>",
             providers: [events_service_1.EventsService]
         })
     ], EventsComponent);

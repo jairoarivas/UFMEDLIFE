@@ -28,18 +28,18 @@
           </div>
         </div>
         <div class="form-group justify-content-center row">
-          <label class=" col-form-label col-4">Password:</label>
-          <div class="col-6" *ngIf="!(this.showPassword)">
+          <label class=" col-form-label col-sm-4">Password:</label>
+          <div class="col-sm-6" *ngIf="!(this.showPassword)">
             <input class = "form-control" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
           </div>
-          <div class = "col-2" *ngIf="!(this.showPassword)">
-            <button class = "medButton btn" (click)="this.showPassword = true">Show</button>
+          <div class = "col-sm-2" *ngIf="!(this.showPassword)">
+            <button class = "medButton btn"  (click)="this.showPassword = true">Show</button>
           </div>
-          <div class="col-6" *ngIf="(this.showPassword)">
+          <div class="col-sm-6" *ngIf="(this.showPassword)">
             <input  class = "form-control"type="text" [(ngModel)]="user.password" name="password" placeholder="Password">
           </div>
-          <div class = "col-2" *ngIf="(this.showPassword)">
-          <button class = "medButton btn"(click)="this.showPassword = false">Hide</button>
+          <div class = "col-sm-2" *ngIf="(this.showPassword)">
+          <button class = "medButton btn" (click)="this.showPassword = false">Hide</button>
           </div>
         </div>
         <div class="form-group justify-content-center row">

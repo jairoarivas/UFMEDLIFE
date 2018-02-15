@@ -22,8 +22,8 @@
 			</div>
 			<div class="col-4 text-center" *ngIf="allowEdit">
 				<div class="row" style="padding-top:20vh;">
-					<button class="memberButton btn col-6" [routerLink]="['/events', event._id, 'edit']">Edit</button>
-					<button class="memberButton btn col-6" (click)="delete()">Delete</button>
+					<button class="memberButton btn col-sm-6" [routerLink]="['/events', event._id, 'edit']">Edit</button>
+					<button class="memberButton btn col-sm-6" (click)="delete()">Delete</button>
 				</div>
 			</div>
 		</div>

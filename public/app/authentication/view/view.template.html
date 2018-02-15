@@ -1,6 +1,6 @@
 <div class="container-fluid pageImage " *ngIf="member && user.role === 'Admin'">
 	<div class="row">
-		<div class="col-md-12 p-0">
+		<div class="col-sm-12 p-0">
 			<div class="grayFilterSmall">
 				<h1 class="text-center capitalize pageImageText">
       		{{member.firstName}} {{member.lastName}}
@@ -11,8 +11,8 @@
 </div>
 <div class="container-fluid div-color">
 	<div class="container">
-		<div class="row" style="height :50vh;" *ngIf="member && user.role === 'Admin'">
-			<div class="col-8 text-justify">
+		<div class="row" *ngIf="member && user.role === 'Admin'">
+			<div class="col-sm-8 text-justify">
 				<div class="row py-5">
 					<h4 class="col">Basic Info</h4>
 				</div>
@@ -26,10 +26,10 @@
 					<p class="col">Member role: {{member.role}}</p>
 				</div>
 			</div>
-			<div class="col-4 text-center" *ngIf="allowEdit">
+			<div class="col-sm-4 text-center" *ngIf="allowEdit">
 				<div class="row" style = "padding-top:20vh;">
-					<button class="memberButton btn col-6" [routerLink]="['/authentication/members', member._id, 'edit']">Edit</button>
-					<button class="memberButton btn col-6" (click)="delete()">Delete</button>
+					<button class="memberButton btn col-sm-6" [routerLink]="['/authentication/members', member._id, 'edit']">Edit</button>
+					<button class="memberButton btn col-sm-6" (click)="delete()">Delete</button>
 				</div>
 			</div>
 		</div>

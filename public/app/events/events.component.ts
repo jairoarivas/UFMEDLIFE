@@ -3,7 +3,10 @@ import { EventsService } from './events.service';
 
 @Component({
   selector: 'events',
-  template: '<router-outlet></router-outlet>',
+  template: `<div style = "overflow: auto;">
+      <router-outlet></router-outlet>
+  </div>`
+  ,
   providers: [EventsService]
 })
 export class EventsComponent {}
