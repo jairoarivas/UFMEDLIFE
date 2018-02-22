@@ -9,16 +9,16 @@
 		</div>
 	</div>
 </div>
-<div class="pt-3 container-fluid div-color">
-	<div class="row list-group pb-1">
-		<div class="col-12 list-group-item" style="background-color: rgba(0,0,0,0); border: none;">
-			<div class="row pt-3">
+<div class="container-fluid div-color">
+	<div class="row list-group py-5 headerColor">
+		<div class="col-12" style="background-color: rgba(0,0,0,0); border: none;">
+			<div class="row">
 				<h4 class="text-center col-8">Member Name</h4>
 				<h4 class="col-4 text-center">Points Earned</h4>
 			</div>
 		</div>
 	</div>
-	<div class="row pb-1" *ngFor="let member of members">
+	<div class="row" *ngFor="let member of members">
 		<a class=" col-12 list-group-item memberButton btn" *ngIf="member.role ==='Member'" [routerLink]="['/authentication/addPoint', member._id]">
 			<div class="row pt-3">
 				<h4 class=" capitalize text-center col-8">{{member.firstName}} {{member.lastName}}</h4>

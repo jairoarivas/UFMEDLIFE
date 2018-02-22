@@ -9,15 +9,15 @@
 		</div>
 	</div>
 </div>
-<div class="pt-3 container-fluid div-color">
-	<div class="row list-group pb-1">
+<div class="container-fluid div-color">
+	<div class="row list-group py-5 headerColor">
 		<div class="col-12 list-group-item" style="background-color: rgba(0,0,0,0); border: none;">
-			<div class="row pt-3">
-				<h3 class="col text-center">President</h3>
+			<div class="row">
+				<h3 class="col text-center">Admins</h3>
 			</div>
 		</div>
 	</div>
-	<div class="row pb-1" *ngFor="let member of members">
+	<div class="row" *ngFor="let member of members">
 		<a class=" col-12 list-group-item btn memberButton btn" *ngIf="member.role ==='Admin' " [routerLink]="['/authentication/members', member._id]">
 			<div class="row pt-3">
 				<h4 class="col-6 capitalize text-center">{{member.firstName}} {{member.lastName}}</h4>
@@ -26,30 +26,30 @@
 		</a>
 	</div>
 
-	<div class="row list-group pb-1">
+	<div class="row list-group py-5 headerColor">
 		<div class="col-12 list-group-item" style="background-color: rgba(0,0,0,0); border: none;">
-			<div class="row pt-3">
+			<div class="row">
 				<h3 class="col text-center">Officers</h3>
 			</div>
 		</div>
 	</div>
-	<div class="row pb-1" *ngFor="let member of members">
-		<a class=" col-12 list-group-item memberButton btn" *ngIf="member.role ==='Officer' " [routerLink]="['/authentication/members', member._id]">
+	<div class="row" *ngFor="let member of members">
+		<a class="col-12 list-group-item memberButton btn" *ngIf="member.role ==='Officer' " [routerLink]="['/authentication/members', member._id]">
 			<div class="row pt-3">
 				<h4 class="col-6 capitalize text-center">{{member.firstName}} {{member.lastName}}</h4>
 				<p class="col-6 text-center">{{member.role}}</p>
 			</div>
 		</a>
 	</div>
-	<div class="row list-group pb-1">
+	<div class="row list-group py-5 headerColor">
 		<div class="col-12 list-group-item" style="background-color: rgba(0,0,0,0); border: none;">
-			<div class="row pt-3">
+			<div class="row">
 				<h3 class="col text-center">Members</h3>
 			</div>
 		</div>
 	</div>
-	<div class="row pb-1" *ngFor="let member of members">
-		<a class=" col-12 list-group-item memberButton btn" *ngIf="member.role ==='Member' " [routerLink]="['/authentication/members', member._id]">
+	<div class="row" *ngFor="let member of members">
+		<a class="col-12 list-group-item memberButton btn" *ngIf="member.role ==='Member' " [routerLink]="['/authentication/members', member._id]">
 			<div class="row pt-3">
 				<h4 class="col-6 capitalize text-center">{{member.firstName}} {{member.lastName}}</h4>
 				<p class="col-6 text-center">{{member.role}}</p>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6 text-center medPointMenu">
+    <div class="col text-center medPointMenu">
       <h4 class="py-3">Add Event to Member to assign point</h4>
       <form (ngSubmit)="addPoint()" novalidate>
         <div class="form-group justify-content-center row">
@@ -23,31 +23,35 @@
       </form>
       <form (ngSubmit)="removePoint()" novalidate>
         <h4 class="justify-content-center capitalize py-3">Events Attended by {{member.firstName}} {{member.lastName}}</h4>
-        <div *ngIf = "!allowEdit && member.points !== 0" class="row justify-content-center">
-          <div class="col-3" *ngFor="let event of member.attendedEvents">
-              <p *ngIf ="selected(event)" class="text-center selportalButton">{{event}}</p>
-              <p *ngIf = "!selected(event)" class="text-center">{{event}}</p>
-            </div>
-        </div>
-        <div *ngIf = "allowEdit && member.points !== 0" class="row justify-content-center">
-          <div class="col-sm-3" *ngFor="let event of member.attendedEvents">
-            <button *ngIf ="selected(event)" class="text-center selportalButton">{{event}}</button>
-            <button *ngIf = "!selected(event)" class="text-center portalButton btn" (click) = "temp(event)">{{event}}</button>
+        <div *ngIf="!allowEdit && member.points !== 0" class="row justify-content-center">
+          <div class="col-sm-4" *ngFor="let event of member.attendedEvents">
+            <p *ngIf="selected(event)" style = "width: 100%; height:100%;" class="text-center selportalButton">{{event}}</p>
+            <p *ngIf="!selected(event)" style = "width: 100%; height:100%;" class="text-center">{{event}}</p>
           </div>
         </div>
-        <div class="form-group row" *ngIf = "allowEdit && member.points !==0">
+        <div *ngIf="allowEdit && member.points !== 0" class="row justify-content-center">
+          <div class="col-sm-4" *ngFor="let event of member.attendedEvents">
+            <button *ngIf="selected(event)" class="justify-content-center selportalButton" style = "width: 100%; height: 100%;">
+              <p class = "text-center">{{event}}</p>
+            </button>
+            <button *ngIf="!selected(event)" style = "width: 100%; height:100%;" class="justify-content-center portalButton" (click)="temp(event)">
+              <p class = "text-center">{{event}}</p>
+            </button>
+          </div>
+        </div>
+        <div class="form-group row" *ngIf="allowEdit && member.points !==0">
           <div class="pt-3 col-sm-12 mx-auto">
-            <button type="submit" class="portalButton btn">Click on event to remove it</button>
+            <p class="mx-auto removeEventButton col-8" >Click once to select event you want to remove. Click it again to remove it.</p>
           </div>
         </div>
-        <div *ngIf = "member.points === 0">
-          <p class = "text-center">
+        <div *ngIf="member.points === 0">
+          <p class="text-center">
             Member has not attended any events
           </p>
         </div>
         <h4 class="pt-3 justify-content-center">Points Earned</h4>
         <div class="justify-content-center row">
-          <h1 class="col text-center" style = "color: #f2b111;">{{member.points}}</h1>
+          <h1 class="col text-center" style="color: #f2b111;">{{member.points}}</h1>
         </div>
       </form>
     </div>
