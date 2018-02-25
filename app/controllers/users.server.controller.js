@@ -113,6 +113,13 @@ exports.signin = function(req, res, next) {
 exports.signup = function(req, res) {
 	const user = new User(req.body);
 	user.provider = 'local';
+	user.password = req.body.password;
+	if (user.password) {
+		user.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+		user.password = user.hashPassword(user.password);
+	}
+
+
 	user.save((err) => {
 		if(err) {
 			return res.status(400).send({
@@ -185,6 +192,10 @@ exports.reset = function(req, res) {
         }
 
         user.password = req.body.password;
+				if (user.password) {
+					user.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+					user.password = user.hashPassword(user.password);
+				}
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
 
@@ -279,7 +290,7 @@ exports.update = function(req, res){
 	user.lastName = req.body.lastName;
 	user.email = req.body.email;
 	user.username = req.body.username;
-	user.password = req.body.password;
+	//user.password = req.body.password;
 	user.role = req.body.role;
 
 	user.save((err) => {
