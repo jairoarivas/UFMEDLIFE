@@ -1,13 +1,11 @@
+.restOfSite{
+  display: none;
+}
+
 /*-----header----*/
-/* .headerBackground{
-  background: url('./images/texture-min.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-} */
 
 .headerStyle {
-  background-color: rgba(10, 44, 133, .7);
+  background-color: rgb(17, 35, 84);
 }
 
 .headerLogo {

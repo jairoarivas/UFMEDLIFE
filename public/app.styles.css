@@ -14,7 +14,7 @@ body,html {
 
 /*---loading screen---*/
 .loadingBackground{
-  background-color: rgb(12, 39, 113);
+  background-color: rgb(17, 35, 84);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,9 +30,8 @@ body,html {
   margin: auto;
   width: auto;
   height: 20vh;
-  position: absolute;
   animation-name: shine;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-delay: 0ms;
   animation-fill-mode: forwards;
@@ -66,12 +65,39 @@ body,html {
   margin-top: -20vh;
   height:20vh;
   width: auto;
+  position: relative;
+  z-index: 1;
+  animation-name: pulse;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0%{
+    transform: scaleY(1.0) scaleX(1.0);
+  }
+  25%{
+    transform: scaleY(0.95) scaleX(0.95);
+  }
+  50%{
+    transform: scaleY(1.05) scaleX(1.05);
+  }
+  75%{
+    transform: scaleY(0.95) scaleX(0.95);
+  }
+  100%{
+    transform: scaleY(1.0) scaleX(1.0);
+  }
 }
 
 .logoShell{
   margin-top: 40vh;
   margin-bottom: 40vh;
   height: 20vh;
+  overflow: hidden;
 }
 /* background */
 
