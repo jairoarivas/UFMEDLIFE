@@ -1,73 +1,73 @@
+<!-- header/navigation -->
 <div class="container-fluid headerStyle p-0">
-  <nav class="navbar navbar-expand-lg p-0">
-    <a class="navbar-brand pl-3" href="#">
-      <img src="./images/logo3.0.png" class = "headerLogo " alt="">
-      <h1 class = "logoText">UF MEDLIFE</h1>
-    </a>
-    <button class="navbar-toggler medButton btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <div class = "icon-bar"></div>
-      <div class = "icon-bar"></div>
-      <div class = "icon-bar"></div>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <button class="medButton btn btn-block homeButton" [routerLink]="['/']">Home</button>
+  <div class = "row p-0 m-0">
+    <div class = "col m-0 p-0 tButton">
+      <h2 class = "float-left" style  = "color: rgb(233,233,233); margin-bottom: -60px; padding-top:18px; margin-left:10px;">UFMEDLIFE</h2>
+
+      <!-- menu toggle button -->
+      <button class = "toggleButton float-right" (click) ='clicker($event)'>
+        <span class = "burger" style = "margin-top: 0;"></span>
+        <span class = "burger"></span>
+        <span class = "burger"></span>
+        <span class = "cross1"></span>
+        <span class = "cross2"></span>
+      </button>
+
+      <!-- menu dropdown -->
+      <ul class = "menuList">
+        <li class = "mx-auto">
+          <button type = "button" class = " menuButton"><h4 class = "m-0">ABOUT</h4></button>
         </li>
-        <li class="nav-item dropdown">
-          <button class="medButton btn navButton dropdown-toggle  btn-block" type="button" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Get Involved
-        </button>
-          <div class="dropdown-menu medDropdown  " aria-labelledby="navbarDropdownMenuLink">
-            <button class=" medDropdownButton btn dropdown-item text-center" type="button" [routerLink]="['/getInvolved/becomeAMember']">Become a member</button>
-            <button class="medDropdownButton btn dropdown-item text-center" type="button" [routerLink]="['/getInvolved/alreadyAMember']">Already a member?</button>
-          </div>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton"><h4 class = "m-0">BLOG</h4></button>
         </li>
-        <li class="nav-item" *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Member'">
-          <button class="medButton btn navButton btn-block" [routerLink]="['/viewProfile']">View Earned Points</button>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton"><h4 class = "m-0">GALLERY</h4></button>
         </li>
-        <!-- <li class="nav-item">
-          <button class="medButton btn  btn-block navButton" [routerLink]="['/events']">Events</button>
-        </li> -->
-        <li *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Admin'" class="nav-item dropdown">
-          <button class="medButton btn navButton dropdown-toggle  btn-block" type="button" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Event Editor
-        </button>
-          <div class="dropdown-menu medDropdown  " aria-labelledby="navbarDropdownMenuLink">
-            <button class=" medDropdownButton btn dropdown-item text-center" type="button" [routerLink]="['/events']">List Events</button>
-            <button class="medDropdownButton btn dropdown-item text-center" type="button" [routerLink]="['/events/create']">Create Events</button>
-          </div>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton"><h4 class = "m-0">SCHEDULE</h4></button>
         </li>
-        <li *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Admin'" class="nav-item dropdown">
-          <button class="medButton btn navButton dropdown-toggle  btn-block" type="button" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Member Editor
-        </button>
-          <div class="dropdown-menu medDropdown  " aria-labelledby="navbarDropdownMenuLink">
-            <button class=" medDropdownButton btn dropdown-item text-center" type="button" [routerLink]="['/authentication/members']">List Members</button>
-            <button class="medDropdownButton btn dropdown-item text-center" type="button" [routerLink]="['/authentication/signup']">Create Members</button>
-          </div>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton"><h4 class = "m-0">OUR PROJECTS</h4></button>
         </li>
-        <li class="nav-item" *ngIf="_authenticationService.isLoggedIn() && (_authenticationService.user.role === 'Admin'|| _authenticationService.user.role === 'Officer')">
-          <button class="medButton btn navButton btn-block" [routerLink]="['/authentication/addPoint']">Add Member Points</button>
-        </li>
-        <li class="nav-item">
-          <button class="medButton btn btn-block lastButton" [routerLink]="['/contactUs']">Contact us</button>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li *ngIf="_authenticationService.isLoggedIn()" class="nav-item dropdown">
-          <button class="medButton btn dropdown-toggle  btn-block capitalize" type="button" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="./images/user-icon.png" style= "max-width: 18px; height: auto;"alt="">
-            {{_authenticationService.user.firstName}} {{_authenticationService.user.lastName}}
-          </button>
-          <div class="dropdown-menu dropdown-menu-right medDropdown" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item medDropdownButton btn text-center" href="/api/auth/signout">Signout</a>
-          </div>
-        </li>
-        <li *ngIf="!(_authenticationService.isLoggedIn())" class="nav-item">
-          <button class="medButton btn btn-block" type="button" [routerLink]="['/authentication/signin']">Sign in</button>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton"><h4 class = "m-0">CONTACT US</h4></button>
         </li>
       </ul>
     </div>
-  </nav>
+    <!-- navigation for bigger screens -->
+    <div class = "col menuBar m-0 p-0">
+      <div class = "row p-0 m-0">
+        <div class ="col-5 padLeft20">
+          <div class ="row">
+            <div class ="col-4" style = "text-align: center; padding:0; padding-top: 4vh; height:8vh;">
+              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">ABOUT US</h4></button>
+            </div>
+            <div class ="col-4" style = "text-align: center; padding:0; padding-top: 4vh; height:8vh;">
+              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">BLOG</h4></button>
+            </div>
+            <div class ="col-4" style = "text-align: center; padding:0;  padding-top: 4vh; height:8vh;">
+              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">GALLERY</h4></button>
+            </div>
+          </div>
+        </div>
+        <div class = "col-2" style = "text-align: center; padding-top: 4vh; height:8vh;">
+          <button href="#" style = "border-style:none; background-color: rgba(0,0,0,0);"><h2 style = "color: rgb(47, 140, 145); font-weight: bold; text-align:center;">YOGIILOVE</h2></button>
+        </div>
+        <div class ="col-5 padRight20">
+          <div class ="row">
+            <div class ="col-4" style = "text-align: center; padding:0;  padding-top: 4vh; height:8vh;">
+              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">SCHEDULE</h4></button>
+            </div>
+            <div class ="col-4" style = "text-align: center; padding:0;  padding-top: 4vh; height:8vh;">
+              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">PROJECTS</h4></button>
+            </div>
+            <div class ="col-4" style = "text-align: center; padding:0; padding-top: 4vh; height:8vh;">
+              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">CONTACT US</h4></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

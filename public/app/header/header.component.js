@@ -17,6 +17,26 @@ var HeaderComponent = /** @class */ (function () {
         this._authenticationService = _authenticationService;
         this.user = _authenticationService.user;
     }
+    HeaderComponent.prototype.ngOnInit = function () {
+        this.wasClicked = false;
+        this.g = document.getElementsByClassName('restOfSite');
+    };
+    HeaderComponent.prototype.clicker = function (event) {
+        if (this.wasClicked) {
+            this.wasClicked = false;
+            event.currentTarget.classList.remove('clicked');
+            for (var i = 0; i < this.g.length; i++) {
+                this.g[i].style.display = 'flex';
+            }
+        }
+        else {
+            event.currentTarget.classList.add('clicked');
+            for (var i = 0; i < this.g.length; i++) {
+                this.g[i].style.display = 'none';
+            }
+            this.wasClicked = true;
+        }
+    };
     HeaderComponent = __decorate([
         core_1.Component({
             selector: 'header',

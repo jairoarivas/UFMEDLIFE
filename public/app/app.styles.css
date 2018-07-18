@@ -1,12 +1,293 @@
 .restOfSite{
-  display: none;
+  display: block;
 }
 
 /*-----header----*/
 
 .headerStyle {
-  background-color: rgb(17, 35, 84);
+  background-color: rgb(26, 54, 131);
 }
+
+/* burger menu */
+.burger{
+  min-height:5px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  width:35px;
+  border-radius: 15px;
+  background-color: rgb(233,233,233);
+  display: block;
+  opacity: 0;
+  animation-name: menuBurger;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+}
+/* burger icon animation */
+@keyframes menuBurger{
+  0%{
+    opacity: 0;
+  }
+  80%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* exit icon */
+.cross1{
+  height: 5px;
+  width: 38px;
+  border-radius: 15px;
+  background-color: rgb(233,233,233);
+  transform: rotateZ(45deg) translateX(1px) translateY(3px);
+  display: none;
+}
+.cross2{
+  height: 5px;
+  width: 38px;
+  border-radius: 15px;
+  background-color: rgb(233,233,233);
+  transform: rotateZ(-45deg) translateX(1px) translateY(-3px);
+  display: none;
+}
+
+/* toggling between burger and exit icons */
+.toggleButton.clicked span.cross1{
+  display: block;
+  opacity: 0;
+  animation-name: exit1;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+}
+.toggleButton.clicked span.cross2{
+  display: block;
+  opacity: 0;
+  animation-name: exit2;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+}
+
+/* exit icon animations */
+@keyframes exit1{
+  0%{
+    transform: rotateZ(45deg) translateX(1px) translateY(3px);
+    opacity: 0;
+  }
+  80%{
+    transform: scale(1.2) rotateZ(45deg) translateX(1px) translateY(3px);
+  }
+  100%{
+      transform: scale(1) rotateZ(45deg) translateX(1px) translateY(3px);
+    opacity: 1;
+  }
+}
+@keyframes exit2{
+  0%{
+    transform:rotateZ(-45deg) translateX(1px) translateY(-2px);
+    opacity: 0;
+  }
+  80%{
+      transform: scale(1.2) rotateZ(-45deg) translateX(1px) translateY(-2px);
+  }
+  100%{
+      transform: scale(1.0) rotateZ(-45deg) translateX(1px) translateY(-2px);
+    opacity: 1;
+  }
+}
+
+.toggleButton.clicked span.burger{
+  display: none;
+}
+
+/* menu toggle button */
+.toggleButton{
+  width:53px;
+  height:45px;
+  padding: 7px;
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
+  margin: 15px 10px 15px 0px;
+  border-radius: 10px;
+}
+
+.toggleButton:focus{
+  background-color: rgba(255, 253, 219,.2);
+  outline: none;
+}
+
+.toggleButton:hover{
+  animation-name: hov;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.toggleButton:hover span{
+  background-color: rgb(233,233,233);
+}
+
+@keyframes hov{
+  0%{
+    background-color: rgba(255, 255, 255, 0);
+  }
+  100%{
+    background-color: rgba(242, 177, 17, 0.9);
+  }
+}
+
+/* menu buttons */
+/* dropdown menu */
+.menuList{
+  padding: 0;
+  margin:0;
+  margin-top:75px;
+  display: none;
+  background-color: rgb(255, 245, 210);
+  padding-bottom: 5vh;
+  padding-top: 10vh;
+}
+ul.menuList li{
+  width: 60vw;
+  height: 10vh;
+  margin-bottom: 5vh;
+  display: block;
+}
+
+/*displaying/animating menu buttons individually */
+.toggleButton.clicked + ul.menuList {
+  display: block;
+  perspective:1000px;
+}
+.toggleButton.clicked + ul.menuList li:nth-child(1){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.toggleButton.clicked + ul.menuList li:nth-child(2){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 100ms;
+  animation-fill-mode: forwards;
+}
+.toggleButton.clicked + ul.menuList li:nth-child(3){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 200ms;
+  animation-fill-mode: forwards;
+}
+
+.toggleButton.clicked + ul.menuList li:nth-child(4){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 300ms;
+  animation-fill-mode: forwards;
+}
+
+.toggleButton.clicked + ul.menuList li:nth-child(5){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 400ms;
+  animation-fill-mode: forwards;
+}
+
+.toggleButton.clicked + ul.menuList li:nth-child(6){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 500ms;
+  animation-fill-mode: forwards;
+}
+/*menu button animation */
+@keyframes menu {
+  0% {
+    opacity:0;
+    transform: scale(0.3) translateY(30px);
+  }
+  80% {
+    transform: scale(1.2) translateY(-10px);
+  }
+  100% {
+    opacity:1;
+    transform: scale(1) translateY(0px);
+  }
+}
+
+/* menu item button */
+.menuButton{
+  background-color: rgba(0, 0, 0, 0);
+  min-width: 100%;
+  min-height: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color:rgb(28,28,28);
+  color: rgb(28,28,28);
+  border-radius: 15px;
+}
+.menuButton:hover{
+  outline: none;
+  animation-name: menuB;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* animation for when clicking menu button */
+@keyframes menuB {
+  0% {
+    transform: scale(1);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(1.1);
+    background-color: rgba(26, 54, 131,0.9);
+    color : rgb(233,233,233);
+  }
+}
+
+.tButton{
+  display: block;
+}
+
+.menuBar{
+  display: none;
+}
+
+@media only screen and (min-width: 1026px){
+  .tButton{
+    display: none;
+  }
+  .menuBar{
+    display: block;
+    height: 12vh;
+  }
+}
+
 
 .headerLogo {
   max-width: 10vw;
