@@ -286,27 +286,70 @@ ul.menuList li{
     display: block;
     height: 12vh;
   }
-}
-
-
-.headerLogo {
-  max-width: 10vw;
-  height: auto;
-}
-
-.logoText {
-  display: none;
-  color: white;
-}
-
-@media screen and (max-width:480px) {
   .headerLogo {
-    display: none;
+    max-height: 8vh;
+    width: auto;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
   }
-  .logoText {
-    display: inline;
+
+  .barButton{
+    background-color: rgba(199, 189, 166, 0);
+    border-style: none;
+    text-align: center;
+    padding:0;
+    margin-top: 3vh;
+    height:6vh;
+    margin-bottom: 3vh;
+  }
+
+  .barButton h4{
+    color: rgb(233,233,233);
+    margin: 0;
+    font-size: 100%;
+  }
+
+  .barButton:hover{
+    outline: none;
+    animation-name: barBtn;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  .padLeft20{
+      padding-left: 5vw;
+    }
+  .padRight20{
+    padding-right: 5vw;
+  }
+
+}
+
+@media only screen and (min-width: 1324px){
+  .headerLogo {
+    max-height: 10vh;
+    width: auto;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
   }
 }
+
+
+
+
+
+
+
+@keyframes barBtn{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.1);
+  }
+}
+
 
 /*----------------------Buttons-----------------------------*/
 

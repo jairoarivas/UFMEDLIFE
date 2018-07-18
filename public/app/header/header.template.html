@@ -16,22 +16,22 @@
       <!-- menu dropdown -->
       <ul class = "menuList">
         <li class = "mx-auto">
-          <button type = "button" class = " menuButton"><h4 class = "m-0">ABOUT</h4></button>
+          <button type = "button" class = " menuButton" [routerLink]="['/']"><h4 class = "m-0">HOME</h4></button>
         </li>
         <li class = "mx-auto">
-          <button type = "button" class = "menuButton"><h4 class = "m-0">BLOG</h4></button>
+          <button type = "button" class = "menuButton" [routerLink]="['/getInvolved/becomeAMember']"><h4 class = "m-0">ABOUT US</h4></button>
         </li>
         <li class = "mx-auto">
-          <button type = "button" class = "menuButton"><h4 class = "m-0">GALLERY</h4></button>
+          <button type = "button" class = "menuButton" [routerLink]="['/getInvolved/alreadyAMember']"><h4 class = "m-0">EVENTS</h4></button>
         </li>
         <li class = "mx-auto">
-          <button type = "button" class = "menuButton"><h4 class = "m-0">SCHEDULE</h4></button>
+          <button type = "button" class = "menuButton" [routerLink]="['/contactUs']"><h4 class = "m-0">SERVICE TRIPS</h4></button>
         </li>
         <li class = "mx-auto">
-          <button type = "button" class = "menuButton"><h4 class = "m-0">OUR PROJECTS</h4></button>
+          <button type = "button" class = "menuButton" [routerLink]="['/contactUs']"><h4 class = "m-0">CONTACT US</h4></button>
         </li>
         <li class = "mx-auto">
-          <button type = "button" class = "menuButton"><h4 class = "m-0">CONTACT US</h4></button>
+          <button type = "button" class = "menuButton"><h4 class = "m-0">SIGN IN</h4></button>
         </li>
       </ul>
     </div>
@@ -40,30 +40,31 @@
       <div class = "row p-0 m-0">
         <div class ="col-5 padLeft20">
           <div class ="row">
-            <div class ="col-4" style = "text-align: center; padding:0; padding-top: 4vh; height:8vh;">
-              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">ABOUT US</h4></button>
+            <div class ="col" style = "text-align:center;">
+              <button [routerLink]="['/']" class = "barButton"><h4>HOME</h4></button>
             </div>
-            <div class ="col-4" style = "text-align: center; padding:0; padding-top: 4vh; height:8vh;">
-              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">BLOG</h4></button>
+            <div class ="col" style = "text-align:center;">
+              <button [routerLink]="['/getInvolved/becomeAMember']" class = "barButton"><h4>ABOUT US</h4></button>
             </div>
-            <div class ="col-4" style = "text-align: center; padding:0;  padding-top: 4vh; height:8vh;">
-              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">GALLERY</h4></button>
+            <div class ="col" style = "text-align:center;">
+              <button [routerLink]="['/getInvolved/alreadyAMember']" class = "barButton"><h4>EVENTS</h4></button>
             </div>
           </div>
         </div>
-        <div class = "col-2" style = "text-align: center; padding-top: 4vh; height:8vh;">
-          <button href="#" style = "border-style:none; background-color: rgba(0,0,0,0);"><h2 style = "color: rgb(47, 140, 145); font-weight: bold; text-align:center;">YOGIILOVE</h2></button>
+        <div class = "col-2" style = "text-align: center;">
+          <img src="./images/logo3.0.png" class = "headerLogo">
+          <!-- <button href="#" style = "border-style:none; background-color: rgba(0,0,0,0);"><h2 style = "color: rgb(47, 140, 145); font-weight: bold; text-align:center;">YOGIILOVE</h2></button> -->
         </div>
         <div class ="col-5 padRight20">
           <div class ="row">
-            <div class ="col-4" style = "text-align: center; padding:0;  padding-top: 4vh; height:8vh;">
-              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">SCHEDULE</h4></button>
+            <div class ="col" style = "text-align:center;">
+              <button [routerLink]="['/contactUs']"class = "barButton"><h4>SERVICE TRIPS</h4></button>
             </div>
-            <div class ="col-4" style = "text-align: center; padding:0;  padding-top: 4vh; height:8vh;">
-              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">PROJECTS</h4></button>
+            <div class ="col" style = "text-align:center;">
+              <button class = "barButton" [routerLink]="['/contactUs']"><h4>CONTACT US</h4></button>
             </div>
-            <div class ="col-4" style = "text-align: center; padding:0; padding-top: 4vh; height:8vh;">
-              <button href="#" class = "barButton"><h4 style = "color: rgb(28,28,28);">CONTACT US</h4></button>
+            <div class ="col" style = "text-align:center;">
+              <button class = "barButton" [routerLink]="['/contactUs']"><h4>SIGN IN</h4></button>
             </div>
           </div>
         </div>
