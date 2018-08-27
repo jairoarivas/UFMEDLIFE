@@ -28,7 +28,7 @@ export class HeaderComponent {
       this.wasClicked = false;
       event.currentTarget.classList.remove('clicked');
       for(var i = 0; i < this.g.length; i++){
-        this.g[i].style.display = 'flex';
+        this.g[i].style.display = 'block';
       }
     }
     else{

@@ -1,56 +1,124 @@
-<!-- slide show -->
-<div class="container-fluid carousel-custom grayFilter restOfSite">
-  <div class="row">
-    <div class="col-md-12 p-0 m-0">
-
-      <ngb-carousel>
-        <ng-template ngbSlide>
-          <div class="slide-image1">
-            <div class="grayFilter"></div>
+<!-- JOIN US WELCOME SIGN -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row p-0 m-0">
+    <div class="col p-0 m-0">
+      <div class = "welcomeImage">
+        <div style = "position:relative; height:100%;">
+          <h4>VOLUNTEER LOCALLY AND ABROAD</h4>
+          <h4>MAKE A DIFFERENCE</h4>
+          <div class = "mx-auto" style = "height:75px; width:200px;position: absolute; bottom:0;left: 50%;transform: translateX(-50%); margin-bottom: 25vh;">
+            <button [routerLink]="['/getInvolved/becomeAMember']" class = "welcomeButton"><p>LEARN MORE!</p></button>
           </div>
-          <div class="carousel-caption">
-            <h3 class = "font-italic cap">"Only a life lived for others is a life worthwhile."</h3>
-            <h3 class ="cap">-Albert Einstein</h3>
-          </div>
-        </ng-template>
-
-        <ng-template ngbSlide>
-          <div class="slide-image2">
-            <div class="grayFilter"></div>
-          </div>
-          <div class="carousel-caption">
-            <h3 class = "font-italic cap">"Life's most persistent and urgent question is, 'What are you doing for others?' "</h3>
-            <h3 class ="cap">- Martin Luther King, Jr.</h3>
-          </div>
-        </ng-template>
-
-        <ng-template ngbSlide>
-          <div class="slide-image3">
-            <div class="grayFilter"></div>
-          </div>
-          <div class="carousel-caption">
-            <h3 class = "font-italic cap">"We can't help everyone, but everyone can help someone."</h3>
-            <h3 class ="cap">- Ronald Reagan</h3>
-          </div>
-        </ng-template>
-      </ngb-carousel>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Our Goals -->
-<div class="container-fluid div-color restOfSite">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="text-center py-3">
-          Our Goal
-        </h1>
-        <p class="text-center">MEDLIFE’s mission is to help families achieve greater freedom from the constraints of poverty, empowering them to live healthier lives. Our patients did not choose to be poor, but they have chosen to strive toward a better life; MEDLIFE stands
-          beside them in this pursuit.</p>
-        <p class="text-center">UF MEDLIFE represents a group of diverse individuals sharing a common goal. We work hard to bring awareness to the shortcomings many people experience. As student leaders we advocate for universal quality healthcare here in Gainesville and beyond.</p>
-        <p class="text-center font-weight-bold">To this end, we commit our time, resources, knowledge and hope to bring Medicine, Education and Development to Low Income Families Everywhere.
-        </p>
+<!-- HEADER -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 lightHeader">
+      <h1>OUR GOAL</h1>
+    </div>
+  </div>
+</div>
+
+<!-- OUR GOAL -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 lightP">
+      <p>MEDLIFE’s mission is to help families achieve greater freedom from the constraints of poverty, empowering them to live healthier lives. Our patients did not choose to be poor, but they have chosen to strive toward a better life; MEDLIFE stands beside them in this pursuit. UF MEDLIFE represents a group of diverse individuals sharing a common goal. We work hard to bring awareness to the shortcomings many people experience. As student leaders we advocate for universal quality healthcare here in Gainesville and beyond.
+      <p><b>To this end, we commit our time, resources, knowledge and hope to bring Medicine, Education and Development to Low Income Families Everywhere.</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 p-0">
+      <div class = "row m-0 medCardHolder">
+        <div class = "col-sm-4 m-0 medCard" [routerLink]="['/getInvolved/becomeAMember']">
+          <div class = "cardImage1">
+            <div class = "cardFilter">
+              <h4>BECOME A MEMBER</h4>
+            </div>
+          </div>
+          <div class = "cardDesc">
+            <p>Want to get involved with UFMEDLIFE? Click here!</p>
+          </div>
+        </div>
+        <div class = "col-sm-4 m-0 medCard" [routerLink]="['/getInvolved/becomeAMember']">
+          <div class = "cardImage1 cardImage2">
+            <div class = "cardFilter">
+              <h4>EVENTS</h4>
+            </div>
+          </div>
+          <div class = "cardDesc">
+            <p>Find about our upcoming events!</p>
+          </div>
+        </div>
+        <div class = "col-sm-4 m-0 medCard" [routerLink]="['/getInvolved/becomeAMember']">
+          <div class = "cardImage1 cardImage3">
+            <div class = "cardFilter">
+              <h4>TRAVEL ABROAD</h4>
+            </div>
+          </div>
+          <div class = "cardDesc">
+            <p>Join us on one of our service trips abroad!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT INFORMATION -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 p-0 medFoot">
+      <div class= "blueFilter row p-0 m-0">
+        <div class= "col p-0 m-0">
+          <div class = "darkHeader">
+            <h1>CONTACT US</h1>
+          </div>
+          <div class = "row p-0 m-0">
+            <div class= "darkP col-sm-6 order-sm-5">
+              <p>Questions or concerns? Feel free to email us via the following email addresses:</p>
+              <p>For general inquiries email us at:</p>
+              <p>
+                <b>medlifeufl@gmail.com</b>
+              </p>
+              <p>
+                For information on local service events email us at:
+              </p>
+              <p>
+                <b>
+                  service.medlifeufl@gmail.com
+                </b>
+              </p>
+              <p>
+                For information on service trips email us at:
+              </p>
+              <p>
+                <b>
+                  trips.medlifeufl@gmail.com
+                </b>
+              </p>
+            </div>
+            <div class = "col-sm-3 order-sm-1">
+              <div style = "height:70px; width:70px; position: relative; bottom:0; padding-bottom: 25vh; left: 50%; transform: translateX(-50%);">
+                <a href = "https://www.facebook.com/ufmedlife/"><i class="fab fa-instagram hoverPop" style = "font-size:500%; color:rgb(233,233,233);"></i></a>
+              </div>
+            </div>
+            <div class= "col-sm-3 order-sm-12">
+              <div style = "height:70px; width:70px; position: relative; bottom:0; padding-bottom: 25vh; left: 50%; transform: translateX(-50%);">
+                <a href = "https://www.facebook.com/ufmedlife/"><i class="fab fa-facebook hoverPop" style = "font-size:500%; color:rgb(233,233,233);"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

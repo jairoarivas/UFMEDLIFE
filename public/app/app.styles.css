@@ -2,7 +2,7 @@
   display: block;
 }
 
-/*-----header----*/
+/*-----------------------NAVIGATION----------------------------*/
 
 .headerStyle {
   background-color: rgb(26, 54, 131);
@@ -278,7 +278,7 @@ ul.menuList li{
   display: none;
 }
 
-@media only screen and (min-width: 1026px){
+@media only screen and (min-width: 1268px){
   .tButton{
     display: none;
   }
@@ -299,8 +299,11 @@ ul.menuList li{
     text-align: center;
     padding:0;
     margin-top: 3vh;
-    height:6vh;
+    height:50px;
     margin-bottom: 3vh;
+    width:150px;
+    border-radius: 5px;
+    border-style: none;
   }
 
   .barButton h4{
@@ -309,21 +312,28 @@ ul.menuList li{
     font-size: 100%;
   }
 
+  .barButton:hover h4{
+    color: rgb(28,28,28);
+  }
+
   .barButton:hover{
     outline: none;
     animation-name: barBtn;
     animation-duration: 100ms;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in;
     animation-fill-mode: forwards;
   }
+}
 
-  .padLeft20{
-      padding-left: 5vw;
-    }
-  .padRight20{
-    padding-right: 5vw;
+@keyframes barBtn{
+  0%{
+    transform: scale(1.0);
+    background-color: rgb(0,0,0,0);
   }
-
+  100%{
+    transform: scale(1.1);
+    background-color: rgb(242, 177, 17);
+  }
 }
 
 @media only screen and (min-width: 1324px){
@@ -335,21 +345,8 @@ ul.menuList li{
   }
 }
 
-
-
-
-
-
-
-@keyframes barBtn{
-  0%{
-    transform: scale(1.0);
-  }
-  100%{
-    transform: scale(1.1);
-  }
+@media only screen and (min-width: 1420px){
 }
-
 
 /*----------------------Buttons-----------------------------*/
 
@@ -481,8 +478,320 @@ ul.menuList li{
   padding-bottom: 10px;
 }
 
-/* Home Page */
+/* ---------------------- HOME PAGE -------------------------*/
+.welcomeImage{
+  width:100%;
+  height: 100vh;
+  background-image: url('./images/welcome.jpg');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.welcomeImage h4{
+  color: rgb(255, 178, 47);
+  font-size: 200%;
+  font-weight: bold;
+  font-style: italic;
+  padding-top:10vh;
+  padding-left: 10vw;
+  text-shadow: 0 0 15px #000000;
+}
+.welcomeImage h4:nth-child(2){
+  padding-top: 3vh;
+  color: rgb(45, 98, 242);
+}
+.welcomeButton{
+  width:200px;
+  height: 75px;
+  background-color: rgb(255, 178, 47);
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: 0 0 10px #000000;
+}
+.welcomeButton:hover{
 
+}
+.welcomeButton p{
+  color: rgb(28,28,28);
+  font-size: 150%;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.welcomeButton:hover{
+  outline: none;
+  animation-name: welcomeBtn;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.welcomeButton:hover p{
+  color:rgb(233,233,233);
+}
+@keyframes welcomeBtn{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.1);
+    background-color: rgb(26, 54, 131);
+  }
+}
+
+.lightHeader{
+ text-align: center;
+ padding:0;
+ padding-top: 10vh;
+ padding-bottom: 10vh;
+}
+.lightHeader h1{
+  color: rgb(26, 54, 131);
+  font-weight: bold;
+}
+.lightP p{
+  color: rgb(28,28,28);
+  padding-bottom: 3vh;
+}
+.lightP{
+  padding-right: 10vw;
+  padding-left: 10vw;
+  padding-bottom: 7vh;
+}
+.darkHeader{
+ text-align: center;
+ padding:0;
+ padding-top: 10vh;
+ padding-bottom: 10vh;
+}
+.darkHeader h1{
+  color: rgb(255, 178, 47);
+  font-weight: bold;
+}
+.darkP p{
+  color: rgb(233,233,233);
+  padding-bottom: 1vh;
+  padding-right: 10vw;
+  padding-left: 10vw;
+}
+.darkP{
+  padding-bottom: 9vh;
+}
+.medCard{
+  border-radius: 15px;
+  border-style: none;
+  padding-bottom: 5vh;
+}
+.medCard:hover{
+  animation-name: card;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes card{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.05);
+  }
+}
+
+.medCard:hover .cardImage1 .cardFilter{
+  animation-name: filterColor;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes filterColor{
+  0%{
+    background-color: rgba(26, 54, 131,0.7);
+  }
+  100%{
+    background-color: rgba(224, 141, 0, 0.7);
+  }
+}
+.cardImage1{
+  background-image: url('./images/test2-min.jpg');
+  background-position: 75% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 30vh;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-style: none;
+  box-shadow: 0 0 10px #000000;
+}
+.cardImage2{
+  background-image: url('./images/medtalks.jpg');
+  background-position: 50% 50%;
+}
+.cardImage3{
+  background-image: url('./images/trip.jpg');
+  background-position: 50% 50%;
+}
+.cardDesc{
+  background-color: rgb(233,233,233);
+  height:20vh;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 0 0 10px #000000;
+  position: relative;
+}
+.cardDesc p{
+  margin:0;
+  color:rgb(28,28,28);
+  font-size: 120%;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cardFilter{
+  background-color: rgba(26, 54, 131,0.7);
+  height: 100%;
+  width:100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  text-align: center;
+}
+
+.cardFilter h4{
+  color: rgb(233,233,233);
+  font-weight: bold;
+  padding-top: 12.5vh;
+}
+
+.medCard:hover .cardImage1 .cardFilter h4{
+  color: rgb(28,28,28);
+}
+
+.medCardHolder{
+  padding-left:2vw;
+  padding-right:2vw;
+  padding-bottom: 5vh;
+}
+
+.medFoot{
+  background-image: url('./images/logoContact.jpg');
+  background-position: top;
+  background-repeat: repeat;
+  background-size: contain;
+  width:100%;
+}
+
+.blueFilter{
+  width:100%;
+  background-color: rgba(26, 54, 131,0.9);
+}
+
+.hoverPop:hover{
+  animation-name: hoverPop;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes hoverPop{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.1);
+  }
+}
+@media only screen and (min-width: 665px){
+  .welcomeImage{
+    width:100%;
+    height: 100vh;
+    background-image: url('./images/welcome.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .welcomeImage h4{
+    color: rgb(255, 178, 47);
+    font-size: 250%;
+    font-weight: bold;
+    font-style: italic;
+    padding-top:20vh;
+    padding-left: 10vw;
+  }
+  .welcomeImage h4:nth-child(2){
+    padding-top: 3vh;
+    color: rgb(45, 98, 242);
+  }
+  .welcomeButton{
+    width:200px;
+    height: 75px;
+    background-color: rgb(255, 178, 47);
+    border-radius: 5px;
+    border-style: none;
+  }
+}
+
+@media only screen and (min-width: 1268px){
+  .welcomeImage h4{
+    color: rgb(255, 178, 47);
+    font-size: 300%;
+    font-weight: bold;
+    font-style: italic;
+    padding-top:20vh;
+    padding-left: 10vw;
+  }
+  .welcomeImage h4:nth-child(2){
+    padding-top: 3vh;
+    color: rgb(45, 98, 242);
+  }
+  .welcomeButton{
+    width:200px;
+    height: 75px;
+    background-color: rgb(255, 178, 47);
+    border-radius: 5px;
+    border-style: none;
+  }
+}
+
+@media only screen and (min-width: 1324px){
+  .welcomeImage h4{
+    color: rgb(255, 178, 47);
+    font-size: 300%;
+    font-weight: bold;
+    font-style: italic;
+    padding-top:20vh;
+    padding-left: 10vw;
+  }
+  .welcomeImage h4:nth-child(2){
+    padding-top: 3vh;
+    color: rgb(45, 98, 242);
+  }
+  .welcomeButton{
+    width:200px;
+    height: 75px;
+    background-color: rgb(255, 178, 47);
+    border-radius: 5px;
+    border-style: none;
+  }
+}
+
+@media only screen and (min-width: 1420px){
+  .welcomeImage h4{
+    color: rgb(255, 178, 47);
+    font-size: 300%;
+    font-weight: bold;
+    font-style: italic;
+    padding-top:20vh;
+    padding-left: 10vw;
+  }
+  .welcomeImage h4:nth-child(2){
+    padding-top: 3vh;
+    color: rgb(45, 98, 242);
+  }
+}
+
+
+/*--------------------OTHER----------------------------*/
 .contactUsImage {
   background: url('./images/piggy-min.jpg');
   background-repeat: no-repeat;
