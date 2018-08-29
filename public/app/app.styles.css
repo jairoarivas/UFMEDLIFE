@@ -298,9 +298,9 @@ ul.menuList li{
     border-style: none;
     text-align: center;
     padding:0;
-    margin-top: 3vh;
+    margin-top: 3.25vh;
     height:50px;
-    margin-bottom: 3vh;
+    margin-bottom: 3.25vh;
     width:150px;
     border-radius: 5px;
     border-style: none;
@@ -359,19 +359,6 @@ ul.menuList li{
 .medDropdownButton:hover{
   background-color: #f2b111;
   color: rgb(23, 23, 23);
-}
-
-.memberButton{
-  background-color: rgba(71, 72, 75, 0);
-  color: rgb(23,23,23);
-  border-color: rgb(23,23,23);
-  border-width: 5px;
-  border-radius: 5px;
-}
-
-.memberButton:hover{
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
 }
 
 .selportalButton {
@@ -482,8 +469,8 @@ ul.menuList li{
 .welcomeImage{
   width:100%;
   height: 100vh;
-  background-image: url('./images/welcome.jpg');
-  background-position: left;
+  background-image: url('./images/welcomeEdit.jpg');
+  background-position: 65% 30%;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -701,12 +688,31 @@ ul.menuList li{
     transform: scale(1.1);
   }
 }
+
+.iconLeft{
+  margin-top: 0vh;
+  margin-bottom:0vh;
+}
+.iconRight{
+  margin-top:5vh;
+  margin-bottom:10vh;
+}
+@media only screen and (min-width: 576px){
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
+}
 @media only screen and (min-width: 665px){
   .welcomeImage{
     width:100%;
     height: 100vh;
-    background-image: url('./images/welcome.jpg');
-    background-position: center;
+    background-image: url('./images/welcomeEdit.jpg');
+    background-position: 75% 30%;
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -728,6 +734,14 @@ ul.menuList li{
     background-color: rgb(255, 178, 47);
     border-radius: 5px;
     border-style: none;
+  }
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
   }
 }
 
@@ -751,6 +765,14 @@ ul.menuList li{
     border-radius: 5px;
     border-style: none;
   }
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
 }
 
 @media only screen and (min-width: 1324px){
@@ -773,6 +795,14 @@ ul.menuList li{
     border-radius: 5px;
     border-style: none;
   }
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
 }
 
 @media only screen and (min-width: 1420px){
@@ -788,16 +818,62 @@ ul.menuList li{
     padding-top: 3vh;
     color: rgb(45, 98, 242);
   }
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
 }
 
 
-/*--------------------OTHER----------------------------*/
+/* -----------------------ABOUT US-------------------------- */
+
+.pageImageText{
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
+.memberButton{
+  background-color: rgba(71, 72, 75, 0);
+  color: rgb(28,28,28);
+  border-color: rgb(28,28,28);
+  border-width: 5px;
+  border-radius: 15px;
+  width: 200px;
+  height:75px;
+  margin-bottom: 10vh;
+  box-shadow: 0 0 10px #000000;
+}
+
+.memberButton:hover{
+  color: rgb(233,233,233);
+  animation-name: memberBtn;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes memberBtn{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.1);
+    background-color: rgb(26, 54, 131);
+  }
+}
+/*--------------------IMAGES----------------------------*/
 .contactUsImage {
   background: url('./images/piggy-min.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-size: width: 100vw;
   height: 80vh;
   margin: 0;
   padding: 0;
@@ -805,11 +881,10 @@ ul.menuList li{
 }
 
 .alreadyMemberImage {
-  background: url('./images/volunteer-min.jpg');
+  background: url('./images/medTalks.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-size: width: 100vw;
   height: 80vh;
   margin: 0;
   padding: 0;
@@ -821,63 +896,18 @@ ul.menuList li{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-size: width: 100vw;
   height: 80vh;
   margin: 0;
   padding: 0;
   border-width: 0;
 }
-
-.slide-image1 {
-  background: url('./images/stock1-min.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-size: width: 100vw;
-  height: 80vh;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-}
-
-.slide-image2 {
-  background: url('./images/test1-min.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-size: width: 100vw;
-  height: 80vh;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-}
-
-.slide-image3 {
-  background: url('./images/test3-min.JPG');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-size: width: 100vw;
-  height: 80vh;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-}
-
-.carousel-custom {
-  padding: 0;
-  margin: 0;
-  width: 100vw;
-  overflow-x: hidden;
-}
-
 .grayFilter {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 80vh;
 }
 .grayFilterSmall {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 40vh;
 }
@@ -888,7 +918,6 @@ ul.menuList li{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-size: width: 100vw;
     height: 60vh;
     margin: 0;
     padding: 0;
@@ -900,70 +929,26 @@ ul.menuList li{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-size: width: 100vw;
     height: 60vh;
     margin: 0;
     padding: 0;
     border-width: 0;
   }
   .alreadyMemberImage {
-    background: url('./images/volunteer-min.jpg');
+    background: url('./images/medTalks.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-size: width: 100vw;
     height: 60vh;
     margin: 0;
     padding: 0;
     border-width: 0;
-  }
-
-  .slide-image1 {
-    background: url('./images/stock1-min.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-    background-size: width: 100vw;
-    height: 60vh;
-    margin: 0;
-    padding: 0;
-    border-width: 0;
-  }
-  .slide-image2 {
-    background: url('./images/test1-min.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-size: width: 100vw;
-    height: 60vh;
-    margin: 0;
-    padding: 0;
-    border-width: 0;
-  }
-  .slide-image3 {
-    background: url('./images/test3-min.JPG');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-    background-size: width: 100vw;
-    height: 60vh;
-    margin: 0;
-    padding: 0;
-    border-width: 0;
-  }
-  .carousel-custom {
-    padding: 0;
-    margin: 0;
-    width: 100vw;
-    overflow-x: hidden;
   }
   .grayFilter {
-    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 60vh;
   }
   .grayFilterSmall {
-    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 30vh;
   }
@@ -977,7 +962,6 @@ ul.menuList li{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-size: width: 100vw;
     height: 40vh;
     margin: 0;
     padding: 0;
@@ -985,11 +969,10 @@ ul.menuList li{
   }
 
   .alreadyMemberImage {
-    background: url('./images/volunteer-min.jpg');
+    background: url('./images/medTalks.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-size: width: 100vw;
     height: 40vh;
     margin: 0;
     padding: 0;
@@ -1001,59 +984,16 @@ ul.menuList li{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-size: width: 100vw;
     height: 40vh;
     margin: 0;
     padding: 0;
     border-width: 0;
-  }
-
-  .slide-image1 {
-    background: url('./images/stock1-min.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-    background-size: width: 100vw;
-    height: 40vh;
-    margin: 0;
-    padding: 0;
-    border-width: 0;
-  }
-  .slide-image2 {
-    background: url('./images/test1-min.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-size: width: 100vw;
-    height: 40vh;
-    margin: 0;
-    padding: 0;
-    border-width: 0;
-  }
-  .slide-image3 {
-    background: url('./images/test3-min.JPG');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-    background-size: width: 100vw;
-    height: 40vh;
-    margin: 0;
-    padding: 0;
-    border-width: 0;
-  }
-  .carousel-custom {
-    padding: 0;
-    margin: 0;
-    width: 100vw;
-    overflow-x: hidden;
   }
   .grayFilter {
-    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 40vh;
   }
   .grayFilterSmall {
-    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 20vh;
   }
@@ -1077,13 +1017,7 @@ ul.menuList li{
   overflow-x: hidden;
 }
 
-.pageImageText{
-  position: absolute;
-  color: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 
 .capitalize{
   text-transform: capitalize;
