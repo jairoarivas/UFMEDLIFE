@@ -5,6 +5,7 @@ import { getInvolvedRoutes } from './getInvolved.routes';
 import { getInvolvedComponent } from './getInvolved.component';
 import { becomeAMemberComponent } from './becomeAMember/becomeAMember.component';
 import { alreadyAMemberComponent } from './alreadyAMember/alreadyAMember.component';
+import { serviceTripsComponent } from './serviceTrips/serviceTrips.component';
 
 @NgModule ({
   imports: [
@@ -14,6 +15,7 @@ import { alreadyAMemberComponent } from './alreadyAMember/alreadyAMember.compone
     getInvolvedComponent,
     becomeAMemberComponent,
     alreadyAMemberComponent,
+    serviceTripsComponent,
   ]
 })
 export class getInvolvedModule {}

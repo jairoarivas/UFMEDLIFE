@@ -151,7 +151,7 @@
   margin:0;
   margin-top:75px;
   display: none;
-  background-color: rgb(255, 245, 210);
+  background-color: rgb(233,233,233);
   padding-bottom: 5vh;
   padding-top: 10vh;
 }
@@ -1001,6 +1001,26 @@ ul.menuList li{
   .cap {
     font-size: 80%;
   }
+}
+
+
+/* ----------------- SERVICE TRIPS ------------------ */
+.serviceTripImage{
+  margin-left: 5vh;
+  margin-right: 5vh;
+  border-radius: 15px;
+  border-style:none;
+  height: 60vh;
+}
+.serviceTrip1{
+  background: url('./images/test2-min.jpg');
+  background-position: 60% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.serviceTripDesc{
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
 
 /*----General-----*/

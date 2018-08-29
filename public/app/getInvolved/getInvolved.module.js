@@ -12,6 +12,7 @@ var getInvolved_routes_1 = require("./getInvolved.routes");
 var getInvolved_component_1 = require("./getInvolved.component");
 var becomeAMember_component_1 = require("./becomeAMember/becomeAMember.component");
 var alreadyAMember_component_1 = require("./alreadyAMember/alreadyAMember.component");
+var serviceTrips_component_1 = require("./serviceTrips/serviceTrips.component");
 var getInvolvedModule = /** @class */ (function () {
     function getInvolvedModule() {
     }
@@ -24,6 +25,7 @@ var getInvolvedModule = /** @class */ (function () {
                 getInvolved_component_1.getInvolvedComponent,
                 becomeAMember_component_1.becomeAMemberComponent,
                 alreadyAMember_component_1.alreadyAMemberComponent,
+                serviceTrips_component_1.serviceTripsComponent,
             ]
         })
     ], getInvolvedModule);

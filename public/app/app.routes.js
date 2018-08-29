@@ -10,7 +10,7 @@ exports.AppRoutes = [{
         component: home_component_1.HomeComponent
     },
     {
-        path: 'contactUs',
+        path: 'ContactUs',
         component: contactUs_component_1.contactUsComponent
     },
     {
