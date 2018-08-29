@@ -17,7 +17,6 @@ import { AppRoutes } from './app.routes';
 import { contactUsComponent } from './contactUs/contactUs.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { CarouselComponent } from './carousel/carousel.component';
 import { itResetComponent } from './resetConfirmations/itReset.component';
 import { itSentComponent } from './resetConfirmations/itSent.component';
 import { ViewProfileComponent } from './viewProfile/viewProfile.component';
@@ -39,7 +38,6 @@ import { EventsModule } from './events/events.module';
   declarations: [
     HomeComponent,
     HeaderComponent,
-    CarouselComponent,
     contactUsComponent,
     itSentComponent,
     ViewProfileComponent,

@@ -21,7 +21,6 @@ var app_routes_1 = require("./app.routes");
 var contactUs_component_1 = require("./contactUs/contactUs.component");
 var home_component_1 = require("./home/home.component");
 var header_component_1 = require("./header/header.component");
-var carousel_component_1 = require("./carousel/carousel.component");
 var itReset_component_1 = require("./resetConfirmations/itReset.component");
 var itSent_component_1 = require("./resetConfirmations/itSent.component");
 var viewProfile_component_1 = require("./viewProfile/viewProfile.component");
@@ -45,7 +44,6 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 home_component_1.HomeComponent,
                 header_component_1.HeaderComponent,
-                carousel_component_1.CarouselComponent,
                 contactUs_component_1.contactUsComponent,
                 itSent_component_1.itSentComponent,
                 viewProfile_component_1.ViewProfileComponent,
