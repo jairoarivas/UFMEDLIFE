@@ -16,7 +16,7 @@ export const AuthenticationRoutes: Routes = [{
   path: 'authentication',
   component: AuthenticationComponent,
   children: [
-    { path: 'signin', component: SigninComponent },
+    { path: 'SignIn', component: SigninComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'members', component: ListComponent },
     { path: 'members/:userId', component: ViewComponent},

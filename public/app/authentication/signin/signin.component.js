@@ -26,7 +26,7 @@ var SigninComponent = /** @class */ (function () {
     };
     SigninComponent = __decorate([
         core_1.Component({
-            selector: 'signin',
+            selector: 'SignIn',
             templateUrl: 'app/authentication/signin/signin.template.html',
             styleUrls: ['app/app.styles.css']
         }),

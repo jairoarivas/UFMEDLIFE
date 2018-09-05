@@ -14,7 +14,7 @@ exports.AuthenticationRoutes = [{
         path: 'authentication',
         component: authentication_component_1.AuthenticationComponent,
         children: [
-            { path: 'signin', component: signin_component_1.SigninComponent },
+            { path: 'SignIn', component: signin_component_1.SigninComponent },
             { path: 'signup', component: signup_component_1.SignupComponent },
             { path: 'members', component: list_component_1.ListComponent },
             { path: 'members/:userId', component: view_component_1.ViewComponent },
