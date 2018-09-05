@@ -909,7 +909,7 @@ ul.menuList li{
 }
 
 .alreadyMemberImage {
-  background: url('./images/medTalks.jpg');
+  background: url('./images/medtalks.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -921,6 +921,16 @@ ul.menuList li{
 
 .becomeMemberImage {
   background: url('./images/test2-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+.serviceImage {
+  background: url('./images/tripEnc.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -972,6 +982,16 @@ ul.menuList li{
     padding: 0;
     border-width: 0;
   }
+  .serviceImage {
+    background: url('./images/tripEnc.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
   .grayFilter {
     width: 100%;
     height: 60vh;
@@ -1009,6 +1029,16 @@ ul.menuList li{
 
   .becomeMemberImage {
     background: url('./images/test2-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .serviceImage {
+    background: url('./images/tripEnc.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
