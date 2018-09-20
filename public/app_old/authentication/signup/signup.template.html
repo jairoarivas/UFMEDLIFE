@@ -1,0 +1,173 @@
+<!-- HEADER -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 lightHeader">
+      <h1>SIGN UP</h1>
+    </div>
+  </div>
+</div>
+<div class = "container-fluid p-0 m-0 restOfSite">
+  <div class = "row p-0 m-0">
+    <div class = "col p-0 m-0">
+      <form class = "signInForm" (ngSubmit)="signup()">
+        <div class="form-group row justify-content-center m-0 p-0">
+          <label class=" col-form-label col-4 m-0 p-0">First Name:</label>
+          <div class=" col-8 m-0 p-0">
+            <input class = "form-control" type="text" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row m-0 p-0">
+          <label class=" col-form-label col-4 m-0 p-0">Last Name:</label>
+          <div class=" col-8 m-0 p-0">
+            <input class = "form-control" type="text" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row m-0 p-0">
+          <label class=" col-form-label col-4 m-0 p-0">Email:</label>
+          <div class=" col-8 m-0 p-0">
+            <input class = "form-control" type="text" [(ngModel)]="user.username" name="username" placeholder="Email">
+          </div>
+        </div>
+        <!-- <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Username:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.username" name="username" placeholder="Username">
+          </div>
+        </div> -->
+        <div class="form-group justify-content-center row m-0 p-0">
+          <label class=" col-form-label col-sm-4 m-0 p-0">Password:</label>
+          <div class="col-6 m-0 p-0" *ngIf="!(this.showPassword)">
+            <input class = "form-control" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
+          </div>
+          <div class = "col-2 m-0 p-0" style = "text-align:center;" *ngIf="!(this.showPassword)">
+            <a style = "color:rgb(28,28,28);" (click)="this.showPassword = true">SHOW</a>
+          </div>
+          <div class="col-6 m-0 p-0" *ngIf="(this.showPassword)">
+            <input  class = "form-control"type="text" [(ngModel)]="user.password" name="password" placeholder="Password">
+          </div>
+          <div class = "col-2 m-0 p-0" style = "text-align:center;" *ngIf="(this.showPassword)">
+          <a style = "color:rgb(28,28,28);" (click)="this.showPassword = false">HIDE</a>
+          </div>
+        </div>
+        <!-- <div class="form-group justify-content-center row m-0 p-0">
+          <label class=" col-form-label col-4">Member role:</label>
+          <div class="col-8">
+            <select class="form-control" id="role" required [(ngModel)]="user.role" name="role">
+            <option *ngFor = "let role of roles" [value] = "role">{{role}}
+            </option>
+          </select>
+          </div>
+        </div> -->
+        <div class="form-group row m-0 p-0">
+          <div class="col m-0" style = "text-align:center; padding-top:5vh;">
+            <button type="submit" class="memberButton m-0">SIGN UP</button>
+          </div>
+        </div>
+        <div class="form-group row p-0" style = "margin-top:3vh; height: 40px; margin-bottom: 3vh;">
+          <div id = "errorMessage" class = "col">
+            {{errorMessage}}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT INFORMATION -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 p-0 medFoot">
+      <div class= "blueFilter row p-0 m-0">
+        <div class= "col p-0 m-0">
+          <div class = "darkHeader">
+            <h1>CONTACT US</h1>
+          </div>
+          <div class = "row p-0 m-0">
+            <div class= "darkP col-sm-6 order-sm-5" style = "text-align: center;">
+              <p>Questions or concerns? Feel free to email us:</p>
+              <p>
+                <b>medlifeufl@gmail.com</b>
+              </p>
+            </div>
+            <div class = "col-sm-3 order-sm-1">
+              <div style = "height:70px; width:70px; position: relative; bottom:0; padding-bottom: 25vh; left: 50%; transform: translateX(-50%);">
+                <a href = "https://www.instagram.com/medlifeuf/" target="_blank"><i class="fab fa-instagram hoverPop" style = "font-size:500%; color:rgb(233,233,233);"></i></a>
+              </div>
+            </div>
+            <div class= "col-sm-3 order-sm-12">
+              <div style = "height:70px; width:70px; position: relative; bottom:0; padding-bottom: 25vh; left: 50%; transform: translateX(-50%);">
+                <a href = "https://www.facebook.com/ufmedlife/" target="_blank"><i class="fab fa-facebook hoverPop" style = "font-size:500%; color:rgb(233,233,233);"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container-fluid m-0 p-0">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center medSignup">
+      <h4 class = "py-3">Create a member</h4>
+      <form (ngSubmit)="signup()">
+        <div class="form-group row justify-content-center">
+          <label class=" col-form-label col-4">First Name:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Last Name:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Email:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.email" name="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Username:</label>
+          <div class=" col-8">
+            <input class = "form-control" type="text" [(ngModel)]="user.username" name="username" placeholder="Username">
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-sm-4">Password:</label>
+          <div class="col-sm-6" *ngIf="!(this.showPassword)">
+            <input class = "form-control" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
+          </div>
+          <div class = "col-sm-2" *ngIf="!(this.showPassword)">
+            <button class = "medButton btn"  (click)="this.showPassword = true">Show</button>
+          </div>
+          <div class="col-sm-6" *ngIf="(this.showPassword)">
+            <input  class = "form-control"type="text" [(ngModel)]="user.password" name="password" placeholder="Password">
+          </div>
+          <div class = "col-sm-2" *ngIf="(this.showPassword)">
+          <button class = "medButton btn" (click)="this.showPassword = false">Hide</button>
+          </div>
+        </div>
+        <div class="form-group justify-content-center row">
+          <label class=" col-form-label col-4">Member role:</label>
+          <div class="col-8">
+            <select class="form-control" id="role" required [(ngModel)]="user.role" name="role">
+            <option *ngFor = "let role of roles" [value] = "role">{{role}}
+            </option>
+          </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4 mx-auto">
+            <button type="submit" class="portalButton btn">Create</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <span>{{errorMessage}}</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->

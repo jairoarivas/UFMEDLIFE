@@ -7,23 +7,19 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 	firstName: String,
 	lastName: String,
+	points: Number,
 	attendedEvents: [{
 		type: String
 	}],
 	tempEvent: String,
-	email: {
-		type: String,
-		// Validate the email format
-		match: [/.+\@.+\..+/, "Please fill a valid email address"]
-	},
 	username: {
 		type: String,
-		// Set a unique 'username' index
+		// Set a unique 'email' index
 		unique: true,
 		// Validate 'username' value existance
-		required: 'Username is required',
-		// Trim the 'username' field
-		trim: true
+		required: 'Email is required',
+		// Validate the email format
+		match: [/.+\@.+\..+/, "Please fill a valid email address"]
 	},
 	password: {
 		type: String,
@@ -47,7 +43,7 @@ const UserSchema = new Schema({
 	role: {
 		type: String,
 		required: 'Member role must be specified',
-		enum: ['Admin', 'Officer', 'Member'],
+		enum: ['Admin', 'Member'],
 		default: 'Member'
 	},
 	resetPasswordToken: String,
@@ -69,14 +65,14 @@ UserSchema.virtual('fullName').get(function() {
 	this.lastName = splitName[1] || '';
 });
 
-UserSchema.virtual('points').get(function(){
-	var arrayLength = this.attendedEvents.length;
-	var count = 0;
-	for (var i = 0; i < arrayLength; i++) {
-	   	count++;
-	}
-	return count;
-});
+// UserSchema.virtual('points').get(function(){
+// 	var arrayLength = this.attendedEvents.length;
+// 	var count = 0;
+// 	for (var i = 0; i < arrayLength; i++) {
+// 	   	count++;
+// 	}
+// 	return count;
+// });
 
 // Use a pre-save middleware to hash the password
 // UserSchema.pre('save', function(next) {

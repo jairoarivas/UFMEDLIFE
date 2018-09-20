@@ -17,11 +17,11 @@ const getErrorMessage = function(err) {
 			// If a unique index error occurs set the message error
 			case 11000:
 			case 11001:
-				message = 'Username already exists';
+				message = 'Email already exists';
 				break;
 			// If a general error occurs set the message error
 			default:
-				message = 'Something went wrong';
+				message = 'Something went wrong!';
 		}
 	} else {
 		// Grab the first error message from a list of possible errors
@@ -100,6 +100,7 @@ exports.signin = function(req, res, next) {
             // Use the Passport 'login' method to login
             req.login(user, (err) => {
                 if (err) {
+										console.log(err);
                     res.status(400).send(err);
                 } else {
                     res.json(user);
@@ -119,14 +120,24 @@ exports.signup = function(req, res) {
 		user.password = user.hashPassword(user.password);
 	}
 
-
+	//saving and logging in
 	user.save((err) => {
 		if(err) {
 			return res.status(400).send({
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.json(user);
+			user.password = undefined;
+			user.salt = undefined;
+
+			req.login(user,function(err){
+				if(err){
+					res.status(400).send(err);
+				}
+				else{
+					res.json(user);
+				}
+			});
 		}
 	});
 };
@@ -151,6 +162,18 @@ exports.requiresLogin = function(req, res, next) {
 	// Call the next middleware
 	next();
 };
+
+// exports.userLoggedIn = function(req,res,next){
+// 	if(req.isAuthenticated()){
+// 		res.json(req.user);
+// 	}
+// 	else{
+// 		return res.status(401).send({
+// 			messsage: 'No user is logged in.'
+// 		});
+// 	}
+// 	next();
+// }
 
 exports.list = function(req, res){
 	User.find().exec((err, users) => {
@@ -289,7 +312,7 @@ exports.update = function(req, res){
 	user.firstName = req.body.firstName;
 	user.lastName = req.body.lastName;
 	user.email = req.body.email;
-	user.username = req.body.username;
+	//user.username = req.body.username;
 	//user.password = req.body.password;
 	user.role = req.body.role;
 
@@ -334,7 +357,7 @@ exports.userByID = function(req, res,next ,id){
 exports.hasAuthorization = function(req, res,next){
 	if(req.user.role !== 'Admin'){
 		return res.status(403).send({
-			message: 'User is not authorized'
+			message: 'User is not authorized.'
 		});
 	}
 

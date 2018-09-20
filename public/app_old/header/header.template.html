@@ -1,0 +1,85 @@
+<!-- header/navigation -->
+<div class="container-fluid headerStyle p-0">
+  <div class = "row p-0 m-0">
+    <div class = "col m-0 p-0 tButton">
+      <h2 class = "float-left" style  = "color: rgb(233,233,233); margin-bottom: -60px; padding-top:18px; margin-left:10px;">UFMEDLIFE</h2>
+
+      <!-- menu toggle button -->
+      <button class = "toggleButton float-right" (click) ='clicker($event)'>
+        <span class = "burger" style = "margin-top: 0;"></span>
+        <span class = "burger"></span>
+        <span class = "burger"></span>
+        <span class = "cross1"></span>
+        <span class = "cross2"></span>
+      </button>
+
+      <!-- menu dropdown -->
+      <ul class = "menuList">
+        <li class = "mx-auto">
+          <button type = "button" class = " menuButton" [routerLink]="['/']"><h4 class = "m-0">HOME</h4></button>
+        </li>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton" [routerLink]="['/getInvolved/AboutUs']"><h4 class = "m-0">ABOUT US</h4></button>
+        </li>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton" [routerLink]="['/getInvolved/Events']"><h4 class = "m-0">EVENTS</h4></button>
+        </li>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton" [routerLink]="['/getInvolved/ServiceTrips']"><h4 class = "m-0">SERVICE TRIPS</h4></button>
+        </li>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton" [routerLink]="['/ContactUs']"><h4 class = "m-0">CONTACT US</h4></button>
+        </li>
+        <li class = "mx-auto">
+          <button type = "button" class = "menuButton" [routerLink]="['/authentication/SignIn']"><h4 class = "m-0">SIGN IN</h4></button>
+        </li>
+      </ul>
+    </div>
+    <!-- navigation for bigger screens -->
+    <div class = "col menuBar m-0 p-0">
+      <div class = "row p-0 m-0">
+        <div class ="col-5 p-0 m-0">
+          <div class ="row p-0 m-0">
+            <div class ="col m-0 p-0" style = "text-align:center;">
+              <button class = "barButton" [routerLink]="['/']"><h4>HOME</h4></button>
+            </div>
+            <div class ="col drop m-0 p-0" style = "text-align:center;">
+              <button class = "barButton" [routerLink]="['/getInvolved/AboutUs']" ><h4>ABOUT US</h4></button>
+            </div>
+            <div class ="col m-0 p-0" style = "text-align:center;">
+              <button class = "barButton" [routerLink]="['/getInvolved/Events']"><h4>EVENTS</h4></button>
+            </div>
+          </div>
+        </div>
+        <div class = "col-2" style = "text-align: center;">
+          <img src="./images/logo3.0.png" class = "headerLogo">
+          <button type = "button" (click) = "test()">
+          </button>
+        </div>
+        <div class ="col-5 m-0 p-0">
+          <div class ="row m-0 p-0">
+            <div class ="col m-0 p-0" style = "text-align:center;">
+              <button class = "barButton" [routerLink]="['/getInvolved/ServiceTrips']"><h4>SERVICE TRIPS</h4></button>
+            </div>
+            <div class ="col m-0 p-0" style = "text-align:center;">
+              <button class = "barButton" [routerLink]="['/ContactUs']"><h4>CONTACT US</h4></button>
+            </div>
+            <div *ngIf="!user" class ="col m-0 p-0" style = "text-align:center;" >
+              <button class = "barButton" [routerLink]="['/authentication/SignIn']"><h4>SIGN IN</h4></button>
+            </div>
+            <div *ngIf="user" class ="col m-0 p-0" style = "text-align:center;">
+                <div class="dropdown">
+                  <button class = "barButton dropwdown-toggle" type = "button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h4>{{user.firstName}}</h4></button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href = "/api/auth/signout">SIGN OUT</a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

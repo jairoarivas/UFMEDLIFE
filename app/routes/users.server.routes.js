@@ -3,9 +3,11 @@ const users = require('../../app/controllers/users.server.controller');
 const passport = require('passport');
 
 module.exports = function(app){
-  app.route('/api/auth/signup').post(users.requiresLogin, users.hasAuthorization, users.signup);
+  app.route('/api/auth/signup').post(users.signup);
   app.route('/api/auth/signin').post(users.signin);
   app.route('/api/auth/signout').get(users.signout);
+
+  //app.route('/api/auth/userLoggedIn').get(users.userLoggedIn);
 
   app.route('/api/members')
     .get(users.list);
@@ -14,7 +16,7 @@ module.exports = function(app){
     .get(users.read)
     .put(users.requiresLogin,users.update)
     .delete(users.requiresLogin, users.delete);
-  
+
   app.route('/api/forgotPassword')
     .post(users.forgotPassword);
 

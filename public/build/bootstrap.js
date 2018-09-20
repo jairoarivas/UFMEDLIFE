@@ -321,7 +321,7 @@ var NgbCarouselConfig = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngb_calendar__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngb_date__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datepicker_service__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__datepicker_keymap_service__ = __webpack_require__(846);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__datepicker_keymap_service__ = __webpack_require__(847);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__datepicker_view_model__ = __webpack_require__(341);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util_util__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__datepicker_config__ = __webpack_require__(164);
@@ -2221,7 +2221,7 @@ var NgbCollapse = (function () {
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_9__ngb_calendar__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__hijri_ngb_calendar_islamic_civil__ = __webpack_require__(347);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_14__hijri_ngb_calendar_islamic_civil__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__hijri_ngb_calendar_islamic_umalqura__ = __webpack_require__(847);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__hijri_ngb_calendar_islamic_umalqura__ = __webpack_require__(848);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_15__hijri_ngb_calendar_islamic_umalqura__["a"]; });
 /* unused harmony reexport NgbDatepickerMonthView */
 /* unused harmony reexport NgbDatepickerDayView */
@@ -5093,7 +5093,7 @@ var NgbDate = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngb_time__ = __webpack_require__(848);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngb_time__ = __webpack_require__(849);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timepicker_config__ = __webpack_require__(172);
 
 
@@ -5933,7 +5933,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var authentication_service_1 = __webpack_require__(38);
 var SigninComponent = /** @class */ (function () {
     function SigninComponent(_authenticationService, _router) {
@@ -5941,11 +5941,19 @@ var SigninComponent = /** @class */ (function () {
         this._router = _router;
         this.credentials = {};
     }
+    SigninComponent.prototype.ngOnInit = function () {
+        this.g = document.getElementById('errorMessage');
+        this.g.style.display = 'none';
+    };
     SigninComponent.prototype.signin = function () {
         var _this = this;
         this._authenticationService.signin(this.credentials).subscribe(function (result) {
             return _this._router.navigate(['/']);
-        }, function (error) { return _this.errorMessage = error; });
+        }, function (error) {
+            _this.errorMessage = error;
+            _this.g.style.display = 'none';
+            _this.g.style.display = 'block';
+        });
     };
     SigninComponent = __decorate([
         core_1.Component({
@@ -5978,7 +5986,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var authentication_service_1 = __webpack_require__(38);
 var SignupComponent = /** @class */ (function () {
     function SignupComponent(_authenticationService, _router) {
@@ -5988,11 +5996,19 @@ var SignupComponent = /** @class */ (function () {
         this.roles = ['Admin', 'Officer', 'Member'];
         this.showPassword = false;
     }
+    SignupComponent.prototype.ngOnInit = function () {
+        this.g = document.getElementById('errorMessage');
+        this.g.style.display = 'none';
+    };
     SignupComponent.prototype.signup = function () {
         var _this = this;
         this._authenticationService.signup(this.user).subscribe(function (result) {
-            return _this._router.navigate(['/authentication/members']);
-        }, function (error) { return _this.errorMessage = error; });
+            return _this._router.navigate(['/']);
+        }, function (error) {
+            _this.errorMessage = error;
+            _this.g.style.display = 'none';
+            _this.g.style.display = 'block';
+        });
     };
     SignupComponent = __decorate([
         core_1.Component({
@@ -6069,8 +6085,9 @@ var core_1 = __webpack_require__(1);
 var http_1 = __webpack_require__(79);
 var Observable_1 = __webpack_require__(0);
 var AuthenticationService = /** @class */ (function () {
-    function AuthenticationService(http) {
+    function AuthenticationService(http, ngZone) {
         this.http = http;
+        this.ngZone = ngZone;
         this.user = window['user'];
         this._signinURL = 'api/auth/signin';
         this._signupURL = 'api/auth/signup';
@@ -6116,12 +6133,18 @@ var AuthenticationService = /** @class */ (function () {
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    // refreshUser(): Observable<any> {
+    //   return this.http.get('/api/auth/userLoggedIn')
+    //   .map((res: Response) => res.json())
+    //   .catch(this.handleError)
+    // }
     AuthenticationService.prototype.handleError = function (error) {
+        console.error(error);
         return Observable_1.Observable.throw(error.json().message || 'Server error');
     };
     AuthenticationService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http])
+        __metadata("design:paramtypes", [http_1.Http, core_1.NgZone])
     ], AuthenticationService);
     return AuthenticationService;
 }());
@@ -6146,7 +6169,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var authentication_service_1 = __webpack_require__(38);
 var members_service_1 = __webpack_require__(66);
 var ViewComponent = /** @class */ (function () {
@@ -6210,7 +6233,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var members_service_1 = __webpack_require__(66);
 var EditComponent = /** @class */ (function () {
     function EditComponent(_router, _route, _membersService) {
@@ -6270,7 +6293,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
 var authentication_service_1 = __webpack_require__(38);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var ForgotPasswordComponent = /** @class */ (function () {
     function ForgotPasswordComponent(_authenticationService, _router) {
         this._authenticationService = _authenticationService;
@@ -6314,7 +6337,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var authentication_service_1 = __webpack_require__(38);
 var ResetPasswordComponent = /** @class */ (function () {
     function ResetPasswordComponent(_router, _route, _authenticationService) {
@@ -6412,7 +6435,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var members_service_1 = __webpack_require__(66);
 var events_service_1 = __webpack_require__(60);
 var authentication_service_1 = __webpack_require__(38);
@@ -6761,6 +6784,84 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(1);
+var authentication_service_1 = __webpack_require__(38);
+var router_1 = __webpack_require__(22);
+var HeaderComponent = /** @class */ (function () {
+    //injecting authenticationService into header component. This allows the access to user information.
+    function HeaderComponent(_authenticationService, _router) {
+        this._authenticationService = _authenticationService;
+        this._router = _router;
+        //console.log(!!this.user);
+        //this._authenticationService.refreshUser().subscribe(result => this.user = result, error => this.errorMessage = error);
+    }
+    HeaderComponent.prototype.ngOnInit = function () {
+        this.wasClicked = false;
+        this.g = document.getElementsByClassName('restOfSite');
+        this.userLoggedIn = false;
+        //this.user = this._authenticationService.user;
+    };
+    HeaderComponent.prototype.isLoggedIn = function () {
+        console.log(!!this.user);
+        //this.ngZone.run(() =>{
+        this.user = this._authenticationService.user;
+        if (this._authenticationService.isLoggedIn()) {
+            this.userLoggedIn = true;
+        }
+        else {
+            this.userLoggedIn = false;
+        }
+        //} );
+        console.log(this.userLoggedIn);
+        return this.userLoggedIn;
+    };
+    HeaderComponent.prototype.clicker = function (event) {
+        if (this.wasClicked) {
+            this.wasClicked = false;
+            event.currentTarget.classList.remove('clicked');
+            for (var i = 0; i < this.g.length; i++) {
+                this.g[i].style.display = 'block';
+            }
+        }
+        else {
+            event.currentTarget.classList.add('clicked');
+            for (var i = 0; i < this.g.length; i++) {
+                this.g[i].style.display = 'none';
+            }
+            this.wasClicked = true;
+        }
+    };
+    HeaderComponent = __decorate([
+        core_1.Component({
+            selector: 'header',
+            templateUrl: './app/header/header.template.html',
+            styleUrls: ['app/app.styles.css'],
+            providers: [authentication_service_1.AuthenticationService],
+        }),
+        __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
+    ], HeaderComponent);
+    return HeaderComponent;
+}());
+exports.HeaderComponent = HeaderComponent;
+//# sourceMappingURL=header.component.js.map
+
+/***/ }),
+
+/***/ 396:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
 var events_service_1 = __webpack_require__(60);
@@ -6781,7 +6882,7 @@ exports.EventsComponent = EventsComponent;
 
 /***/ }),
 
-/***/ 396:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6797,7 +6898,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var events_service_1 = __webpack_require__(60);
 var CreateComponent = /** @class */ (function () {
     function CreateComponent(_router, _eventsService) {
@@ -6825,7 +6926,7 @@ exports.CreateComponent = CreateComponent;
 
 /***/ }),
 
-/***/ 397:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6865,7 +6966,7 @@ exports.ListComponent = ListComponent;
 
 /***/ }),
 
-/***/ 398:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6881,7 +6982,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var authentication_service_1 = __webpack_require__(38);
 var events_service_1 = __webpack_require__(60);
 var ViewComponent = /** @class */ (function () {
@@ -6930,7 +7031,7 @@ exports.ViewComponent = ViewComponent;
 
 /***/ }),
 
-/***/ 399:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6946,7 +7047,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var events_service_1 = __webpack_require__(60);
 var EditComponent = /** @class */ (function () {
     function EditComponent(_router, _route, _eventsService) {
@@ -7313,20 +7414,20 @@ exports.MembersService = MembersService;
 
 /***/ }),
 
-/***/ 843:
+/***/ 844:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_dynamic_1 = __webpack_require__(239);
-var app_module_1 = __webpack_require__(844);
+var app_module_1 = __webpack_require__(845);
 platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
 //# sourceMappingURL=bootstrap.js.map
 
 /***/ }),
 
-/***/ 844:
+/***/ 845:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7341,18 +7442,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
 var platform_browser_1 = __webpack_require__(64);
 var forms_1 = __webpack_require__(29);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var common_1 = __webpack_require__(18);
 var http_1 = __webpack_require__(79);
-var ng_bootstrap_1 = __webpack_require__(845);
+var ng_bootstrap_1 = __webpack_require__(846);
 var authentication_service_1 = __webpack_require__(38);
-var authentication_module_1 = __webpack_require__(849);
-var getInvolved_module_1 = __webpack_require__(851);
-var app_component_1 = __webpack_require__(853);
-var app_routes_1 = __webpack_require__(854);
+var authentication_module_1 = __webpack_require__(850);
+var getInvolved_module_1 = __webpack_require__(852);
+var app_component_1 = __webpack_require__(854);
+var app_routes_1 = __webpack_require__(855);
 var contactUs_component_1 = __webpack_require__(391);
 var home_component_1 = __webpack_require__(390);
-var header_component_1 = __webpack_require__(855);
+var header_component_1 = __webpack_require__(395);
 var itReset_component_1 = __webpack_require__(392);
 var itSent_component_1 = __webpack_require__(393);
 var viewProfile_component_1 = __webpack_require__(394);
@@ -7395,7 +7496,7 @@ exports.AppModule = AppModule;
 
 /***/ }),
 
-/***/ 845:
+/***/ 846:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7557,7 +7658,7 @@ var NgbModule = (function () {
 
 /***/ }),
 
-/***/ 846:
+/***/ 847:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7648,7 +7749,7 @@ var NgbDatepickerKeyMapService = (function () {
 
 /***/ }),
 
-/***/ 847:
+/***/ 848:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7906,7 +8007,7 @@ var NgbCalendarIslamicUmalqura = (function (_super) {
 
 /***/ }),
 
-/***/ 848:
+/***/ 849:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7969,7 +8070,7 @@ var NgbTime = (function () {
 
 /***/ }),
 
-/***/ 849:
+/***/ 850:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7983,9 +8084,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
 var forms_1 = __webpack_require__(29);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var common_1 = __webpack_require__(18);
-var authentication_routes_1 = __webpack_require__(850);
+var authentication_routes_1 = __webpack_require__(851);
 var authentication_component_1 = __webpack_require__(376);
 var signin_component_1 = __webpack_require__(377);
 var signup_component_1 = __webpack_require__(378);
@@ -8027,7 +8128,7 @@ exports.AuthenticationModule = AuthenticationModule;
 
 /***/ }),
 
-/***/ 850:
+/***/ 851:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8062,7 +8163,7 @@ exports.AuthenticationRoutes = [{
 
 /***/ }),
 
-/***/ 851:
+/***/ 852:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8075,8 +8176,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
-var router_1 = __webpack_require__(23);
-var getInvolved_routes_1 = __webpack_require__(852);
+var router_1 = __webpack_require__(22);
+var getInvolved_routes_1 = __webpack_require__(853);
 var getInvolved_component_1 = __webpack_require__(386);
 var becomeAMember_component_1 = __webpack_require__(387);
 var alreadyAMember_component_1 = __webpack_require__(388);
@@ -8104,7 +8205,7 @@ exports.getInvolvedModule = getInvolvedModule;
 
 /***/ }),
 
-/***/ 852:
+/***/ 853:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8127,7 +8228,7 @@ exports.getInvolvedRoutes = [{
 
 /***/ }),
 
-/***/ 853:
+/***/ 854:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8146,7 +8247,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'ufmedlife',
-            template: "\n  <header></header>\n  <router-outlet></router-outlet>\n"
+            template: "\n  <router-outlet name = \"header\" ></router-outlet>\n  <router-outlet></router-outlet>\n"
         })
     ], AppComponent);
     return AppComponent;
@@ -8156,7 +8257,7 @@ exports.AppComponent = AppComponent;
 
 /***/ }),
 
-/***/ 854:
+/***/ 855:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8167,6 +8268,7 @@ var contactUs_component_1 = __webpack_require__(391);
 var itReset_component_1 = __webpack_require__(392);
 var itSent_component_1 = __webpack_require__(393);
 var viewProfile_component_1 = __webpack_require__(394);
+var header_component_1 = __webpack_require__(395);
 exports.AppRoutes = [{
         path: '',
         component: home_component_1.HomeComponent
@@ -8186,67 +8288,19 @@ exports.AppRoutes = [{
     {
         path: 'viewProfile',
         component: viewProfile_component_1.ViewProfileComponent
+    },
+    {
+        path: '',
+        component: header_component_1.HeaderComponent,
+        outlet: 'header'
+    },
+    {
+        path: 'ContactUs',
+        component: contactUs_component_1.contactUsComponent,
+        outlet: 'header'
     }
 ];
 //# sourceMappingURL=app.routes.js.map
-
-/***/ }),
-
-/***/ 855:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(1);
-var authentication_service_1 = __webpack_require__(38);
-var HeaderComponent = /** @class */ (function () {
-    //injecting authenticationService into header component. This allows the access to user information.
-    function HeaderComponent(_authenticationService) {
-        this._authenticationService = _authenticationService;
-        this.user = _authenticationService.user;
-    }
-    HeaderComponent.prototype.ngOnInit = function () {
-        this.wasClicked = false;
-        this.g = document.getElementsByClassName('restOfSite');
-    };
-    HeaderComponent.prototype.clicker = function (event) {
-        if (this.wasClicked) {
-            this.wasClicked = false;
-            event.currentTarget.classList.remove('clicked');
-            for (var i = 0; i < this.g.length; i++) {
-                this.g[i].style.display = 'block';
-            }
-        }
-        else {
-            event.currentTarget.classList.add('clicked');
-            for (var i = 0; i < this.g.length; i++) {
-                this.g[i].style.display = 'none';
-            }
-            this.wasClicked = true;
-        }
-    };
-    HeaderComponent = __decorate([
-        core_1.Component({
-            selector: 'header',
-            templateUrl: './app/header/header.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [authentication_service_1.AuthenticationService])
-    ], HeaderComponent);
-    return HeaderComponent;
-}());
-exports.HeaderComponent = HeaderComponent;
-//# sourceMappingURL=header.component.js.map
 
 /***/ }),
 
@@ -8265,13 +8319,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(1);
 var common_1 = __webpack_require__(18);
 var forms_1 = __webpack_require__(29);
-var router_1 = __webpack_require__(23);
+var router_1 = __webpack_require__(22);
 var events_routes_1 = __webpack_require__(857);
-var events_component_1 = __webpack_require__(395);
-var create_component_1 = __webpack_require__(396);
-var list_component_1 = __webpack_require__(397);
-var view_component_1 = __webpack_require__(398);
-var edit_component_1 = __webpack_require__(399);
+var events_component_1 = __webpack_require__(396);
+var create_component_1 = __webpack_require__(397);
+var list_component_1 = __webpack_require__(398);
+var view_component_1 = __webpack_require__(399);
+var edit_component_1 = __webpack_require__(400);
 var EventsModule = /** @class */ (function () {
     function EventsModule() {
     }
@@ -8304,11 +8358,11 @@ exports.EventsModule = EventsModule;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var events_component_1 = __webpack_require__(395);
-var create_component_1 = __webpack_require__(396);
-var list_component_1 = __webpack_require__(397);
-var view_component_1 = __webpack_require__(398);
-var edit_component_1 = __webpack_require__(399);
+var events_component_1 = __webpack_require__(396);
+var create_component_1 = __webpack_require__(397);
+var list_component_1 = __webpack_require__(398);
+var view_component_1 = __webpack_require__(399);
+var edit_component_1 = __webpack_require__(400);
 exports.EventsRoutes = [{
         path: 'events',
         component: events_component_1.EventsComponent,
@@ -8608,5 +8662,5 @@ function toItemIndexes(a) {
 
 /***/ })
 
-},[843]);
+},[844]);
 //# sourceMappingURL=bootstrap.js.map
