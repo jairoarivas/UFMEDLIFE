@@ -7,7 +7,11 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 	firstName: String,
 	lastName: String,
-	points: Number,
+	points: {
+		type: Number,
+		required: 'Member points not specified',
+		default: 0
+	},
 	attendedEvents: [{
 		type: String
 	}],

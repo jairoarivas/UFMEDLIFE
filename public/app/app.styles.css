@@ -1,0 +1,1336 @@
+.restOfSite{
+  display: block;
+}
+
+/*-----------------------NAVIGATION----------------------------*/
+
+.headerStyle {
+  background-color: rgb(26, 54, 131);
+}
+
+/* burger menu */
+.burger{
+  min-height:5px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  width:35px;
+  border-radius: 15px;
+  background-color: rgb(233,233,233);
+  display: block;
+  opacity: 0;
+  animation-name: menuBurger;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+}
+/* burger icon animation */
+@keyframes menuBurger{
+  0%{
+    opacity: 0;
+  }
+  80%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* exit icon */
+.cross1{
+  height: 5px;
+  width: 38px;
+  border-radius: 15px;
+  background-color: rgb(233,233,233);
+  transform: rotateZ(45deg) translateX(1px) translateY(3px);
+  display: none;
+}
+.cross2{
+  height: 5px;
+  width: 38px;
+  border-radius: 15px;
+  background-color: rgb(233,233,233);
+  transform: rotateZ(-45deg) translateX(1px) translateY(-3px);
+  display: none;
+}
+
+/* toggling between burger and exit icons */
+.toggleButton.clicked span.cross1{
+  display: block;
+  opacity: 0;
+  animation-name: exit1;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+}
+.toggleButton.clicked span.cross2{
+  display: block;
+  opacity: 0;
+  animation-name: exit2;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+}
+
+/* exit icon animations */
+@keyframes exit1{
+  0%{
+    transform: rotateZ(45deg) translateX(1px) translateY(3px);
+    opacity: 0;
+  }
+  80%{
+    transform: scale(1.2) rotateZ(45deg) translateX(1px) translateY(3px);
+  }
+  100%{
+      transform: scale(1) rotateZ(45deg) translateX(1px) translateY(3px);
+    opacity: 1;
+  }
+}
+@keyframes exit2{
+  0%{
+    transform:rotateZ(-45deg) translateX(1px) translateY(-2px);
+    opacity: 0;
+  }
+  80%{
+      transform: scale(1.2) rotateZ(-45deg) translateX(1px) translateY(-2px);
+  }
+  100%{
+      transform: scale(1.0) rotateZ(-45deg) translateX(1px) translateY(-2px);
+    opacity: 1;
+  }
+}
+
+.toggleButton.clicked span.burger{
+  display: none;
+}
+
+/* menu toggle button */
+.toggleButton{
+  width:53px;
+  height:45px;
+  padding: 7px;
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
+  margin: 15px 10px 15px 0px;
+  border-radius: 10px;
+}
+
+.toggleButton:focus{
+  background-color: rgba(255, 253, 219,.2);
+  outline: none;
+}
+
+.toggleButton:hover{
+  animation-name: hov;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.toggleButton:hover span{
+  background-color: rgb(233,233,233);
+}
+
+@keyframes hov{
+  0%{
+    background-color: rgba(255, 255, 255, 0);
+  }
+  100%{
+    background-color: rgba(242, 177, 17, 0.9);
+  }
+}
+
+/* menu buttons */
+
+.toggleDropMenu{
+  padding: 0;
+  margin:0;
+  background-color: rgb(233,233,233);
+  padding-bottom: 2vh;
+}
+
+ul.toggleDropMenu li{
+  width: 60vw;
+  height: 10vh;
+  margin-bottom: 5vh;
+  display: block;
+  opacity: 0;
+  animation-name: menuDrop;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.menuDropButton{
+  background-color: rgb(242, 177, 17);
+  color: rgb(28,28,28);
+  min-width: 100%;
+  min-height: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color:rgb(28,28,28);
+  border-radius: 15px;
+}
+.menuDropButton:hover{
+  animation-name: dropButton;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  color: rgb(233,233,233);
+}
+@keyframes menuDrop {
+  0% {
+    opacity:0;
+    transform: scale(0.3) translateY(30px);
+  }
+  80% {
+    transform: scale(1.2) translateY(-10px);
+  }
+  100% {
+    opacity:1;
+    transform: scale(1) translateY(0px);
+  }
+}
+@keyframes dropButton {
+  0% {
+    transform: scale(1);
+    background-color:rgb(242, 177, 17);
+  }
+  100% {
+    transform: scale(1.1);
+    background-color:rgb(26, 54, 131);
+  }
+}
+/* dropdown menu */
+.menuList{
+  padding: 0;
+  margin:0;
+  margin-top:75px;
+  display: none;
+  background-color: rgb(233,233,233);
+  padding-bottom: 5vh;
+  padding-top: 10vh;
+}
+ul.menuList li{
+  width: 60vw;
+  height: 10vh;
+  margin-bottom: 5vh;
+  display: block;
+}
+
+
+/*displaying/animating menu buttons individually */
+.toggleButton.clicked + ul.menuList {
+  display: block;
+  perspective:1000px;
+}
+.toggleButton.clicked + ul.menuList li:nth-child(1){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.toggleButton.clicked + ul.menuList li:nth-child(2){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 100ms;
+  animation-fill-mode: forwards;
+}
+.toggleButton.clicked + ul.menuList li:nth-child(3){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 200ms;
+  animation-fill-mode: forwards;
+}
+
+.toggleButton.clicked + ul.menuList li:nth-child(4){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 300ms;
+  animation-fill-mode: forwards;
+}
+
+.toggleButton.clicked + ul.menuList li:nth-child(5){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 400ms;
+  animation-fill-mode: forwards;
+}
+
+.toggleButton.clicked + ul.menuList li:nth-child(6){
+  display: block;
+  opacity: 0;
+  animation-name: menu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 500ms;
+  animation-fill-mode: forwards;
+}
+/*menu button animation */
+@keyframes menu {
+  0% {
+    opacity:0;
+    transform: scale(0.3) translateY(30px);
+  }
+  80% {
+    transform: scale(1.2) translateY(-10px);
+  }
+  100% {
+    opacity:1;
+    transform: scale(1) translateY(0px);
+  }
+}
+
+/* menu item button */
+.menuButton{
+  background-color: rgba(0, 0, 0, 0);
+  min-width: 100%;
+  min-height: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color:rgb(28,28,28);
+  color: rgb(28,28,28);
+  border-radius: 15px;
+}
+.menuButton:hover{
+  outline: none;
+  animation-name: menuB;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* #dropDown{
+  display: none;
+} */
+/* #dropdown.dropped{
+  display: block;
+} */
+
+/* animation for when clicking menu button */
+@keyframes menuB {
+  0% {
+    transform: scale(1);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(1.1);
+    background-color: rgba(26, 54, 131,0.9);
+    color : rgb(233,233,233);
+  }
+}
+
+.tButton{
+  display: block;
+}
+
+.menuBar{
+  display: none;
+}
+
+@media only screen and (min-width: 1268px){
+  .tButton{
+    display: none;
+  }
+  .menuBar{
+    display: block;
+  }
+  .headerLogo {
+    max-height: 60px;
+    width: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .barButton{
+    background-color: rgba(199, 189, 166, 0);
+    border-style: none;
+    text-align: center;
+    padding:0;
+    margin-top: 20px;
+    height:50px;
+    margin-bottom: 20px;
+    width:150px;
+    border-radius: 5px;
+    border-style: none;
+  }
+
+  .barButton h4{
+    color: rgb(233,233,233);
+    margin: 0;
+    font-size: 100%;
+  }
+
+  .barButton:hover h4{
+    color: rgb(28,28,28);
+  }
+
+  .barButton:hover{
+    outline: none;
+    animation-name: barBtn;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+  }
+  .userButton{
+    background-color: rgba(199, 189, 166, 0);
+    border-style: none;
+    text-align: center;
+    padding:0;
+    margin-top: 20px;
+    height:50px;
+    margin-bottom: 20px;
+    width:150px;
+    border-radius: 5px;
+    border-style: none;
+  }
+
+  .userButton h4{
+    color: rgb(242, 177, 17);
+    margin: 0;
+    font-size: 100%;
+  }
+
+  .userButton:hover h4{
+    color: rgb(28,28,28);
+  }
+
+  .userButton:hover{
+    outline: none;
+    animation-name: barBtn;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes barBtn{
+  0%{
+    transform: scale(1.0);
+    background-color: rgb(0,0,0,0);
+  }
+  100%{
+    transform: scale(1.1);
+    background-color: rgb(242, 177, 17);
+  }
+}
+
+@media only screen and (min-width: 1324px){
+  .headerLogo {
+    max-height: 70px;
+    width: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (min-width: 1420px){
+}
+
+/*----------------------Buttons-----------------------------*/
+
+.medDropdown {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.medDropdownButton {
+  color:white;
+}
+.medDropdownButton:hover{
+  background-color: #f2b111;
+  color: rgb(23, 23, 23);
+}
+
+.selportalButton {
+  background-color: #f2b111;
+  color: rgb(23, 23, 23);
+  border-style: solid;
+  border-color: rgba(71, 72, 75, .5) ;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.selportalButton:hover {
+  background-color: #a2760b;
+  color: rgb(23, 23, 23) ;
+  border-style: solid;
+  border-color: rgba(71, 72, 75, .5) ;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.portalButton {
+  background-color: rgba(71, 72, 75, 0);
+  color: white;
+  border-style: solid;
+  border-color: rgba(71, 72, 75, .5) ;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.portalButton:hover {
+  background-color: #f2b111;
+  color:rgb(23, 23, 23);
+}
+
+.portalButton:focus {
+  background-color: #f2b111;
+  color:rgb(23, 23, 23);
+}
+
+.medButton {
+  background-color: rgba(71, 72, 75, 0);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.medButton:hover {
+  background-color: #f2b111;
+  color: rgb(23, 23, 23);
+}
+
+.medButton:focus {
+  background-color: #f2b111;
+  color: rgb(23, 23, 23);
+}
+
+.medButton.homeButton {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+
+.medButton.lastButton {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+}
+
+.medButton.navButton {
+  border-right: none;
+  border-left: none;
+  border-radius: 0;
+}
+
+.icon-bar {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+.removeEventButton{
+  background-color: rgba(71, 72, 75, 0);
+  color: white;
+  border-style: solid;
+  border-color: rgba(71, 72, 75, .5) ;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* ---------------------- HOME PAGE -------------------------*/
+.welcomeImage{
+  width:100%;
+  height: 100vh;
+  background-image: url('./images/welcomeEdit.jpg');
+  background-position: 65% 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.welcomeImage h4{
+  color: rgb(255, 178, 47);
+  font-size: 200%;
+  font-weight: bold;
+  font-style: italic;
+  padding-top:10vh;
+  padding-left: 10vw;
+  text-shadow: 0 0 15px #000000;
+}
+.welcomeImage h4:nth-child(2){
+  padding-top: 3vh;
+  color: rgb(45, 98, 242);
+}
+.welcomeButton{
+  width:200px;
+  height: 75px;
+  background-color: rgb(255, 178, 47);
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: 0 0 10px #000000;
+}
+.welcomeButton:hover{
+
+}
+.welcomeButton p{
+  color: rgb(28,28,28);
+  font-size: 150%;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.welcomeButton:hover{
+  outline: none;
+  animation-name: welcomeBtn;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.welcomeButton:hover p{
+  color:rgb(233,233,233);
+}
+@keyframes welcomeBtn{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.1);
+    background-color: rgb(26, 54, 131);
+  }
+}
+
+.lightHeader{
+ text-align: center;
+ padding:0;
+ padding-top: 10vh;
+ padding-bottom: 10vh;
+}
+.lightHeader h1{
+  color: rgb(26, 54, 131);
+  font-weight: bold;
+  font-size: 200%;
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+.lightP p{
+  color: rgb(28,28,28);
+  padding-bottom: 3vh;
+}
+.lightP{
+  padding-right: 10vw;
+  padding-left: 10vw;
+  padding-bottom: 7vh;
+}
+.darkHeader{
+ text-align: center;
+ padding:0;
+ padding-top: 10vh;
+ padding-bottom: 10vh;
+}
+.darkHeader h1{
+  color: rgb(255, 178, 47);
+  font-weight: bold;
+}
+.darkP p{
+  color: rgb(233,233,233);
+  padding-bottom: 1vh;
+  padding-right: 10vw;
+  padding-left: 10vw;
+}
+.darkP{
+  padding-bottom: 9vh;
+}
+.medCard{
+  border-radius: 15px;
+  border-style: none;
+  padding-bottom: 5vh;
+}
+.medCard:hover{
+  animation-name: card;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes card{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.05);
+  }
+}
+
+.medCard:hover .cardImage1 .cardFilter{
+  animation-name: filterColor;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes filterColor{
+  0%{
+    background-color: rgba(26, 54, 131,0.7);
+  }
+  100%{
+    background-color: rgba(224, 141, 0, 0.7);
+  }
+}
+.cardImage1{
+  background-image: url('./images/test2-min.jpg');
+  background-position: 75% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 30vh;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-style: none;
+  box-shadow: 0 0 10px #000000;
+}
+.cardImage2{
+  background-image: url('./images/medtalks.jpg');
+  background-position: 50% 50%;
+}
+.cardImage3{
+  background-image: url('./images/trip.jpg');
+  background-position: 50% 50%;
+}
+.cardDesc{
+  background-color: rgb(233,233,233);
+  height:20vh;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 0 0 10px #000000;
+  position: relative;
+}
+.cardDesc p{
+  margin:0;
+  color:rgb(28,28,28);
+  font-size: 120%;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cardFilter{
+  background-color: rgba(26, 54, 131,0.7);
+  height: 100%;
+  width:100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  text-align: center;
+}
+
+.cardFilter h4{
+  color: rgb(233,233,233);
+  font-weight: bold;
+  padding-top: 12.5vh;
+}
+
+.medCard:hover .cardImage1 .cardFilter h4{
+  color: rgb(28,28,28);
+}
+
+.medCardHolder{
+  padding-left:2vw;
+  padding-right:2vw;
+  padding-bottom: 5vh;
+}
+
+.medFoot{
+  background-image: url('./images/logoContact.jpg');
+  background-position: top;
+  background-repeat: repeat;
+  background-size: contain;
+  width:100%;
+}
+
+.blueFilter{
+  width:100%;
+  background-color: rgba(26, 54, 131,0.9);
+}
+
+.hoverPop:hover{
+  animation-name: hoverPop;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes hoverPop{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.1);
+  }
+}
+
+.iconLeft{
+  margin-top: 0vh;
+  margin-bottom:0vh;
+}
+.iconRight{
+  margin-top:5vh;
+  margin-bottom:10vh;
+}
+@media only screen and (min-width: 576px){
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
+  .lightHeader h1{
+    color: rgb(26, 54, 131);
+    font-weight: bold;
+    font-size: 250%;
+  }
+}
+@media only screen and (min-width: 665px){
+  .lightHeader h1{
+    color: rgb(26, 54, 131);
+    font-weight: bold;
+    font-size: 250%;
+  }
+  .welcomeImage{
+    width:100%;
+    height: 100vh;
+    background-image: url('./images/welcomeEdit.jpg');
+    background-position: 75% 30%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .welcomeImage h4{
+    color: rgb(255, 178, 47);
+    font-size: 250%;
+    font-weight: bold;
+    font-style: italic;
+    padding-top:20vh;
+    padding-left: 10vw;
+  }
+  .welcomeImage h4:nth-child(2){
+    padding-top: 3vh;
+    color: rgb(45, 98, 242);
+  }
+  .welcomeButton{
+    width:200px;
+    height: 75px;
+    background-color: rgb(255, 178, 47);
+    border-radius: 5px;
+    border-style: none;
+  }
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
+}
+
+@media only screen and (min-width: 1268px){
+  .lightHeader h1{
+    color: rgb(26, 54, 131);
+    font-weight: bold;
+    font-size: 250%;
+  }
+  .welcomeImage h4{
+    color: rgb(255, 178, 47);
+    font-size: 300%;
+    font-weight: bold;
+    font-style: italic;
+    padding-top:20vh;
+    padding-left: 10vw;
+  }
+  .welcomeImage h4:nth-child(2){
+    padding-top: 3vh;
+    color: rgb(45, 98, 242);
+  }
+  .welcomeButton{
+    width:200px;
+    height: 75px;
+    background-color: rgb(255, 178, 47);
+    border-radius: 5px;
+    border-style: none;
+  }
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
+}
+
+@media only screen and (min-width: 1324px){
+  .lightHeader h1{
+    color: rgb(26, 54, 131);
+    font-weight: bold;
+    font-size: 250%;
+  }
+  .welcomeImage h4{
+    color: rgb(255, 178, 47);
+    font-size: 300%;
+    font-weight: bold;
+    font-style: italic;
+    padding-top:20vh;
+    padding-left: 10vw;
+  }
+  .welcomeImage h4:nth-child(2){
+    padding-top: 3vh;
+    color: rgb(45, 98, 242);
+  }
+  .welcomeButton{
+    width:200px;
+    height: 75px;
+    background-color: rgb(255, 178, 47);
+    border-radius: 5px;
+    border-style: none;
+  }
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
+}
+
+@media only screen and (min-width: 1420px){
+  .lightHeader h1{
+    color: rgb(26, 54, 131);
+    font-weight: bold;
+    font-size: 250%;
+  }
+  .welcomeImage h4{
+    color: rgb(255, 178, 47);
+    font-size: 300%;
+    font-weight: bold;
+    font-style: italic;
+    padding-top:20vh;
+    padding-left: 10vw;
+  }
+  .welcomeImage h4:nth-child(2){
+    padding-top: 3vh;
+    color: rgb(45, 98, 242);
+  }
+  .iconLeft{
+    margin-top: 15vh;
+    margin-bottom:10vh;
+  }
+  .iconRight{
+    margin-top:15vh;
+    margin-bottom:10vh;
+  }
+}
+
+
+/* -----------------------ABOUT US-------------------------- */
+
+.pageImageText{
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
+.memberButton{
+  background-color: rgba(71, 72, 75, 0);
+  color: rgb(28,28,28);
+  border-color: rgb(28,28,28);
+  border-width: 5px;
+  border-radius: 15px;
+  width: 200px;
+  height:75px;
+  margin-bottom: 10vh;
+  box-shadow: 0 0 10px #000000;
+}
+
+.memberButton:hover{
+  color: rgb(233,233,233);
+  animation-name: memberBtn;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes memberBtn{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.1);
+    background-color: rgb(26, 54, 131);
+  }
+}
+/*--------------------IMAGES----------------------------*/
+.contactUsImage {
+  background: url('./images/piggy-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+
+.alreadyMemberImage {
+  background: url('./images/medtalks.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+
+.becomeMemberImage {
+  background: url('./images/test2-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+.serviceImage {
+  background: url('./images/tripEnc.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+}
+.grayFilter {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 80vh;
+}
+.grayFilterSmall {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 40vh;
+}
+
+@media screen and (max-width:1040px) {
+  .contactUsImage {
+    background: url('./images/piggy-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
+  .becomeMemberImage {
+    background: url('./images/test2-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .alreadyMemberImage {
+    background: url('./images/medtalks.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .serviceImage {
+    background: url('./images/tripEnc.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .grayFilter {
+    width: 100%;
+    height: 60vh;
+  }
+  .grayFilterSmall {
+    width: 100%;
+    height: 30vh;
+  }
+}
+
+/* if screen size is smaller */
+
+@media screen and (max-width:480px) {
+  .contactUsImage {
+    background: url('./images/piggy-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
+  .alreadyMemberImage {
+    background: url('./images/medtalks.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+
+  .becomeMemberImage {
+    background: url('./images/test2-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .serviceImage {
+    background: url('./images/tripEnc.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+  }
+  .grayFilter {
+    width: 100%;
+    height: 40vh;
+  }
+  .grayFilterSmall {
+    width: 100%;
+    height: 20vh;
+  }
+  /* to make captions smaller for small screens */
+  .cap {
+    font-size: 80%;
+  }
+}
+
+
+/* ----------------- SERVICE TRIPS ------------------ */
+.serviceTripImage{
+  margin-left: 5vh;
+  margin-right: 5vh;
+  margin-bottom: 10vh;
+  border-radius: 15px;
+  border-style:none;
+  height: 60vh;
+}
+.serviceTripImage p{
+  font-size: 120%;
+  background-color: rgb(233,233,233);
+  position: absolute;
+  bottom: 12vh;
+  padding-left: 10vh;
+  padding-right: 5vh;
+}
+.serviceTrip1{
+  background: url('./images/sampleItinerary.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 80vh;
+}
+.serviceTrip2{
+  background: url('./images/Lima.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.serviceTrip3{
+  background: url('./images/Cusco.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.serviceTrip4{
+  background: url('./images/Riobamba.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.serviceTrip5{
+  background: url('./images/Tena.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+/* ------------------- SIGN IN ------------------*/
+
+.signInForm{
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+#successMessage {
+  background-color: rgba(76, 224, 111, 0.7);
+  margin:0;
+  padding:0;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgba(76, 224, 111, 0.8);
+  opacity: 0;
+  animation-name: errorModal;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#errorMessage {
+  background-color: rgba(255, 49, 20, 0.7);
+  color: rgb(233,233,233);
+  margin:0;
+  padding:0;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgba(255, 49, 20, 0.8);
+  opacity: 0;
+  animation-name: errorModal;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes errorModal {
+  0%{
+    opacity: 0;
+    transform: scale(1.0);
+  }
+
+  20%{
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1.0);
+  }
+}
+
+@media only screen and (min-width: 1268px){
+
+  .signInForm{
+    padding-left: 30vw;
+    padding-right: 30vw;
+  }
+
+}
+/*----General-----*/
+
+.div-color {
+  background-color: rgb(255, 245, 210);
+  color: rgb(23, 23, 23);
+}
+
+.pageImage{
+  width: 100%;
+  padding-right: 0;
+  padding-left:0;
+  overflow-x: hidden;
+}
+
+
+
+.capitalize{
+  text-transform: capitalize;
+}
+
+/* signin page */
+
+.medSignin {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top:25vh;
+}
+
+.medSignup {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top:10vh;
+}
+
+.medCreateEvent {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top:15vh;
+}
+
+.medPointMenu {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top:5vh;
+}
+
+.listMemberDiv{
+  height: 100vh;
+}
+
+.headerColor{
+  background-color: rgba(7, 36, 113, 0.9);
+  color: white;
+}
