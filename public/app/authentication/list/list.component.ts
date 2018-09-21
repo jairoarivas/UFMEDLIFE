@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import {MembersService} from '../members.service';
+import {AuthenticationService} from '../authentication.service';
 
 @Component({
 	selector: 'list',
@@ -10,10 +11,53 @@ import {MembersService} from '../members.service';
 export class ListComponent{
 	members: any;
 	errorMessage: string;
+	filterBy: string;
+	currentMember: any;
+	user: any;
 
-	constructor(private _membersService: MembersService) {}
+	constructor(private _membersService: MembersService, private _router:Router,
+				private _route: ActivatedRoute, private _authenticationService: AuthenticationService) {
+					this._membersService.list().subscribe(members  => this.members = members);
+					this.user = this._authenticationService.user;
+				}
 
 	ngOnInit() {
-		this._membersService.list().subscribe(members  => this.members = members);
+		//this._membersService.list().subscribe(members  => this.members = members);
+		this.filterBy = 'firstName';
 	}
+
+	filterByRole(){
+		this.filterBy = 'role';
+	}
+
+	filterByfirstName(){
+		this.filterBy = 'firstName';
+	}
+
+	filterBylastName(){
+		this.filterBy = 'lastName';
+	}
+
+	filterByEmail(){
+		this.filterBy = 'email';
+	}
+
+	filterByPoints(){
+		this.filterBy = 'points';
+	}
+
+	deleteModal(m){
+		console.log("delete button clicked");
+		console.log(m);
+		this.currentMember = m;
+	}
+
+	delete() {
+		this._membersService.delete(this.currentMember._id).subscribe(deletedUser => {
+			this._membersService.list().subscribe(members  => this.members = members);
+			this.currentMember = undefined;
+		},
+		error => this.errorMessage = error);
+	}
+
 }

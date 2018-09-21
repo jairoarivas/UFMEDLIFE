@@ -17,6 +17,7 @@ export class HeaderComponent{
   //injecting authenticationService into header component. This allows the access to user information.
   constructor(private _authenticationService: AuthenticationService, private _router: Router ) {
     this.user = this._authenticationService.user;
+    console.log(!!this.user);
   }
   ngOnInit(){
     this.wasClicked = false;

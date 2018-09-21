@@ -10,14 +10,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var members_service_1 = require("../members.service");
+var authentication_service_1 = require("../authentication.service");
 var ListComponent = /** @class */ (function () {
-    function ListComponent(_membersService) {
+    function ListComponent(_membersService, _router, _route, _authenticationService) {
+        var _this = this;
         this._membersService = _membersService;
+        this._router = _router;
+        this._route = _route;
+        this._authenticationService = _authenticationService;
+        this._membersService.list().subscribe(function (members) { return _this.members = members; });
+        this.user = this._authenticationService.user;
     }
     ListComponent.prototype.ngOnInit = function () {
+        //this._membersService.list().subscribe(members  => this.members = members);
+        this.filterBy = 'firstName';
+    };
+    ListComponent.prototype.filterByRole = function () {
+        this.filterBy = 'role';
+    };
+    ListComponent.prototype.filterByfirstName = function () {
+        this.filterBy = 'firstName';
+    };
+    ListComponent.prototype.filterBylastName = function () {
+        this.filterBy = 'lastName';
+    };
+    ListComponent.prototype.filterByEmail = function () {
+        this.filterBy = 'email';
+    };
+    ListComponent.prototype.filterByPoints = function () {
+        this.filterBy = 'points';
+    };
+    ListComponent.prototype.deleteModal = function (m) {
+        console.log("delete button clicked");
+        console.log(m);
+        this.currentMember = m;
+    };
+    ListComponent.prototype.delete = function () {
         var _this = this;
-        this._membersService.list().subscribe(function (members) { return _this.members = members; });
+        this._membersService.delete(this.currentMember._id).subscribe(function (deletedUser) {
+            _this._membersService.list().subscribe(function (members) { return _this.members = members; });
+            _this.currentMember = undefined;
+        }, function (error) { return _this.errorMessage = error; });
     };
     ListComponent = __decorate([
         core_1.Component({
@@ -25,7 +60,8 @@ var ListComponent = /** @class */ (function () {
             templateUrl: 'app/authentication/list/list.template.html',
             styleUrls: ['app/app.styles.css']
         }),
-        __metadata("design:paramtypes", [members_service_1.MembersService])
+        __metadata("design:paramtypes", [members_service_1.MembersService, router_1.Router,
+            router_1.ActivatedRoute, authentication_service_1.AuthenticationService])
     ], ListComponent);
     return ListComponent;
 }());

@@ -11,38 +11,55 @@ import { MembersService } from '../members.service';
 export class ViewComponent {
 	user: any;
   member: any;
-	routingObserver: any;
+	paramsObserver: any;
 	errorMessage: string;
-	allowEdit: boolean = false;
+  members:any;
 
 	constructor(private _router:Router,
 				private _route: ActivatedRoute,
-				private _authenticationService: AuthenticationService, private _membersService: MembersService) {}
+				private _authenticationService: AuthenticationService, private _membersService: MembersService) {
+          //this._membersService.list().subscribe(members  => this.members = members);
+        }
 
 	ngOnInit() {
-		this.user = this._authenticationService.user
+		this.user = this._authenticationService.user;
 
-		this.routingObserver = this._route.params.subscribe(params => {
+		this.paramsObserver = this._route.params.subscribe(params => {
 			let userId = params['userId'];
-
+      console.log(userId);
 			this._membersService
 				.read(userId)
 				.subscribe(
 					member => {
-						this.member = member;
-						this.allowEdit = (this.user && this.user.role === 'Admin');
-		 			},
-					error => this._router.navigate(['/authentication/members'])
+            this.member = member
+            console.log("GOT MEMBER: " + this.member);
+          },
+					error => this._router.navigate(['/'])
 				);
 		});
 	}
 
-	ngOnDestroy() {
-		this.routingObserver.unsubscribe();
+  ngOnDestroy() {
+		this.paramsObserver.unsubscribe();
 	}
 
-	delete() {
-		this._membersService.delete(this.member._id).subscribe(deletedUser => this._router.navigate(['/authentication/members']),
-																 error => this.errorMessage = error);
-	}
+  // percentile() {
+  //   var totalMembers;
+  //   var numberUnderMember;
+  //   var numPoints = this.member.points;
+  //   for(var i = 0 ; i < this.members.length() ; i ++){
+  //     if(this.member._id === this.members[i]._id){
+  //     }
+  //     else{
+  //       if(numPoints > this.members[i].points){
+  //         numberUnderMember ++;
+  //       }
+  //       totalMembers ++;
+  //     }
+  //   }
+  //
+  //   return ((numberUnderMember/totalMembers) * 100);
+  // }
+
+
 }

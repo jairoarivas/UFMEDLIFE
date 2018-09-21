@@ -18,6 +18,7 @@ var HeaderComponent = /** @class */ (function () {
         this._authenticationService = _authenticationService;
         this._router = _router;
         this.user = this._authenticationService.user;
+        console.log(!!this.user);
     }
     HeaderComponent.prototype.ngOnInit = function () {
         this.wasClicked = false;

@@ -21,6 +21,10 @@ var EditComponent = /** @class */ (function () {
     }
     EditComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.g = document.getElementById('errorMessage');
+        this.g.style.display = 'none';
+        this.s = document.getElementById('successMessage');
+        this.s.style.display = 'none';
         this.paramsObserver = this._route.params.subscribe(function (params) {
             var eventId = params['eventId'];
             _this._eventsService.read(eventId).subscribe(function (event) {
@@ -33,7 +37,17 @@ var EditComponent = /** @class */ (function () {
     };
     EditComponent.prototype.update = function () {
         var _this = this;
-        this._eventsService.update(this.event).subscribe(function (savedEvent) { return _this._router.navigate(['/events', savedEvent._id]); }, function (error) { return _this.errorMessage = error; });
+        this._eventsService.update(this.event).subscribe(function (savedEvent) {
+            _this.s.style.display = 'none';
+            _this.s.style.display = 'block';
+            setTimeout(function () {
+                _this._router.navigate(['/events']);
+            }, 1500);
+        }, function (error) {
+            _this.errorMessage = error;
+            _this.g.style.display = 'none';
+            _this.g.style.display = 'block';
+        });
     };
     EditComponent = __decorate([
         core_1.Component({

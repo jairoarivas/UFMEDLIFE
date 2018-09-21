@@ -14,8 +14,8 @@ var events_routes_1 = require("./events.routes");
 var events_component_1 = require("./events.component");
 var create_component_1 = require("./create/create.component");
 var list_component_1 = require("./list/list.component");
-var view_component_1 = require("./view/view.component");
 var edit_component_1 = require("./edit/edit.component");
+var filter_module_1 = require("../Filters/filter.module");
 var EventsModule = /** @class */ (function () {
     function EventsModule() {
     }
@@ -24,13 +24,13 @@ var EventsModule = /** @class */ (function () {
             imports: [
                 common_1.CommonModule,
                 forms_1.FormsModule,
+                filter_module_1.PipeModule.forRoot(),
                 router_1.RouterModule.forChild(events_routes_1.EventsRoutes),
             ],
             declarations: [
                 events_component_1.EventsComponent,
                 create_component_1.CreateComponent,
                 list_component_1.ListComponent,
-                view_component_1.ViewComponent,
                 edit_component_1.EditComponent,
             ]
         })

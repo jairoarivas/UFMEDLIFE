@@ -39,6 +39,8 @@
         <ul id = "dropDown" class = "toggleDropMenu">
           <li class = "mx-auto">
             <button class="dropdown-item menuDropButton" [routerLink]="['/authentication/members']">MEMBERS</button>
+            <button class="dropdown-item menuDropButton" [routerLink]="['/events']">EVENTS</button>
+            <!-- <button class="dropdown-item menuDropButton" [routerLink]="['/authentication/members', user._id]">ACCOUNT</button> -->
             <button class="dropdown-item menuDropButton" onclick="location.href='/api/auth/signout'">SIGN OUT</button>
           </li>
         </ul>
@@ -71,7 +73,7 @@
             <div class ="col m-0 p-0" style = "text-align:center;">
               <button class = "barButton" [routerLink]="['/ContactUs']"><h4>CONTACT US</h4></button>
             </div>
-            <div *ngIf="!(_authenticationService.isLoggedIn())" class ="col m-0 p-0" style = "text-align:center;" >
+            <div  *ngIf="!(_authenticationService.isLoggedIn())" class ="col m-0 p-0" style = "text-align:center;" >
               <button class = "barButton" [routerLink]="['/authentication/SignIn']"><h4>SIGN IN</h4></button>
             </div>
             <div *ngIf="_authenticationService.isLoggedIn()" class ="col m-0 p-0" style = "text-align:center;">
@@ -79,6 +81,8 @@
                   <button class = "userButton dropwdown-toggle" type = "button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h4> {{_authenticationService.user.firstName}} <i class="fas fa-caret-down"></i></h4></button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" [routerLink]="['/authentication/members']">MEMBERS</a>
+                    <a class="dropdown-item" [routerLink]="['/events']">EVENTS</a>
+                    <a class="dropdown-item" [routerLink]="['/authentication/members', _authenticationService.user._id]">ACCOUNT</a>
                     <a class="dropdown-item" href = "/api/auth/signout">SIGN OUT</a>
                   </div>
                 </div>

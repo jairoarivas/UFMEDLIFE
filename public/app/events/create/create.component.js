@@ -18,9 +18,25 @@ var CreateComponent = /** @class */ (function () {
         this._eventsService = _eventsService;
         this.event = {};
     }
+    CreateComponent.prototype.ngOnInit = function () {
+        this.g = document.getElementById('errorMessage');
+        this.g.style.display = 'none';
+        this.s = document.getElementById('successMessage');
+        this.s.style.display = 'none';
+    };
     CreateComponent.prototype.create = function () {
         var _this = this;
-        this._eventsService.create(this.event).subscribe(function (createdEvent) { return _this._router.navigate(['/events', createdEvent._id]); }, function (error) { return _this.errorMessage = error; });
+        this._eventsService.create(this.event).subscribe(function (createdEvent) {
+            _this.s.style.display = 'none';
+            _this.s.style.display = 'block';
+            setTimeout(function () {
+                _this._router.navigate(['/events']);
+            }, 1500);
+        }, function (error) {
+            _this.errorMessage = error;
+            _this.g.style.display = 'none';
+            _this.g.style.display = 'block';
+        });
     };
     CreateComponent = __decorate([
         core_1.Component({

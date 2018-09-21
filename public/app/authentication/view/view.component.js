@@ -19,27 +19,24 @@ var ViewComponent = /** @class */ (function () {
         this._route = _route;
         this._authenticationService = _authenticationService;
         this._membersService = _membersService;
-        this.allowEdit = false;
+        //this._membersService.list().subscribe(members  => this.members = members);
     }
     ViewComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.user = this._authenticationService.user;
-        this.routingObserver = this._route.params.subscribe(function (params) {
+        this.paramsObserver = this._route.params.subscribe(function (params) {
             var userId = params['userId'];
+            console.log(userId);
             _this._membersService
                 .read(userId)
                 .subscribe(function (member) {
                 _this.member = member;
-                _this.allowEdit = (_this.user && _this.user.role === 'Admin');
-            }, function (error) { return _this._router.navigate(['/authentication/members']); });
+                console.log("GOT MEMBER: " + _this.member);
+            }, function (error) { return _this._router.navigate(['/']); });
         });
     };
     ViewComponent.prototype.ngOnDestroy = function () {
-        this.routingObserver.unsubscribe();
-    };
-    ViewComponent.prototype.delete = function () {
-        var _this = this;
-        this._membersService.delete(this.member._id).subscribe(function (deletedUser) { return _this._router.navigate(['/authentication/members']); }, function (error) { return _this.errorMessage = error; });
+        this.paramsObserver.unsubscribe();
     };
     ViewComponent = __decorate([
         core_1.Component({

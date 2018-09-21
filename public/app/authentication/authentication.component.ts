@@ -7,6 +7,5 @@ import { EventsService } from '../events/events.service';
 @Component({
   selector: 'authentication',
   templateUrl: 'app/authentication/authentication.template.html',
-  providers: [MembersService, EventsService]
 })
 export class AuthenticationComponent{ }

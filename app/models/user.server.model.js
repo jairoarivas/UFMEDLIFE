@@ -5,8 +5,14 @@ const Schema = mongoose.Schema;
 
 // Define a new 'UserSchema'
 const UserSchema = new Schema({
-	firstName: String,
-	lastName: String,
+	firstName:{
+		type: String,
+		required: 'First name is required',
+	},
+	lastName:{
+		type: String,
+		required: 'Last name is required',
+	},
 	points: {
 		type: Number,
 		required: 'Member points not specified',

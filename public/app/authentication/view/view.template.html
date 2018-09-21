@@ -1,15 +1,34 @@
-<div class="container-fluid pageImage " *ngIf="member && user.role === 'Admin'">
-	<div class="row">
-		<div class="col-sm-12 p-0">
-			<div class="grayFilterSmall">
-				<h1 class="text-center capitalize pageImageText">
-      		{{member.firstName}} {{member.lastName}}
-        </h1>
-			</div>
+<!-- HEADER -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 lightHeader">
+      <h1>ACCOUNT INFORMATION</h1>
+    </div>
+  </div>
+</div>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-sm pointContainer">
+			<h2>POINTS</h2>
+			<h1 class = "points mx-auto">{{member.points}}</h1>
+		</div>
+		<div class = "col-sm pointContainer">
+			<h2>PERCENTILE</h2>
+			<h1 class = "percentile mx-auto"></h1>
+		</div>
+	</div>
+	<div class = "row" style = "margin-top: 5vh;">
+		<div class = "col-sm pointContainer">
+			<h2>POINTS</h2>
+			<h1 class = "points mx-auto">{{member.points}}</h1>
+		</div>
+		<div class = "col-sm">
 		</div>
 	</div>
 </div>
-<div class="container-fluid div-color">
+
+<!-- <div class="container-fluid div-color">
 	<div class="container">
 		<div class="row" *ngIf="member && user.role === 'Admin'">
 			<div class="col-sm-8 text-justify">
@@ -34,4 +53,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->

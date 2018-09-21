@@ -7,16 +7,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AuthenticationComponent = /** @class */ (function () {
-    function AuthenticationComponent() {
+var common_1 = require("@angular/common");
+var customDateFormatPipe = /** @class */ (function () {
+    function customDateFormatPipe() {
     }
-    AuthenticationComponent = __decorate([
-        core_1.Component({
-            selector: 'authentication',
-            templateUrl: 'app/authentication/authentication.template.html',
+    customDateFormatPipe.prototype.transform = function (value) {
+        var datePipe = new common_1.DatePipe("EST");
+        value = datePipe.transform(value, 'MM/dd/yyyy');
+        return value;
+    };
+    customDateFormatPipe = __decorate([
+        core_1.Pipe({
+            name: 'customDateFormat',
         })
-    ], AuthenticationComponent);
-    return AuthenticationComponent;
+    ], customDateFormatPipe);
+    return customDateFormatPipe;
 }());
-exports.AuthenticationComponent = AuthenticationComponent;
-//# sourceMappingURL=authentication.component.js.map
+exports.customDateFormatPipe = customDateFormatPipe;
+//# sourceMappingURL=dateFormat.pipe.js.map

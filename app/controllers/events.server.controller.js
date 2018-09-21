@@ -60,7 +60,9 @@ exports.update = function(req, res) {
 
     // Update the event fields
     event.eventName = req.body.eventName;
-    event.description = req.body.description;
+    event.eventValue = req.body.eventValue;
+    event.eventDate = req.body.eventDate;
+    event.eventCode = req.body.eventCode;
 
     // Try saving the updated event
     event.save((err) => {

@@ -11,12 +11,18 @@ export class EditComponent {
 	member: any = {};
 	errorMessage: string;
 	paramsObserver: any;
-  roles = ['Admin', 'Officer', 'Member'];
+  roles = ['Admin','Member'];
+  g: HTMLElement;
+  s:HTMLElement;
 	constructor(private _router:Router,
 				private _route: ActivatedRoute,
 				private _membersService: MembersService) {}
 
 	ngOnInit() {
+    this.g = document.getElementById('errorMessage') as HTMLElement;
+    this.g.style.display = 'none';
+    this.s = document.getElementById('successMessage') as HTMLElement;
+    this.s.style.display = 'none';
 		this.paramsObserver = this._route.params.subscribe(params => {
 			let userId = params['userId'];
 
@@ -32,7 +38,17 @@ export class EditComponent {
 	}
 
 	update() {
-		this._membersService.update(this.member).subscribe(savedUser => this._router.navigate(['authentication/members', savedUser._id]),
-							 				  				 error =>  this.errorMessage = error);
+		this._membersService.update(this.member).subscribe(savedUser => {
+      this.s.style.display = 'none';
+      this.s.style.display = 'block';
+      setTimeout(() => {
+        this._router.navigate(['authentication/members'])
+      }, 1500);
+      } ,
+			error => {
+        this.errorMessage = error;
+        this.g.style.display = 'none';
+        this.g.style.display = 'block';
+      } );
 	}
 }

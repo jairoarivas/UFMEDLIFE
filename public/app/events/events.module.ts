@@ -7,20 +7,21 @@ import { EventsRoutes } from './events.routes';
 import { EventsComponent } from './events.component';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
-import { ViewComponent } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
+
+import { PipeModule }    from '../Filters/filter.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    PipeModule.forRoot(),
     RouterModule.forChild(EventsRoutes),
   ],
   declarations: [
     EventsComponent,
     CreateComponent,
     ListComponent,
-    ViewComponent,
     EditComponent,
   ]
 })

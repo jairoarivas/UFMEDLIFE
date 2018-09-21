@@ -18,10 +18,14 @@ var EditComponent = /** @class */ (function () {
         this._route = _route;
         this._membersService = _membersService;
         this.member = {};
-        this.roles = ['Admin', 'Officer', 'Member'];
+        this.roles = ['Admin', 'Member'];
     }
     EditComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.g = document.getElementById('errorMessage');
+        this.g.style.display = 'none';
+        this.s = document.getElementById('successMessage');
+        this.s.style.display = 'none';
         this.paramsObserver = this._route.params.subscribe(function (params) {
             var userId = params['userId'];
             _this._membersService.read(userId).subscribe(function (member) {
@@ -34,7 +38,17 @@ var EditComponent = /** @class */ (function () {
     };
     EditComponent.prototype.update = function () {
         var _this = this;
-        this._membersService.update(this.member).subscribe(function (savedUser) { return _this._router.navigate(['authentication/members', savedUser._id]); }, function (error) { return _this.errorMessage = error; });
+        this._membersService.update(this.member).subscribe(function (savedUser) {
+            _this.s.style.display = 'none';
+            _this.s.style.display = 'block';
+            setTimeout(function () {
+                _this._router.navigate(['authentication/members']);
+            }, 1500);
+        }, function (error) {
+            _this.errorMessage = error;
+            _this.g.style.display = 'none';
+            _this.g.style.display = 'block';
+        });
     };
     EditComponent = __decorate([
         core_1.Component({

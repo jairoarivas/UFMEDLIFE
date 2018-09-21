@@ -12,18 +12,20 @@ var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var http_1 = require("@angular/http");
+var members_service_1 = require("./authentication/members.service");
+var events_service_1 = require("./events/events.service");
 var authentication_service_1 = require("./authentication/authentication.service");
 var authentication_module_1 = require("./authentication/authentication.module");
-//import {getInvolvedModule } from './getInvolved/getInvolved.module';
+var getInvolved_module_1 = require("./getInvolved/getInvolved.module");
 var app_component_1 = require("./app.component");
 var app_routes_1 = require("./app.routes");
-//import { contactUsComponent } from './contactUs/contactUs.component';
+var contactUs_component_1 = require("./contactUs/contactUs.component");
 var home_component_1 = require("./home/home.component");
 var header_component_1 = require("./header/header.component");
 //import { itResetComponent } from './resetConfirmations/itReset.component';
 //import { itSentComponent } from './resetConfirmations/itSent.component';
 //import { ViewProfileComponent } from './viewProfile/viewProfile.component';
-//import { EventsModule } from './events/events.module';
+var events_module_1 = require("./events/events.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -35,21 +37,23 @@ var AppModule = /** @class */ (function () {
                 common_1.CommonModule,
                 http_1.HttpModule,
                 authentication_module_1.AuthenticationModule,
-                //getInvolvedModule,
-                //EventsModule,
+                getInvolved_module_1.getInvolvedModule,
+                events_module_1.EventsModule,
                 router_1.RouterModule.forRoot(app_routes_1.AppRoutes)
             ],
             declarations: [
                 home_component_1.HomeComponent,
                 header_component_1.HeaderComponent,
-                // contactUsComponent,
+                contactUs_component_1.contactUsComponent,
                 // itSentComponent,
                 // ViewProfileComponent,
                 // itResetComponent,
                 app_component_1.AppComponent
             ],
             providers: [
-                authentication_service_1.AuthenticationService
+                authentication_service_1.AuthenticationService,
+                members_service_1.MembersService,
+                events_service_1.EventsService
             ],
             bootstrap: [app_component_1.AppComponent]
         })

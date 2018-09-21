@@ -1,48 +1,57 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6 text-center medSignup">
-      <h4 class = "py-3">Edit a Member</h4>
-      <form (ngSubmit)="update()" novalidate>
-        <div class="form-group row justify-content-center">
-          <label class=" col-form-label col-4">First Name:</label>
-          <div class=" col-8">
-            <input class = "form-control" type="text" [(ngModel)]="member.firstName" name="firstName" placeholder="First Name">
+<!-- HEADER -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 lightHeader">
+      <h1>EDIT PROFILE</h1>
+    </div>
+  </div>
+</div>
+
+<div class = "container-fluid p-0 m-0 restOfSite">
+  <div class = "row p-0 m-0">
+    <div class = "col p-0 m-0">
+      <form class = "signInForm" (ngSubmit)="update()">
+        <div class="form-group row justify-content-center m-0 p-0">
+          <label class=" col-form-label col-4 m-0 p-0">First Name:</label>
+          <div class=" col-8 m-0 p-0">
+            <input class = "form-control" type="text" required [(ngModel)]="member.firstName" name="firstName" placeholder="First Name">
           </div>
         </div>
-        <div class="form-group justify-content-center row">
-          <label class=" col-form-label col-4">Last Name:</label>
-          <div class=" col-8">
-            <input class = "form-control" type="text" [(ngModel)]="member.lastName" name="lastName" placeholder="Last Name">
+        <div class="form-group justify-content-center row m-0 p-0">
+          <label class=" col-form-label col-4 m-0 p-0">Last Name:</label>
+          <div class=" col-8 m-0 p-0">
+            <input class = "form-control" type="text" required [(ngModel)]="member.lastName" name="lastName" placeholder="Last Name">
           </div>
         </div>
-        <div class="form-group justify-content-center row">
-          <label class=" col-form-label col-4">Email:</label>
-          <div class=" col-8">
-            <input class = "form-control" type="text" [(ngModel)]="member.email" name="email" placeholder="Email">
+        <div class="form-group justify-content-center row m-0 p-0">
+          <label class=" col-form-label col-4 m-0 p-0">Email:</label>
+          <div class=" col-8 m-0 p-0">
+            <input class = "form-control" type="text" required [(ngModel)]="member.username" name="username" placeholder="Email">
           </div>
         </div>
-        <div class="form-group justify-content-center row">
-          <label class=" col-form-label col-4">Username:</label>
-          <div class=" col-8">
-            <input class = "form-control" type="text" [(ngModel)]="member.username" name="username" placeholder="Username">
-          </div>
-        </div>
-        <div class="form-group justify-content-center row">
-          <label class=" col-form-label col-4">Member role:</label>
-          <div class="col-8">
+        <div class="form-group justify-content-center row m-0 p-0">
+          <label class=" col-form-label col-4 m-0 p-0">Member Role:</label>
+          <div class="col-8 m-0 p-0">
             <select class="form-control" id="role" required [(ngModel)]="member.role" name="role">
             <option *ngFor = "let role of roles" [value] = "role">{{role}}
             </option>
           </select>
           </div>
         </div>
-        <div class="form-group row">
-          <div class="col-4 mx-auto">
-            <button type="submit" class="portalButton btn">Edit</button>
+        <div class="form-group row m-0 p-0">
+          <div class="col m-0" style = "text-align:center; padding-top:5vh;">
+            <button type="submit" class="memberButton m-0">UPDATE</button>
           </div>
         </div>
-        <div class="form-group row">
-          <span>{{errorMessage}}</span>
+        <div class="form-group row p-0" style = "margin-top:3vh; height: 40px; margin-bottom: 3vh;">
+          <div id = "successMessage" class = "col">
+            Update Successful!
+          </div>
+        </div>
+        <div class="form-group row p-0" style = "margin-top:3vh; height: 40px; margin-bottom: 3vh;">
+          <div id = "errorMessage" class = "col">
+            {{errorMessage}}
+          </div>
         </div>
       </form>
     </div>

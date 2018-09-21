@@ -165,18 +165,6 @@ exports.requiresLogin = function(req, res, next) {
 	next();
 };
 
-// exports.userLoggedIn = function(req,res,next){
-// 	if(req.isAuthenticated()){
-// 		res.json(req.user);
-// 	}
-// 	else{
-// 		return res.status(401).send({
-// 			messsage: 'No user is logged in.'
-// 		});
-// 	}
-// 	next();
-// }
-
 exports.list = function(req, res){
 	User.find().exec((err, users) => {
 		if(err){
@@ -189,8 +177,19 @@ exports.list = function(req, res){
 	});
 };
 
+exports.userByID = function(req, res,next ,id){
+	User.findById(id).populate().exec((err, user) => {
+		if(err) return next(err);
+		if(!user) return next(new Error('Failed to load user' + id));
+
+		req.user = user;
+
+		next();
+	});
+};
+
 exports.read = function(req,res){
-	res.json(req.user);
+	res.status(200).json(req.user);
 };
 
 exports.resetPassword = function(req, res){
@@ -259,16 +258,7 @@ exports.reset = function(req, res) {
   });
 }
 
-exports.userByID = function(req, res,next ,id){
-	User.findById(id).exec((err, user) => {
-		if(err) return next(err);
-		if(!user) return next(new Error('Failed to load user' + id));
 
-		req.user = user;
-
-		next();
-	});
-};
 
 
 exports.removePoint = function(req, res){
@@ -313,8 +303,8 @@ exports.update = function(req, res){
 	const user = req.user;
 	user.firstName = req.body.firstName;
 	user.lastName = req.body.lastName;
-	user.email = req.body.email;
-	//user.username = req.body.username;
+	//user.email = req.body.email;
+	user.username = req.body.username;
 	//user.password = req.body.password;
 	user.role = req.body.role;
 

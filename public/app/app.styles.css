@@ -1280,6 +1280,105 @@ ul.menuList li{
   }
 
 }
+
+
+/* ------------------- MEMBERS LIST  -------------------- */
+
+.filterByButton:hover{
+  background-color: rgba(219, 219, 219, 0.2);
+  border-radius: 5px;
+  cursor:pointer;
+}
+
+.deleteButton{
+  background-color: rgba(255, 49, 20, 0.7);
+  border-radius: 5px;
+  border-style: none;
+  height: 30px;
+  width: 30px;
+  box-shadow: 0 0 2px #000000;
+}
+.deleteButton:hover{
+  animation-name: deleteBtn;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.editButton{
+  background-color: rgba(255, 178, 47, 0.7);
+  border-radius: 5px;
+  border-style: none;
+  height: 30px;
+  width: 30px;
+  box-shadow: 0 0 2px #000000;
+}
+.editButton:hover{
+  animation-name: deleteBtn;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.addButton{
+  background-color: rgba(50, 171, 25, 0.7);
+  border-radius: 5px;
+  border-style: none;
+  height: 30px;
+  width: 30px;
+  box-shadow: 0 0 2px #000000;
+}
+.addButton:hover{
+  animation-name: deleteBtn;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes deleteBtn{
+  0%{
+    transform: scale(1.0);
+  }
+  100%{
+    transform: scale(1.2);
+  }
+}
+
+/*  ------------------PROFILE PAGE--------------------- */
+.pointContainer{
+  text-align: center;
+}
+
+.points{
+  color: rgb(233,233,233);
+  background-color: rgb(255, 178, 47);
+  border-radius: 50%;
+  border-style: none;
+  box-shadow: 0 0 10px #000000;
+  text-align:center;
+  padding-top: 47px;
+  padding-bottom: 47px;
+  font-size: 500%;
+  width: 192px;
+  height: 192px;
+  margin-top: 20px;
+}
+
+.percentile{
+  color: rgb(233,233,233);
+  background-color: rgba(255, 49, 20, 0.7);
+  border-radius: 50%;
+  border-style: none;
+  box-shadow: 0 0 10px #000000;
+  text-align:center;
+  padding-top: 47px;
+  padding-bottom: 47px;
+  font-size: 500%;
+  width: 192px;
+  height: 192px;
+  margin-top: 20px;
+}
+
 /*----General-----*/
 
 .div-color {

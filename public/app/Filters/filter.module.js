@@ -8,6 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var filter_pipe_1 = require("./filter.pipe");
+var filterEvents_pipe_1 = require("./filterEvents.pipe");
+var orderBy_pipe_1 = require("./orderBy.pipe");
+var orderByValue_pipe_1 = require("./orderByValue.pipe");
+var orderByDate_pipe_1 = require("./orderByDate.pipe");
+var dateFormat_pipe_1 = require("./dateFormat.pipe");
 var PipeModule = /** @class */ (function () {
     function PipeModule() {
     }
@@ -21,8 +26,8 @@ var PipeModule = /** @class */ (function () {
     PipeModule = PipeModule_1 = __decorate([
         core_1.NgModule({
             imports: [],
-            declarations: [filter_pipe_1.FilterPipe],
-            exports: [filter_pipe_1.FilterPipe],
+            declarations: [filter_pipe_1.FilterPipe, orderBy_pipe_1.SortPipe, orderByValue_pipe_1.NumberSortPipe, dateFormat_pipe_1.customDateFormatPipe, orderByDate_pipe_1.DateSortPipe, filterEvents_pipe_1.FilterEventsPipe],
+            exports: [filter_pipe_1.FilterPipe, orderBy_pipe_1.SortPipe, orderByValue_pipe_1.NumberSortPipe, dateFormat_pipe_1.customDateFormatPipe, orderByDate_pipe_1.DateSortPipe, filterEvents_pipe_1.FilterEventsPipe],
         })
     ], PipeModule);
     return PipeModule;
