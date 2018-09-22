@@ -24,8 +24,34 @@ var HeaderComponent = /** @class */ (function () {
         this.wasClicked = false;
         this.dropped = false;
         this.g = document.getElementsByClassName('restOfSite');
+        this.c = document.getElementsByClassName('clicked');
+        if (this.c.length > 0) {
+            for (var i = 0; i < this.g.length; i++) {
+                this.g[i].style.display = 'none';
+            }
+        }
+        else {
+            for (var i = 0; i < this.g.length; i++) {
+                this.g[i].style.display = 'block';
+            }
+        }
         this.d = document.getElementById('dropDown');
         this.d.style.display = 'none';
+    };
+    HeaderComponent.prototype.openAccount = function () {
+        this.c = document.getElementsByClassName('clicked');
+        for (var i = 0; i < this.c.length; i++) {
+            this.c[i].classList.remove('clicked');
+        }
+        this.wasClicked = false;
+        this._router.navigate(['/authentication/members', this._authenticationService.user._id]);
+    };
+    HeaderComponent.prototype.navMenuCheck = function () {
+        this.c = document.getElementsByClassName('clicked');
+        for (var i = 0; i < this.c.length; i++) {
+            this.c[i].classList.remove('clicked');
+        }
+        this.wasClicked = false;
     };
     HeaderComponent.prototype.clicker = function (event) {
         if (this.wasClicked) {

@@ -21,9 +21,6 @@ var events_service_1 = require("./events/events.service");
 var getInvolved_module_1 = require("./getInvolved/getInvolved.module");
 var contactUs_component_1 = require("./contactUs/contactUs.component");
 var home_component_1 = require("./home/home.component");
-var itReset_component_1 = require("./resetConfirmations/itReset.component");
-var itSent_component_1 = require("./resetConfirmations/itSent.component");
-//import { ViewProfileComponent } from './viewProfile/viewProfile.component';
 var events_module_1 = require("./events/events.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -44,9 +41,6 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 home_component_1.HomeComponent,
                 contactUs_component_1.contactUsComponent,
-                itSent_component_1.itSentComponent,
-                // ViewProfileComponent,
-                itReset_component_1.itResetComponent,
                 app_component_1.AppComponent
             ],
             providers: [

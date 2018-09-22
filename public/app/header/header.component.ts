@@ -13,6 +13,7 @@ export class HeaderComponent{
   dropped:boolean;
   g:HTMLCollectionOf<HTMLElement>;
   d:HTMLElement;
+  c:HTMLCollectionOf<HTMLElement>;
 
   //injecting authenticationService into header component. This allows the access to user information.
   constructor(private _authenticationService: AuthenticationService, private _router: Router ) {
@@ -23,8 +24,36 @@ export class HeaderComponent{
     this.wasClicked = false;
     this.dropped = false;
     this.g = document.getElementsByClassName('restOfSite') as HTMLCollectionOf<HTMLElement>;
+    this.c = document.getElementsByClassName('clicked') as HTMLCollectionOf<HTMLElement>;
+    if(this.c.length > 0){
+      for(var i = 0; i < this.g.length; i++){
+        this.g[i].style.display = 'none';
+      }
+    }
+    else{
+      for(var i = 0; i < this.g.length; i++){
+        this.g[i].style.display = 'block';
+      }
+    }
     this.d = document.getElementById('dropDown') as HTMLElement;
     this.d.style.display = 'none';
+  }
+
+  openAccount(){
+    this.c = document.getElementsByClassName('clicked') as HTMLCollectionOf<HTMLElement>;
+    for(var i = 0; i < this.c.length; i++){
+      this.c[i].classList.remove('clicked');
+    }
+    this.wasClicked = false;
+    this._router.navigate(['/authentication/members', this._authenticationService.user._id]);
+  }
+
+  navMenuCheck(){
+    this.c = document.getElementsByClassName('clicked') as HTMLCollectionOf<HTMLElement>;
+    for(var i = 0; i < this.c.length; i++){
+      this.c[i].classList.remove('clicked');
+    }
+    this.wasClicked = false;
   }
 
   clicker(event){

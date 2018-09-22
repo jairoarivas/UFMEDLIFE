@@ -1,7 +1,11 @@
-.restOfSite{
+/* .restOfSite{
   display: block;
-}
+} */
 
+
+.modal {
+  margin-top:75px;
+}
 /*-----------------------NAVIGATION----------------------------*/
 
 .headerStyle {

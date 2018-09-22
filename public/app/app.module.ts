@@ -19,10 +19,6 @@ import { getInvolvedModule } from './getInvolved/getInvolved.module';
 import { contactUsComponent } from './contactUs/contactUs.component';
 import { HomeComponent } from './home/home.component';
 
-import { itResetComponent } from './resetConfirmations/itReset.component';
-import { itSentComponent } from './resetConfirmations/itSent.component';
-//import { ViewProfileComponent } from './viewProfile/viewProfile.component';
-
 import { EventsModule } from './events/events.module';
 
 @NgModule({
@@ -40,9 +36,6 @@ import { EventsModule } from './events/events.module';
   declarations: [
     HomeComponent,
     contactUsComponent,
-    itSentComponent,
-    // ViewProfileComponent,
-    itResetComponent,
     AppComponent
   ],
   providers: [
