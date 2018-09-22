@@ -23,7 +23,7 @@ export class SigninComponent {
   signin() {
     this._authenticationService.signin(
       this.credentials).subscribe(result =>
-      this._router.navigate(['/authentication', this._authenticationService.user._id]),
+      this._router.navigate(['/authentication/members', this._authenticationService.user._id]),
       error => {
         this.errorMessage = error;
         this.g.style.display = 'none';

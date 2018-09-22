@@ -11,6 +11,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var common_1 = require("@angular/common");
 var app_component_1 = require("./app.component");
 var app_routes_1 = require("./app.routes");
 var authentication_service_1 = require("./authentication/authentication.service");
@@ -20,8 +21,8 @@ var events_service_1 = require("./events/events.service");
 var getInvolved_module_1 = require("./getInvolved/getInvolved.module");
 var contactUs_component_1 = require("./contactUs/contactUs.component");
 var home_component_1 = require("./home/home.component");
-//import { itResetComponent } from './resetConfirmations/itReset.component';
-//import { itSentComponent } from './resetConfirmations/itSent.component';
+var itReset_component_1 = require("./resetConfirmations/itReset.component");
+var itSent_component_1 = require("./resetConfirmations/itSent.component");
 //import { ViewProfileComponent } from './viewProfile/viewProfile.component';
 var events_module_1 = require("./events/events.module");
 var AppModule = /** @class */ (function () {
@@ -37,15 +38,15 @@ var AppModule = /** @class */ (function () {
                 getInvolved_module_1.getInvolvedModule,
                 events_module_1.EventsModule,
                 forms_1.FormsModule,
-                //CommonModule,
+                common_1.CommonModule,
                 router_1.RouterModule.forRoot(app_routes_1.AppRoutes)
             ],
             declarations: [
                 home_component_1.HomeComponent,
                 contactUs_component_1.contactUsComponent,
-                // itSentComponent,
+                itSent_component_1.itSentComponent,
                 // ViewProfileComponent,
-                // itResetComponent,
+                itReset_component_1.itResetComponent,
                 app_component_1.AppComponent
             ],
             providers: [

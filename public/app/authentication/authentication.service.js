@@ -14,14 +14,14 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
 var AuthenticationService = /** @class */ (function () {
-    // private _forgotPasswordURL = 'api/forgotPassword';
-    // private _resetURL = 'api/resetPassword';
     function AuthenticationService(http) {
         this.http = http;
         this.user = window['user'];
         this._signinURL = 'api/auth/signin';
         this._signupURL = 'api/auth/signup';
         this._baseURL = 'api/auth/users';
+        this._forgotPasswordURL = 'api/forgotPassword';
+        this._resetURL = 'api/resetPassword';
     }
     //---------------------authentication------------//
     AuthenticationService.prototype.isLoggedIn = function () {
@@ -67,32 +67,25 @@ var AuthenticationService = /** @class */ (function () {
             .catch(this.handleError);
     };
     //-----------------------------Forgot Password--------------------------//
-    // forgotPassword(credentials: any): Observable<any> {
-    //   let body = JSON.stringify(credentials);
-    //   let headers = new Headers({ 'Content-Type': 'application/json' });
-    //   let options = new RequestOptions({ headers: headers });
-    //
-    //   return this.http.post(this._forgotPasswordURL, body, options)
-    //     .map((res: Response) => res.json())
-    //     .catch(this.handleError)
-    // }
-    //
-    // resetPassword(credentials: any): Observable<any> {
-    //   let body = JSON.stringify(credentials);
-    //   let headers = new Headers({ 'Content-Type': 'application/json' });
-    //   let options = new RequestOptions({ headers: headers });
-    //
-    //   return this.http.post(`${this._resetURL}/${credentials.resetPasswordToken}`, body, options)
-    //     .map((res: Response) => res.json())
-    //     .catch(this.handleError)
-    // }
-    //
-    // read(token: string): Observable<any> {
-    // 	return this.http
-    // 		.get(`${this._resetURL}/${token}`)
-    // 		.map((res: Response) => res.json())
-    // 		.catch(this.handleError);
-    // }
+    AuthenticationService.prototype.forgotPassword = function (credentials) {
+        return this.http.post(this._forgotPasswordURL, credentials)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    AuthenticationService.prototype.resetPassword = function (credentials) {
+        var body = JSON.stringify(credentials);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this._resetURL + "/" + credentials.resetPasswordToken, body, options)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    AuthenticationService.prototype.readForgotPassword = function (token) {
+        return this.http
+            .get(this._resetURL + "/" + token)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
     AuthenticationService.prototype.handleError = function (error) {
         console.error(error);
         return Observable_1.Observable.throw(error.json().message || 'Server error');

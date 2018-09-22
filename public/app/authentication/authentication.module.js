@@ -18,8 +18,8 @@ var signup_component_1 = require("./signup/signup.component");
 var list_component_1 = require("./list/list.component");
 var view_component_1 = require("./view/view.component");
 var edit_component_1 = require("./edit/edit.component");
-// import { ForgotPasswordComponent } from './forgotPassword/forgotPassword.component';
-// import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
+var forgotPassword_component_1 = require("./forgotPassword/forgotPassword.component");
+var resetPassword_component_1 = require("./resetPassword/resetPassword.component");
 // import { PointListComponent } from './pointList/pointList.component';
 // import { AddPointComponent } from './addPoint/addPoint.component';
 var filter_module_1 = require("../Filters/filter.module");
@@ -41,6 +41,8 @@ var AuthenticationModule = /** @class */ (function () {
                 list_component_1.ListComponent,
                 view_component_1.ViewComponent,
                 edit_component_1.EditComponent,
+                forgotPassword_component_1.ForgotPasswordComponent,
+                resetPassword_component_1.ResetPasswordComponent,
             ]
         })
     ], AuthenticationModule);

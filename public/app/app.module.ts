@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, RequestOptions } from '@angular/http';
 
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule, } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -19,8 +19,8 @@ import { getInvolvedModule } from './getInvolved/getInvolved.module';
 import { contactUsComponent } from './contactUs/contactUs.component';
 import { HomeComponent } from './home/home.component';
 
-//import { itResetComponent } from './resetConfirmations/itReset.component';
-//import { itSentComponent } from './resetConfirmations/itSent.component';
+import { itResetComponent } from './resetConfirmations/itReset.component';
+import { itSentComponent } from './resetConfirmations/itSent.component';
 //import { ViewProfileComponent } from './viewProfile/viewProfile.component';
 
 import { EventsModule } from './events/events.module';
@@ -34,15 +34,15 @@ import { EventsModule } from './events/events.module';
     getInvolvedModule,
     EventsModule,
     FormsModule,
-    //CommonModule,
+    CommonModule,
     RouterModule.forRoot(AppRoutes)
   ],
   declarations: [
     HomeComponent,
     contactUsComponent,
-    // itSentComponent,
+    itSentComponent,
     // ViewProfileComponent,
-    // itResetComponent,
+    itResetComponent,
     AppComponent
   ],
   providers: [

@@ -18,11 +18,11 @@ module.exports = function(app){
     .delete(users.requiresLogin, users.delete);
 
   //password reset
-  // app.route('/api/forgotPassword')
-  //   .post(users.forgotPassword);
-  // app.route('/api/resetPassword/:token')
-  //   .get(users.resetPassword)
-  //   .post(users.reset);
+  app.route('/api/forgotPassword')
+    .post(users.forgotPassword);
+  app.route('/api/resetPassword/:token')
+    .get(users.resetPassword)
+    .post(users.reset);
 
   //add remove point
   // app.route('/api/addPoint')

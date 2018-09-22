@@ -18,6 +18,26 @@ var ForgotPasswordComponent = /** @class */ (function () {
         this._router = _router;
         this.credentials = {};
     }
+    ForgotPasswordComponent.prototype.ngOnInit = function () {
+        this.g = document.getElementById('errorMessage');
+        this.g.style.display = 'none';
+        this.s = document.getElementById('successMessage');
+        this.s.style.display = 'none';
+    };
+    ForgotPasswordComponent.prototype.forgotPassword = function () {
+        var _this = this;
+        this._authenticationService.forgotPassword(this.credentials).subscribe(function (result) {
+            _this.s.style.display = 'none';
+            _this.s.style.display = 'block';
+            setTimeout(function () {
+                _this._router.navigate(['/authentication/signin']);
+            }, 3000);
+        }, function (error) {
+            _this.errorMessage = error;
+            _this.g.style.display = 'none';
+            _this.g.style.display = 'block';
+        });
+    };
     ForgotPasswordComponent = __decorate([
         core_1.Component({
             selector: 'forgotPassword',

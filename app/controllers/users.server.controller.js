@@ -200,9 +200,9 @@ exports.forgotPassword = function(req, res, next) {
       });
     },
     function(token, done) {
-      User.findOne({ email: req.body.email }, function(err, user) {
+      User.findOne({ username: req.body.username }, function(err, user) {
         if (!user) {
-          return res.status(400).send({message: 'No user with that email.'});
+          return res.status(400).send({message: 'No account with that email exists.'});
           //return res.redirect('/api/forgotPassword');
         }
 
@@ -218,12 +218,12 @@ exports.forgotPassword = function(req, res, next) {
       var smtpTransport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'medlifeufl@gmail.com',
-          pass: 'gogators2016'
+          user: 'ufmedlifepointsystem@gmail.com',
+          pass: 'medlifeisawesome'
         }
       });
       var mailOptions = {
-        to: user.email,
+        to: user.username,
         from: 'medlifeufl@gmail.com',
         subject: 'UF MEDLIFE Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
@@ -232,7 +232,7 @@ exports.forgotPassword = function(req, res, next) {
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
-				req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+				req.flash('info', 'An e-mail has been sent to ' + user.username + ' with further instructions.');
         done(err, 'done');
       });
     }
@@ -286,12 +286,12 @@ exports.reset = function(req, res) {
       var smtpTransport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'medlifeufl@gmail.com',
-          pass: 'gogators2016'
+					user: 'ufmedlifepointsystem@gmail.com',
+          pass: 'medlifeisawesome'
         }
       });
       var mailOptions = {
-        to: user.email,
+        to: user.username,
         from: 'medlifeufl@gmail.com',
         subject: 'Your password has been changed',
         text: 'Hello,\n\n' +

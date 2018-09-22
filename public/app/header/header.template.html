@@ -82,7 +82,7 @@
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" [routerLink]="['/authentication/members']">MEMBERS</a>
                     <a class="dropdown-item" [routerLink]="['/events']">EVENTS</a>
-                    <a class="dropdown-item" [routerLink]="['/authentication', _authenticationService.user._id]">ACCOUNT</a>
+                    <a class="dropdown-item" [routerLink]="['/authentication/members', _authenticationService.user._id]">ACCOUNT</a>
                     <a class="dropdown-item" href = "/api/auth/signout">SIGN OUT</a>
                   </div>
                 </div>

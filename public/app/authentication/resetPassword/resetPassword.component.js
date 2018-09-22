@@ -21,15 +21,33 @@ var ResetPasswordComponent = /** @class */ (function () {
     }
     ResetPasswordComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.g = document.getElementById('errorMessage');
+        this.g.style.display = 'none';
+        this.s = document.getElementById('successMessage');
+        this.s.style.display = 'none';
         this.paramsObserver = this._route.params.subscribe(function (params) {
             var token = params['token'];
-            _this._authenticationService.read(token).subscribe(function (user) {
+            _this._authenticationService.readForgotPassword(token).subscribe(function (user) {
                 _this.user = user;
             }, function (error) { return _this._router.navigate(['/authentication/forgotPassword']); });
         });
     };
     ResetPasswordComponent.prototype.ngOnDestroy = function () {
         this.paramsObserver.unsubscribe();
+    };
+    ResetPasswordComponent.prototype.resetPassword = function () {
+        var _this = this;
+        this._authenticationService.resetPassword(this.user).subscribe(function (savedUser) {
+            _this.s.style.display = 'none';
+            _this.s.style.display = 'block';
+            setTimeout(function () {
+                _this._router.navigate(['/authentication/signin']);
+            }, 2000);
+        }, function (error) {
+            _this.g.style.display = 'none';
+            _this.g.style.display = 'block';
+            _this.errorMessage = error;
+        });
     };
     ResetPasswordComponent = __decorate([
         core_1.Component({
