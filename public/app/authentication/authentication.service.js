@@ -14,39 +14,18 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
 var AuthenticationService = /** @class */ (function () {
-    function AuthenticationService(http, ngZone) {
+    // private _forgotPasswordURL = 'api/forgotPassword';
+    // private _resetURL = 'api/resetPassword';
+    function AuthenticationService(http) {
         this.http = http;
-        this.ngZone = ngZone;
         this.user = window['user'];
         this._signinURL = 'api/auth/signin';
         this._signupURL = 'api/auth/signup';
-        this._forgotPasswordURL = 'api/forgotPassword';
-        this._resetURL = 'api/resetPassword';
+        this._baseURL = 'api/auth/users';
     }
+    //---------------------authentication------------//
     AuthenticationService.prototype.isLoggedIn = function () {
         return (!!this.user);
-    };
-    AuthenticationService.prototype.forgotPassword = function (credentials) {
-        var body = JSON.stringify(credentials);
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(this._forgotPasswordURL, body, options)
-            .map(function (res) { return res.json(); })
-            .catch(this.handleError);
-    };
-    AuthenticationService.prototype.resetPassword = function (credentials) {
-        var body = JSON.stringify(credentials);
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(this._resetURL + "/" + credentials.resetPasswordToken, body, options)
-            .map(function (res) { return res.json(); })
-            .catch(this.handleError);
-    };
-    AuthenticationService.prototype.read = function (token) {
-        return this.http
-            .get(this._resetURL + "/" + token)
-            .map(function (res) { return res.json(); })
-            .catch(this.handleError);
     };
     AuthenticationService.prototype.signin = function (credentials) {
         var _this = this;
@@ -62,10 +41,57 @@ var AuthenticationService = /** @class */ (function () {
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    // refreshUser(): Observable<any> {
-    //   return this.http.get('/api/auth/userLoggedIn')
-    //   .map((res: Response) => res.json())
-    //   .catch(this.handleError)
+    //-----------------------------Crud Module--------------------------//
+    AuthenticationService.prototype.read = function (userId) {
+        return this.http
+            .get(this._baseURL + "/" + userId)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    AuthenticationService.prototype.update = function (user) {
+        return this.http
+            .put(this._baseURL + "/" + user._id, user)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    AuthenticationService.prototype.delete = function (userId) {
+        return this.http
+            .delete(this._baseURL + "/" + userId)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    AuthenticationService.prototype.list = function () {
+        return this.http
+            .get(this._baseURL)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    //-----------------------------Forgot Password--------------------------//
+    // forgotPassword(credentials: any): Observable<any> {
+    //   let body = JSON.stringify(credentials);
+    //   let headers = new Headers({ 'Content-Type': 'application/json' });
+    //   let options = new RequestOptions({ headers: headers });
+    //
+    //   return this.http.post(this._forgotPasswordURL, body, options)
+    //     .map((res: Response) => res.json())
+    //     .catch(this.handleError)
+    // }
+    //
+    // resetPassword(credentials: any): Observable<any> {
+    //   let body = JSON.stringify(credentials);
+    //   let headers = new Headers({ 'Content-Type': 'application/json' });
+    //   let options = new RequestOptions({ headers: headers });
+    //
+    //   return this.http.post(`${this._resetURL}/${credentials.resetPasswordToken}`, body, options)
+    //     .map((res: Response) => res.json())
+    //     .catch(this.handleError)
+    // }
+    //
+    // read(token: string): Observable<any> {
+    // 	return this.http
+    // 		.get(`${this._resetURL}/${token}`)
+    // 		.map((res: Response) => res.json())
+    // 		.catch(this.handleError);
     // }
     AuthenticationService.prototype.handleError = function (error) {
         console.error(error);
@@ -73,7 +99,7 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http, core_1.NgZone])
+        __metadata("design:paramtypes", [http_1.Http])
     ], AuthenticationService);
     return AuthenticationService;
 }());

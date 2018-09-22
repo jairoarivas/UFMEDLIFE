@@ -1,6 +1,6 @@
 import 'rxjs/Rx';
-import { Injectable, NgZone } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions, Request, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -9,43 +9,19 @@ export class AuthenticationService {
 
   private _signinURL = 'api/auth/signin';
   private _signupURL = 'api/auth/signup';
-  private _forgotPasswordURL = 'api/forgotPassword';
-  private _resetURL = 'api/resetPassword';
+  private _baseURL = 'api/auth/users';
+  // private _forgotPasswordURL = 'api/forgotPassword';
+  // private _resetURL = 'api/resetPassword';
 
-  constructor(private http: Http, private ngZone : NgZone) {
+  constructor(private http: Http) {
 
   }
+
+  //---------------------authentication------------//
 
   isLoggedIn(): boolean {
     return (!!this.user);
   }
-
-  forgotPassword(credentials: any): Observable<any> {
-    let body = JSON.stringify(credentials);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this._forgotPasswordURL, body, options)
-      .map((res: Response) => res.json())
-      .catch(this.handleError)
-  }
-
-  resetPassword(credentials: any): Observable<any> {
-    let body = JSON.stringify(credentials);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(`${this._resetURL}/${credentials.resetPasswordToken}`, body, options)
-      .map((res: Response) => res.json())
-      .catch(this.handleError)
-  }
-
-  read(token: string): Observable<any> {
-		return this.http
-			.get(`${this._resetURL}/${token}`)
-			.map((res: Response) => res.json())
-			.catch(this.handleError);
-	}
 
   signin(credentials: any): Observable<any> {
     let body = JSON.stringify(credentials);
@@ -63,11 +39,60 @@ export class AuthenticationService {
       .catch(this.handleError)
   }
 
-  // refreshUser(): Observable<any> {
-  //   return this.http.get('/api/auth/userLoggedIn')
-  //   .map((res: Response) => res.json())
-  //   .catch(this.handleError)
+
+//-----------------------------Crud Module--------------------------//
+
+  read(userId: string): Observable<any> {
+    return this.http
+      .get(`${this._baseURL}/${userId}`)
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+  update(user: any): Observable<any> {
+		return this.http
+			.put(`${this._baseURL}/${user._id}`, user)
+			.map((res: Response) => res.json())
+			.catch(this.handleError);
+  }
+  delete(userId: any): Observable<any> {
+		return this.http
+			.delete(`${this._baseURL}/${userId}`)
+			.map((res: Response) => res.json())
+			.catch(this.handleError);
+	}
+  list(): Observable<any> {
+		return this.http
+			.get(this._baseURL)
+			.map((res: Response) => res.json())
+			.catch(this.handleError);
+	}
+//-----------------------------Forgot Password--------------------------//
+  // forgotPassword(credentials: any): Observable<any> {
+  //   let body = JSON.stringify(credentials);
+  //   let headers = new Headers({ 'Content-Type': 'application/json' });
+  //   let options = new RequestOptions({ headers: headers });
+  //
+  //   return this.http.post(this._forgotPasswordURL, body, options)
+  //     .map((res: Response) => res.json())
+  //     .catch(this.handleError)
   // }
+  //
+  // resetPassword(credentials: any): Observable<any> {
+  //   let body = JSON.stringify(credentials);
+  //   let headers = new Headers({ 'Content-Type': 'application/json' });
+  //   let options = new RequestOptions({ headers: headers });
+  //
+  //   return this.http.post(`${this._resetURL}/${credentials.resetPasswordToken}`, body, options)
+  //     .map((res: Response) => res.json())
+  //     .catch(this.handleError)
+  // }
+  //
+  // read(token: string): Observable<any> {
+	// 	return this.http
+	// 		.get(`${this._resetURL}/${token}`)
+	// 		.map((res: Response) => res.json())
+	// 		.catch(this.handleError);
+	// }
 
   private handleError(error: Response) {
     console.error(error);

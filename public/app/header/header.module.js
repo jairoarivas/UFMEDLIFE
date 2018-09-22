@@ -7,18 +7,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-// import { MembersService } from './members.service';
-// import { EventsService } from '../events/events.service';
-var AuthenticationComponent = /** @class */ (function () {
-    function AuthenticationComponent() {
+var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
+var header_routes_1 = require("./header.routes");
+var header_component_1 = require("./header.component");
+var HeaderModule = /** @class */ (function () {
+    function HeaderModule() {
     }
-    AuthenticationComponent = __decorate([
-        core_1.Component({
-            selector: 'authentication',
-            templateUrl: 'app/authentication/authentication.template.html',
+    HeaderModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                common_1.CommonModule,
+                router_1.RouterModule.forChild(header_routes_1.HeaderRoutes),
+            ],
+            declarations: [
+                header_component_1.HeaderComponent,
+            ]
         })
-    ], AuthenticationComponent);
-    return AuthenticationComponent;
+    ], HeaderModule);
+    return HeaderModule;
 }());
-exports.AuthenticationComponent = AuthenticationComponent;
-//# sourceMappingURL=authentication.component.js.map
+exports.HeaderModule = HeaderModule;
+//# sourceMappingURL=header.module.js.map

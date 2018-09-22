@@ -7,15 +7,17 @@ import { AuthenticationRoutes } from './authentication.routes';
 import { AuthenticationComponent } from './authentication.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+
+//crud//
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
-import { ForgotPasswordComponent } from './forgotPassword/forgotPassword.component';
-import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
-import { PointListComponent } from './pointList/pointList.component';
-import { AddPointComponent } from './addPoint/addPoint.component';
+// import { ForgotPasswordComponent } from './forgotPassword/forgotPassword.component';
+// import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
+// import { PointListComponent } from './pointList/pointList.component';
+// import { AddPointComponent } from './addPoint/addPoint.component';
 
- import { PipeModule }    from '../Filters/filter.module';
+import { PipeModule }    from '../Filters/filter.module';
 
 @NgModule ({
   imports: [
@@ -23,7 +25,6 @@ import { AddPointComponent } from './addPoint/addPoint.component';
     CommonModule,
     PipeModule.forRoot(),
     RouterModule.forChild(AuthenticationRoutes),
-
   ],
   declarations: [
     AuthenticationComponent,
@@ -32,10 +33,10 @@ import { AddPointComponent } from './addPoint/addPoint.component';
     ListComponent,
     ViewComponent,
     EditComponent,
-    PointListComponent,
-    AddPointComponent,
-    ForgotPasswordComponent,
-    ResetPasswordComponent,
+    // PointListComponent,
+    // AddPointComponent,
+    // ForgotPasswordComponent,
+    // ResetPasswordComponent,
   ]
 })
 export class AuthenticationModule {}

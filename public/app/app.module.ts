@@ -1,24 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
+
+import { FormsModule } from '@angular/forms';
 import { HttpModule, RequestOptions } from '@angular/http';
 
-import { MembersService } from './authentication/members.service';
-import { EventsService } from './events/events.service';
-
-
-import { AuthenticationService } from './authentication/authentication.service';
-import { AuthenticationModule } from './authentication/authentication.module';
-import {getInvolvedModule } from './getInvolved/getInvolved.module';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
 
+import { AuthenticationService } from './authentication/authentication.service';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { HeaderModule } from './header/header.module';
+
+import { EventsService } from './events/events.service';
+import { getInvolvedModule } from './getInvolved/getInvolved.module';
 import { contactUsComponent } from './contactUs/contactUs.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
 
 //import { itResetComponent } from './resetConfirmations/itReset.component';
 //import { itSentComponent } from './resetConfirmations/itSent.component';
@@ -29,18 +28,17 @@ import { EventsModule } from './events/events.module';
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
-    CommonModule,
     HttpModule,
     AuthenticationModule,
+    HeaderModule,
     getInvolvedModule,
     EventsModule,
+    FormsModule,
+    //CommonModule,
     RouterModule.forRoot(AppRoutes)
   ],
   declarations: [
     HomeComponent,
-    HeaderComponent,
-
     contactUsComponent,
     // itSentComponent,
     // ViewProfileComponent,
@@ -49,7 +47,6 @@ import { EventsModule } from './events/events.module';
   ],
   providers: [
     AuthenticationService,
-    MembersService,
     EventsService
   ],
   bootstrap: [AppComponent]

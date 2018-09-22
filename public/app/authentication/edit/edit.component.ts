@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MembersService } from '../members.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'edit',
@@ -16,7 +16,7 @@ export class EditComponent {
   s:HTMLElement;
 	constructor(private _router:Router,
 				private _route: ActivatedRoute,
-				private _membersService: MembersService) {}
+				private _authenticationService: AuthenticationService) {}
 
 	ngOnInit() {
     this.g = document.getElementById('errorMessage') as HTMLElement;
@@ -26,7 +26,7 @@ export class EditComponent {
 		this.paramsObserver = this._route.params.subscribe(params => {
 			let userId = params['userId'];
 
-			this._membersService.read(userId).subscribe(member => {
+			this._authenticationService.read(userId).subscribe(member => {
 																this.member = member;
 													 		},
 															error => this._router.navigate(['/authentication/members']));
@@ -38,7 +38,7 @@ export class EditComponent {
 	}
 
 	update() {
-		this._membersService.update(this.member).subscribe(savedUser => {
+		this._authenticationService.update(this.member).subscribe(savedUser => {
       this.s.style.display = 'none';
       this.s.style.display = 'block';
       setTimeout(() => {

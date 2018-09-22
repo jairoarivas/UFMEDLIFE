@@ -18,12 +18,6 @@ var ForgotPasswordComponent = /** @class */ (function () {
         this._router = _router;
         this.credentials = {};
     }
-    ForgotPasswordComponent.prototype.forgotPassword = function () {
-        var _this = this;
-        this._authenticationService.forgotPassword(this.credentials).subscribe(function (result) {
-            return _this._router.navigate(['/itSent']);
-        }, function (error) { return _this.errorMessage = error; });
-    };
     ForgotPasswordComponent = __decorate([
         core_1.Component({
             selector: 'forgotPassword',

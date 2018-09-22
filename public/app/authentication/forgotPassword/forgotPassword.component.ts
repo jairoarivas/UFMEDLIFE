@@ -14,10 +14,10 @@ export class ForgotPasswordComponent {
 
   constructor (private _authenticationService: AuthenticationService, private _router: Router) {  }
 
-  forgotPassword() {
-    this._authenticationService.forgotPassword(
-      this.credentials).subscribe(result =>
-      this._router.navigate(['/itSent']),
-      error => this.errorMessage = error );
-  }
+  // forgotPassword() {
+  //   this._authenticationService.forgotPassword(
+  //     this.credentials).subscribe(result =>
+  //     this._router.navigate(['/itSent']),
+  //     error => this.errorMessage = error );
+  // }
 }

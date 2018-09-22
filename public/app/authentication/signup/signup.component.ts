@@ -31,7 +31,7 @@ export class SignupComponent {
         this.s.style.display = 'none';
         this.s.style.display = 'block';
         setTimeout(() => {
-            this._router.navigate(['/authentication/SignIn']);
+            this._router.navigate(['/authentication/signin']);
         }, 1500);
 
       },

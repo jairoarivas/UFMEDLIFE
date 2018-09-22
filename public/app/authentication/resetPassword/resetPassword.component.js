@@ -31,10 +31,6 @@ var ResetPasswordComponent = /** @class */ (function () {
     ResetPasswordComponent.prototype.ngOnDestroy = function () {
         this.paramsObserver.unsubscribe();
     };
-    ResetPasswordComponent.prototype.resetPassword = function () {
-        var _this = this;
-        this._authenticationService.resetPassword(this.user).subscribe(function (savedUser) { return _this._router.navigate(['/itReset']); }, function (error) { return _this.errorMessage = error; });
-    };
     ResetPasswordComponent = __decorate([
         core_1.Component({
             selector: 'resetPassword',

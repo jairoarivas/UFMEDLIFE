@@ -39,14 +39,14 @@
           <div class="col-6 m-0 p-0" *ngIf="!(this.showPassword)">
             <input class = "form-control" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
           </div>
-          <div class = "col-2 m-0 p-0" style = "text-align:center;" *ngIf="!(this.showPassword)">
-            <a style = "color:rgb(28,28,28);" (click)="this.showPassword = true">SHOW</a>
+          <div class = "col-2 m-0 p-0" style = "text-align:center;" *ngIf="!(showPassword)">
+            <a style = "color:rgb(28,28,28);" (click)="showPassword = true">SHOW</a>
           </div>
           <div class="col-6 m-0 p-0" *ngIf="(this.showPassword)">
             <input  class = "form-control"type="text" [(ngModel)]="user.password" name="password" placeholder="Password">
           </div>
-          <div class = "col-2 m-0 p-0" style = "text-align:center;" *ngIf="(this.showPassword)">
-          <a style = "color:rgb(28,28,28);" (click)="this.showPassword = false">HIDE</a>
+          <div class = "col-2 m-0 p-0" style = "text-align:center;" *ngIf="(showPassword)">
+          <a style = "color:rgb(28,28,28);" (click)="showPassword = false">HIDE</a>
           </div>
         </div>
         <!-- <div class="form-group justify-content-center row m-0 p-0">

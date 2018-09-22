@@ -32,7 +32,7 @@ var SignupComponent = /** @class */ (function () {
             _this.s.style.display = 'none';
             _this.s.style.display = 'block';
             setTimeout(function () {
-                _this._router.navigate(['/authentication/SignIn']);
+                _this._router.navigate(['/authentication/signin']);
             }, 1500);
         }, function (error) {
             _this.errorMessage = error;

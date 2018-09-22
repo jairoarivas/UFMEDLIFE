@@ -19,7 +19,9 @@ const UserSchema = new Schema({
 		default: 0
 	},
 	attendedEvents: [{
-		type: String
+		eventName: String,
+		eventValue: Number,
+		eventDate: Date
 	}],
 	tempEvent: String,
 	username: {

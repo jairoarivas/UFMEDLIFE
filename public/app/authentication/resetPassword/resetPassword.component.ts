@@ -31,8 +31,8 @@ export class ResetPasswordComponent {
     this.paramsObserver.unsubscribe();
   }
 
-  resetPassword() {
-    this._authenticationService.resetPassword(this.user).subscribe(savedUser => this._router.navigate(['/itReset']),
-      error => this.errorMessage = error);
-  }
+  // resetPassword() {
+  //   this._authenticationService.resetPassword(this.user).subscribe(savedUser => this._router.navigate(['/itReset']),
+  //     error => this.errorMessage = error);
+  // }
 }

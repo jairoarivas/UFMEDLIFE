@@ -11,12 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var members_service_1 = require("../members.service");
+var authentication_service_1 = require("../authentication.service");
 var EditComponent = /** @class */ (function () {
-    function EditComponent(_router, _route, _membersService) {
+    function EditComponent(_router, _route, _authenticationService) {
         this._router = _router;
         this._route = _route;
-        this._membersService = _membersService;
+        this._authenticationService = _authenticationService;
         this.member = {};
         this.roles = ['Admin', 'Member'];
     }
@@ -28,7 +28,7 @@ var EditComponent = /** @class */ (function () {
         this.s.style.display = 'none';
         this.paramsObserver = this._route.params.subscribe(function (params) {
             var userId = params['userId'];
-            _this._membersService.read(userId).subscribe(function (member) {
+            _this._authenticationService.read(userId).subscribe(function (member) {
                 _this.member = member;
             }, function (error) { return _this._router.navigate(['/authentication/members']); });
         });
@@ -38,7 +38,7 @@ var EditComponent = /** @class */ (function () {
     };
     EditComponent.prototype.update = function () {
         var _this = this;
-        this._membersService.update(this.member).subscribe(function (savedUser) {
+        this._authenticationService.update(this.member).subscribe(function (savedUser) {
             _this.s.style.display = 'none';
             _this.s.style.display = 'block';
             setTimeout(function () {
@@ -58,7 +58,7 @@ var EditComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [router_1.Router,
             router_1.ActivatedRoute,
-            members_service_1.MembersService])
+            authentication_service_1.AuthenticationService])
     ], EditComponent);
     return EditComponent;
 }());

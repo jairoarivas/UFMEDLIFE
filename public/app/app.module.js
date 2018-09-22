@@ -8,20 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
-var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
-var common_1 = require("@angular/common");
+var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
-var members_service_1 = require("./authentication/members.service");
-var events_service_1 = require("./events/events.service");
-var authentication_service_1 = require("./authentication/authentication.service");
-var authentication_module_1 = require("./authentication/authentication.module");
-var getInvolved_module_1 = require("./getInvolved/getInvolved.module");
 var app_component_1 = require("./app.component");
 var app_routes_1 = require("./app.routes");
+var authentication_service_1 = require("./authentication/authentication.service");
+var authentication_module_1 = require("./authentication/authentication.module");
+var header_module_1 = require("./header/header.module");
+var events_service_1 = require("./events/events.service");
+var getInvolved_module_1 = require("./getInvolved/getInvolved.module");
 var contactUs_component_1 = require("./contactUs/contactUs.component");
 var home_component_1 = require("./home/home.component");
-var header_component_1 = require("./header/header.component");
 //import { itResetComponent } from './resetConfirmations/itReset.component';
 //import { itSentComponent } from './resetConfirmations/itSent.component';
 //import { ViewProfileComponent } from './viewProfile/viewProfile.component';
@@ -33,17 +31,17 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule,
-                common_1.CommonModule,
                 http_1.HttpModule,
                 authentication_module_1.AuthenticationModule,
+                header_module_1.HeaderModule,
                 getInvolved_module_1.getInvolvedModule,
                 events_module_1.EventsModule,
+                forms_1.FormsModule,
+                //CommonModule,
                 router_1.RouterModule.forRoot(app_routes_1.AppRoutes)
             ],
             declarations: [
                 home_component_1.HomeComponent,
-                header_component_1.HeaderComponent,
                 contactUs_component_1.contactUsComponent,
                 // itSentComponent,
                 // ViewProfileComponent,
@@ -52,7 +50,6 @@ var AppModule = /** @class */ (function () {
             ],
             providers: [
                 authentication_service_1.AuthenticationService,
-                members_service_1.MembersService,
                 events_service_1.EventsService
             ],
             bootstrap: [app_component_1.AppComponent]

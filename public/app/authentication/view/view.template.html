@@ -2,7 +2,7 @@
 <div class="container-fluid m-0 p-0 restOfSite">
   <div class="row m-0 p-0">
     <div class="col m-0 lightHeader">
-      <h1>ACCOUNT INFORMATION</h1>
+      <h1>{{member.firstName}} {{member.lastName}}</h1>
     </div>
   </div>
 </div>
@@ -15,42 +15,63 @@
 		</div>
 		<div class = "col-sm pointContainer">
 			<h2>PERCENTILE</h2>
-			<h1 class = "percentile mx-auto"></h1>
-		</div>
-	</div>
-	<div class = "row" style = "margin-top: 5vh;">
-		<div class = "col-sm pointContainer">
-			<h2>POINTS</h2>
-			<h1 class = "points mx-auto">{{member.points}}</h1>
-		</div>
-		<div class = "col-sm">
+			<h1 class = "percentile mx-auto">{{percentile()}}</h1>
 		</div>
 	</div>
 </div>
 
-<!-- <div class="container-fluid div-color">
-	<div class="container">
-		<div class="row" *ngIf="member && user.role === 'Admin'">
-			<div class="col-sm-8 text-justify">
-				<div class="row py-5">
-					<h4 class="col">Basic Info</h4>
-				</div>
-				<div class="row pb-3">
-					<p class="col">Email: {{member.email}}</p>
-				</div>
-				<div class="row pb-3">
-					<p class="col">Username: {{member.username}}</p>
-				</div>
-				<div class="row pb-3">
-					<p class="col">Member role: {{member.role}}</p>
-				</div>
-			</div>
-			<div class="col-sm-4 text-center" *ngIf="allowEdit">
-				<div class="row" style = "padding-top:20vh;">
-					<button class="memberButton btn col-sm-6" [routerLink]="['/authentication/members', member._id, 'edit']">Edit</button>
-					<button class="memberButton btn col-sm-6" (click)="delete()">Delete</button>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class = "container">
+  <div class = "row">
+    <div class = "col pointContainer">
+      <h2 style = "margin-bottom: 20px;">MEMBER INFORMATION</h2>
+      <div class = "table-responsive">
+        <table class="table table-borderless" style = "text-align: left;">
+          <tbody>
+            <tr>
+              <th scope="row">First Name:</th>
+              <td>{{member.firstName}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Last Name:</th>
+              <td>{{member.lastName}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Email:</th>
+              <td>{{member.username}}</td>
+            </tr>
+            <tr *ngIf = "_authenticationService.user.role === 'Admin'">
+              <th scope="row">Role:</th>
+              <td>{{member.role}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class = "container">
+  <div class = "row">
+    <div class = "col pointContainer">
+      <h2 style = "margin-bottom: 20px;">Attended Events</h2>
+      <div class = "table-responsive">
+  			<table class="table table-striped">
+  			  <thead>
+						<tr>
+  			      <th scope="col">Event</th>
+  			      <th scope="col">Points</th>
+							<th scope="col">Date</th>
+  			    </tr>
+					</thead>
+					<tbody>
+  			    <tr *ngFor = "let event of member.attendedEvents | orderbyDate: 'eventDate'">
+  						<td>{{event.eventName}}</td>
+  			      <td>{{event.eventValue}}</td>
+							<td>{{event.eventDate | date: 'medium'}}</td>
+  			    </tr>
+          </tbody>
+				</table>
+      </div>
+    </div>
+  </div>
 </div> -->

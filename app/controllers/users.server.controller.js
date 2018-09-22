@@ -34,6 +34,163 @@ const getErrorMessage = function(err) {
 	return message;
 };
 
+// ----------------------------- user crud module ---------------------------//
+// Create a new controller method that creates new 'regular' users
+exports.signup = function(req, res) {
+	const user = new User(req.body);
+	user.provider = 'local';
+	user.password = req.body.password;
+	if (user.password) {
+		user.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+		user.password = user.hashPassword(user.password);
+	}
+
+	//saving and logging in
+	user.save((err) => {
+		if(err) {
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			user.password = undefined;
+			user.salt = undefined;
+
+			res.status(200).json(user);
+
+			// req.login(user,function(err){
+			// 	if(err){
+			// 		res.status(400).send(err);
+			// 	}
+			// 	else{
+			// 		res.json(user);
+			// 	}
+			// });
+		}
+	});
+};
+
+exports.list = function(req, res){
+	User.find().exec((err, users) => {
+		if(err){
+			return res.status(400).send({
+				message:getErrorMessage(err)
+			});
+		} else {
+			res.status(200).json(users);
+		}
+	});
+};
+
+exports.userByID = function(req, res,next ,id){
+	User.findById(id).exec((err, user) => {
+		if(err) return next(err);
+		if(!user) return next(new Error('Failed to load user' + id));
+
+		req.user = user;
+
+		next();
+	});
+};
+
+exports.read = function(req,res){
+	res.status(200).json(req.user);
+};
+
+exports.update = function(req, res){
+	const user = req.user;
+	user.firstName = req.body.firstName;
+	user.lastName = req.body.lastName;
+	user.username = req.body.username;
+	//user.password = req.body.password;
+	user.role = req.body.role;
+
+	user.save((err) => {
+		if(err) {
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.status(200).json(user);
+		}
+	});
+
+};
+
+exports.delete = function(req, res){
+	const user = req.user;
+
+	user.remove((err) => {
+		if(err) {
+			return res.status(400).send({
+				messsage: getErrorMessage(err)
+			});
+		} else {
+			res.status(200).json(user);
+		}
+	});
+
+};
+
+// Create a new controller middleware that is used to authorize authenticated operations
+exports.requiresLogin = function(req, res, next) {
+	// If a user is not authenticated send the appropriate error message
+	if (!req.isAuthenticated()) {
+		return res.status(401).send({
+			message: 'User is not logged in.'
+		});
+	}
+
+	// Call the next middleware
+	next();
+};
+
+exports.hasAuthorization = function(req, res,next){
+	if(req.user.role !== 'Admin'){
+		return res.status(403).send({
+			message: 'User is not authorized.'
+		});
+	}
+
+	next();
+};
+
+
+// -------------------------  authentication ---------------------------//
+
+// Create a new controller method that signin users
+exports.signin = function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+        if (err || !user) {
+            res.status(400).send(info);
+        } else {
+            // Remove sensitive data before login
+            user.password = undefined;
+            user.salt = undefined;
+
+            // Use the Passport 'login' method to login
+            req.login(user, (err) => {
+                if (err) {
+										console.log(err);
+                    res.status(400).send(err);
+                } else {
+                    res.json(user);
+                }
+            });
+        }
+    })(req, res, next);
+};
+
+// Create a new controller method for signing out
+exports.signout = function(req, res) {
+	// Use the Passport 'logout' method to logout
+	req.logout();
+
+	// Redirect the user back to the main application page
+	res.redirect('/');
+};
+
+//--------------------------  forgotPassword ---------------------------//
+
 exports.forgotPassword = function(req, res, next) {
   async.waterfall([
     function(done) {
@@ -85,111 +242,6 @@ exports.forgotPassword = function(req, res, next) {
 		}
     res.status(200).send({message: 'Password reset email sent succesfully'});
   });
-};
-
-// Create a new controller method that signin users
-exports.signin = function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-        if (err || !user) {
-            res.status(400).send(info);
-        } else {
-            // Remove sensitive data before login
-            user.password = undefined;
-            user.salt = undefined;
-
-            // Use the Passport 'login' method to login
-            req.login(user, (err) => {
-                if (err) {
-										console.log(err);
-                    res.status(400).send(err);
-                } else {
-                    res.json(user);
-                }
-            });
-        }
-    })(req, res, next);
-};
-
-// Create a new controller method that creates new 'regular' users
-exports.signup = function(req, res) {
-	const user = new User(req.body);
-	user.provider = 'local';
-	user.password = req.body.password;
-	if (user.password) {
-		user.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
-		user.password = user.hashPassword(user.password);
-	}
-
-	//saving and logging in
-	user.save((err) => {
-		if(err) {
-			return res.status(400).send({
-				message: getErrorMessage(err)
-			});
-		} else {
-			user.password = undefined;
-			user.salt = undefined;
-
-			res.json(user);
-
-			// req.login(user,function(err){
-			// 	if(err){
-			// 		res.status(400).send(err);
-			// 	}
-			// 	else{
-			// 		res.json(user);
-			// 	}
-			// });
-		}
-	});
-};
-// Create a new controller method for signing out
-exports.signout = function(req, res) {
-	// Use the Passport 'logout' method to logout
-	req.logout();
-
-	// Redirect the user back to the main application page
-	res.redirect('/');
-};
-
-// Create a new controller middleware that is used to authorize authenticated operations
-exports.requiresLogin = function(req, res, next) {
-	// If a user is not authenticated send the appropriate error message
-	if (!req.isAuthenticated()) {
-		return res.status(401).send({
-			message: 'User is not logged in'
-		});
-	}
-
-	// Call the next middleware
-	next();
-};
-
-exports.list = function(req, res){
-	User.find().exec((err, users) => {
-		if(err){
-			return res.status(400).send({
-				message:getErrorMessage(err)
-			});
-		} else {
-			res.json(users);
-		}
-	});
-};
-
-exports.userByID = function(req, res,next ,id){
-	User.findById(id).populate().exec((err, user) => {
-		if(err) return next(err);
-		if(!user) return next(new Error('Failed to load user' + id));
-
-		req.user = user;
-
-		next();
-	});
-};
-
-exports.read = function(req,res){
-	res.status(200).json(req.user);
 };
 
 exports.resetPassword = function(req, res){
@@ -259,7 +311,7 @@ exports.reset = function(req, res) {
 }
 
 
-
+// ------------------------------ points system---------------------------//
 
 exports.removePoint = function(req, res){
 	const user= req.user;
@@ -297,61 +349,4 @@ exports.addPoint = function(req, res){
 		}
 	});
 
-};
-
-exports.update = function(req, res){
-	const user = req.user;
-	user.firstName = req.body.firstName;
-	user.lastName = req.body.lastName;
-	//user.email = req.body.email;
-	user.username = req.body.username;
-	//user.password = req.body.password;
-	user.role = req.body.role;
-
-	user.save((err) => {
-		if(err) {
-			return res.status(400).send({
-				message: getErrorMessage(err)
-			});
-		} else {
-			res.json(user);
-		}
-	});
-
-};
-
-exports.delete = function(req, res){
-	const user = req.user;
-
-	user.remove((err) => {
-		if(err) {
-			return res.status(400).send({
-				messsage: getErrorMessage(err)
-			});
-		} else {
-			res.json(user);
-		}
-	});
-
-};
-
-exports.userByID = function(req, res,next ,id){
-	User.findById(id).exec((err, user) => {
-		if(err) return next(err);
-		if(!user) return next(new Error('Failed to load user' + id));
-
-		req.user = user;
-
-		next();
-	});
-};
-
-exports.hasAuthorization = function(req, res,next){
-	if(req.user.role !== 'Admin'){
-		return res.status(403).send({
-			message: 'User is not authorized.'
-		});
-	}
-
-	next();
 };
