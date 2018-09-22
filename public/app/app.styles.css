@@ -1349,6 +1349,10 @@ ul.menuList li{
 }
 
 /*  ------------------PROFILE PAGE--------------------- */
+.addCursor{
+  cursor: pointer;
+}
+
 .pointContainer{
   text-align: center;
   margin-bottom: 10vh;
@@ -1382,59 +1386,4 @@ ul.menuList li{
   width: 192px;
   height: 192px;
   margin-top: 20px;
-}
-
-/*----General-----*/
-
-.div-color {
-  background-color: rgb(255, 245, 210);
-  color: rgb(23, 23, 23);
-}
-
-.pageImage{
-  width: 100%;
-  padding-right: 0;
-  padding-left:0;
-  overflow-x: hidden;
-}
-
-
-
-.capitalize{
-  text-transform: capitalize;
-}
-
-/* signin page */
-
-.medSignin {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  margin-top:25vh;
-}
-
-.medSignup {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  margin-top:10vh;
-}
-
-.medCreateEvent {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  margin-top:15vh;
-}
-
-.medPointMenu {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  margin-top:5vh;
-}
-
-.listMemberDiv{
-  height: 100vh;
-}
-
-.headerColor{
-  background-color: rgba(7, 36, 113, 0.9);
-  color: white;
 }

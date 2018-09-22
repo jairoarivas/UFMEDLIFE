@@ -49,6 +49,10 @@ export class ListComponent{
 		this.currentMember = m;
 	}
 
+	memberViewPage(member){
+		this._router.navigate(['/authentication/members', member]);
+	}
+
 	delete() {
 		this._authenticationService.delete(this.currentMember._id).subscribe(deletedUser => {
 			this._authenticationService.list().subscribe(members  => this.members = members);

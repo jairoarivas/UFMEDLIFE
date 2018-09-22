@@ -63,4 +63,16 @@ export class ViewComponent {
     //console.log(totalMembers);
     return ((numberUnderMember/totalMembers) * 100);
   }
+
+  eventsAttendedEmpty(){
+    if(this.member.attendedEvents !== undefined){
+      if(this.member.attendedEvents.length > 0){
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+  }
+
 }

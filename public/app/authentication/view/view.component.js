@@ -60,6 +60,16 @@ var ViewComponent = /** @class */ (function () {
         //console.log(totalMembers);
         return ((numberUnderMember / totalMembers) * 100);
     };
+    ViewComponent.prototype.eventsAttendedEmpty = function () {
+        if (this.member.attendedEvents !== undefined) {
+            if (this.member.attendedEvents.length > 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    };
     ViewComponent = __decorate([
         core_1.Component({
             selector: 'view',

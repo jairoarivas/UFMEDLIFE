@@ -44,6 +44,9 @@ var ListComponent = /** @class */ (function () {
         // console.log(m);
         this.currentMember = m;
     };
+    ListComponent.prototype.memberViewPage = function (member) {
+        this._router.navigate(['/authentication/members', member]);
+    };
     ListComponent.prototype.delete = function () {
         var _this = this;
         this._authenticationService.delete(this.currentMember._id).subscribe(function (deletedUser) {

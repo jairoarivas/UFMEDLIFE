@@ -50,11 +50,12 @@
   </div>
 </div>
 
-<!-- <div class = "container restOfSite">
+<div class = "container restOfSite">
   <div class = "row">
     <div class = "col pointContainer">
-      <h2 style = "margin-bottom: 20px;">Attended Events</h2>
-      <div class = "table-responsive">
+      <h2 style = "margin-bottom: 20px;">ATTENDED EVENTS</h2>
+      <h4 style = "margin-bottom: 20px; padding-top: 20px;" *ngIf = "eventsAttendedEmpty()">No events have been atteneded</h4>
+      <div class = "table-responsive" *ngIf = "!(eventsAttendedEmpty())">
   			<table class="table table-striped">
   			  <thead>
 						<tr>
@@ -64,7 +65,7 @@
   			    </tr>
 					</thead>
 					<tbody>
-  			    <tr *ngFor = "let event of member.attendedEvents | orderbyDate: 'eventDate'">
+  			    <tr *ngFor = "let event of member.attendedEvents | orderByDate: 'eventDate'">
   						<td>{{event.eventName}}</td>
   			      <td>{{event.eventValue}}</td>
 							<td>{{event.eventDate | date: 'medium'}}</td>
@@ -74,4 +75,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
