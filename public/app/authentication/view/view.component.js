@@ -12,16 +12,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
 const authentication_service_1 = require("../authentication.service");
-const events_service_1 = require("../../events/events.service");
+const eggs_service_1 = require("../../eggs/eggs.service");
 let ViewComponent = class ViewComponent {
-    constructor(_router, _route, _authenticationService, _eventsService) {
+    constructor(_router, _route, _authenticationService, _eggsService) {
         this._router = _router;
         this._route = _route;
         this._authenticationService = _authenticationService;
-        this._eventsService = _eventsService;
+        this._eggsService = _eggsService;
         this.member = {};
         //point request related variables
-        this.event = {};
+        this.egg = {};
         this.request = {};
         this.user = this._authenticationService.user;
         this._authenticationService.list().subscribe(members => {
@@ -50,7 +50,7 @@ let ViewComponent = class ViewComponent {
     createRequest() {
         // var alreadyRequested = false;
         // for(var i = 0; i < this.member.attendedEvents.length; i++){
-        //   if(this.member.attendedEvents[i].eventName === this.event.eventName){
+        //   if(this.member.attendedEvents[i].eggName === this.egg.eggName){
         //     return true;
         //   }
         //   else{
@@ -59,7 +59,7 @@ let ViewComponent = class ViewComponent {
         // }
         // console.log('AlreadyRequested: ' + alreadyRequested);
         // if(alreadyRequested){
-        //   this.errorMessage = 'You have already requested points for this event'
+        //   this.errorMessage = 'You have already requested points for this egg'
         //   this.g.style.display = 'none';
         //   this.g.style.display = 'block';
         //   setTimeout(() => {
@@ -67,9 +67,9 @@ let ViewComponent = class ViewComponent {
         //   }, 5000);
         // }
         // else{
-        //   this._requestsService.checkEvent(this.event.eventName.replace(/\s+/g, ''),this.member._id).subscribe(requests => {
+        //   this._requestsService.checkEvent(this.egg.eggName.replace(/\s+/g, ''),this.member._id).subscribe(requests => {
         //     //console.log('Search Results: ' + requests);
-        //     // this.errorMessage = 'You have already requested points for this event'
+        //     // this.errorMessage = 'You have already requested points for this egg'
         //     // this.g.style.display = 'none';
         //     // this.g.style.display = 'block';
         //     // setTimeout(() => {
@@ -85,9 +85,9 @@ let ViewComponent = class ViewComponent {
         //     }, 5000);
         //   this.request = {
         //     user: this.member._id,
-        //     eventName:this.event.eventName,
-        //     eventValue:this.event.eventValue,
-        //     eventDate: this.event.eventDate
+        //     eggName:this.egg.eggName,
+        //     eggValue:this.egg.eggValue,
+        //     eggDate: this.egg.eggDate
         //   };
         //   this._requestsService.create(this.request).subscribe(result => {
         //     this.s.style.display = 'none';
@@ -109,14 +109,14 @@ let ViewComponent = class ViewComponent {
         // );
         // }
     }
-    // findEvent(){
+    // findEgg(){
     //   this.s.style.display = 'none';
     //   this.g.style.display = 'none';
-    //   this._eventsService.readCode(this.eventCodeRequest).subscribe(event => {
-    //     this.event = event;
+    //   this._eggsService.readCode(this.eggCodeRequest).subscribe(egg => {
+    //     this.egg = egg;
     //   },
     //   error => {
-    //     this.errorMessage = 'There is no event with that event code';
+    //     this.errorMessage = 'There is no egg with that egg code';
     //     this.g.style.display = 'none';
     //     this.g.style.display = 'block';
     //     setTimeout(() => {
@@ -125,7 +125,7 @@ let ViewComponent = class ViewComponent {
     //   }, () => {
     //     this.createRequest();
     //   });
-    //   console.log(this.event);
+    //   console.log(this.egg);
     // }
     percentile() {
         var totalMembers = 0;
@@ -147,7 +147,7 @@ let ViewComponent = class ViewComponent {
         //console.log(totalMembers);
         return ((numberUnderMember / totalMembers) * 100);
     }
-    eventsAttendedEmpty() {
+    EventsAttendedEmpty() {
         if (this.member.attendedEvents !== undefined) {
             if (this.member.attendedEvents.length > 0) {
                 return false;
@@ -164,7 +164,7 @@ ViewComponent = __decorate([
         templateUrl: 'app/authentication/view/view.template.html',
         styleUrls: ['app/app.styles.css']
     }),
-    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService, events_service_1.EventsService])
+    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService, eggs_service_1.EggsService])
 ], ViewComponent);
 exports.ViewComponent = ViewComponent;
 //# sourceMappingURL=view.component.js.map

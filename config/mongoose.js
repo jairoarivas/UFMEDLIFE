@@ -10,7 +10,8 @@ module.exports = function() {
 
   //including the user schema in order to register the User model
   require('../app/models/user.server.model');
-  require('../app/models/event.server.model');
+  require('../app/models/egg.server.model');
+  require('../app/models/affair.server.model');
 
   return db;
 };

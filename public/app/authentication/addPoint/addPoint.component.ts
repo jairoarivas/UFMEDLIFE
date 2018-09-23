@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MembersService } from '../members.service';
-import { EventsService } from '../../events/events.service';
+import { EggsService } from '../../eggs/eggs.service';
 import { AuthenticationService} from '../authentication.service';
 
 @Component({
@@ -13,14 +13,14 @@ export class AddPointComponent {
   member: any = {};
   errorMessage: string;
   paramsObserver: any;
-  events: any;
-  event: any;
+  eggs: any;
+  egg: any;
   user: any;
   allowEdit: boolean = false;
   constructor(private _router: Router,
     private _route: ActivatedRoute,
     private _membersService: MembersService,
-    private _eventsService: EventsService, private _authenticationService: AuthenticationService) { }
+    private _eggsService: EggsService, private _authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.user = this._authenticationService.user;
@@ -35,7 +35,7 @@ export class AddPointComponent {
         error => this._router.navigate(['/authentication/addPoint']));
 
 
-      this._eventsService.list().subscribe(events => this.events = events);
+      this._eggsService.list().subscribe(eggs => this.eggs = eggs);
 
     });
   }
@@ -44,12 +44,12 @@ export class AddPointComponent {
     this.paramsObserver.unsubscribe();
   }
 
-  selected = function(event) {
-    return (this.member.tempEvent === event);
+  selected = function(egg) {
+    return (this.member.tempEgg === egg);
   }
 
-  temp(event){
-    this.member.tempEvent = event;
+  temp(egg){
+    this.member.tempEgg = egg;
   }
 
   addPoint() {

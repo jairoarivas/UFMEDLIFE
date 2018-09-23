@@ -22,7 +22,7 @@
           <button (click) = 'navMenuCheck()' type = "button" class = "menuButton" [routerLink]="['/getInvolved/AboutUs']"><h4 class = "m-0">ABOUT US</h4></button>
         </li>
         <li class = "mx-auto">
-          <button (click) = 'navMenuCheck()' type = "button" class = "menuButton" [routerLink]="['/getInvolved/Events']"><h4 class = "m-0">EVENTS</h4></button>
+          <button (click) = 'navMenuCheck()' type = "button" class = "menuButton" [routerLink]="['/getInvolved/Eggs']"><h4 class = "m-0">EggS</h4></button>
         </li>
         <li class = "mx-auto">
           <button (click) = 'navMenuCheck()' type = "button" class = "menuButton" [routerLink]="['/getInvolved/ServiceTrips']"><h4 class = "m-0">SERVICE TRIPS</h4></button>
@@ -39,7 +39,7 @@
         <ul id = "dropDown" class = "toggleDropMenu">
           <li class = "mx-auto">
             <button (click) = 'navMenuCheck()' class="dropdown-item menuDropButton" [routerLink]="['/authentication/members']">MEMBERS</button>
-            <button (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/events']">EVENTS</button>
+            <button (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/eggs']">EggS</button>
             <button (click)= 'openAccount()' class="dropdown-item menuDropButton">ACCOUNT</button>
             <button class="dropdown-item menuDropButton" onclick="location.href='/api/auth/signout'">SIGN OUT</button>
           </li>
@@ -58,7 +58,7 @@
               <button class = "barButton" [routerLink]="['/getInvolved/AboutUs']" ><h4>ABOUT US</h4></button>
             </div>
             <div class ="col m-0 p-0" style = "text-align:center;">
-              <button class = "barButton" [routerLink]="['/getInvolved/Events']"><h4>EVENTS</h4></button>
+              <button class = "barButton" [routerLink]="['/getInvolved/Eggs']"><h4>EggS</h4></button>
             </div>
           </div>
         </div>
@@ -81,7 +81,8 @@
                   <button class = "userButton dropwdown-toggle" type = "button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h4> {{_authenticationService.user.firstName}} <i class="fas fa-caret-down"></i></h4></button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" [routerLink]="['/authentication/members']">MEMBERS</a>
-                    <a class="dropdown-item" [routerLink]="['/events']">EVENTS</a>
+                    <a class="dropdown-item" [routerLink]="['/eggs']">EggS</a>
+                    <a class="dropdown-item" [routerLink]="['/affairs']">AffiarS</a>
                     <a class="dropdown-item" [routerLink]="['/authentication/members', _authenticationService.user._id]">ACCOUNT</a>
                     <a class="dropdown-item" href = "/api/auth/signout">SIGN OUT</a>
                   </div>

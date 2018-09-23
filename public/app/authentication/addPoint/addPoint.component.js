@@ -12,19 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
 const members_service_1 = require("../members.service");
-const events_service_1 = require("../../events/events.service");
+const eggs_service_1 = require("../../eggs/eggs.service");
 const authentication_service_1 = require("../authentication.service");
 let AddPointComponent = class AddPointComponent {
-    constructor(_router, _route, _membersService, _eventsService, _authenticationService) {
+    constructor(_router, _route, _membersService, _eggsService, _authenticationService) {
         this._router = _router;
         this._route = _route;
         this._membersService = _membersService;
-        this._eventsService = _eventsService;
+        this._eggsService = _eggsService;
         this._authenticationService = _authenticationService;
         this.member = {};
         this.allowEdit = false;
-        this.selected = function (event) {
-            return (this.member.tempEvent === event);
+        this.selected = function (egg) {
+            return (this.member.tempEgg === egg);
         };
     }
     ngOnInit() {
@@ -35,14 +35,14 @@ let AddPointComponent = class AddPointComponent {
                 this.allowEdit = (this.user && (this.user.role === 'Admin' || this.user.role === 'Officer'));
                 this.member = member;
             }, error => this._router.navigate(['/authentication/addPoint']));
-            this._eventsService.list().subscribe(events => this.events = events);
+            this._eggsService.list().subscribe(eggs => this.eggs = eggs);
         });
     }
     ngOnDestroy() {
         this.paramsObserver.unsubscribe();
     }
-    temp(event) {
-        this.member.tempEvent = event;
+    temp(egg) {
+        this.member.tempEgg = egg;
     }
     addPoint() {
         this._membersService.addPoint(this.member).subscribe(savedUser => this._router.navigate(['/authentication/addPoint']), error => this.errorMessage = error);
@@ -60,7 +60,7 @@ AddPointComponent = __decorate([
     __metadata("design:paramtypes", [router_1.Router,
         router_1.ActivatedRoute,
         members_service_1.MembersService,
-        events_service_1.EventsService, authentication_service_1.AuthenticationService])
+        eggs_service_1.EggsService, authentication_service_1.AuthenticationService])
 ], AddPointComponent);
 exports.AddPointComponent = AddPointComponent;
 //# sourceMappingURL=addPoint.component.js.map

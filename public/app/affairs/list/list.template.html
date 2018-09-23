@@ -1,0 +1,101 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Affair</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this affair?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" (click) = "delete()"class="btn btn-danger" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- HEADER -->
+<div class="container-fluid m-0 p-0 restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 lightHeader">
+      <h1>AffairS</h1>
+    </div>
+  </div>
+</div>
+<div class="container restOfSite">
+  <div class="row m-0 p-0">
+    <div class="col m-0 p-0">
+      <div class = "row" style = "margin-bottom: 2vh; margin-left: 0; margin-right: 0;">
+        <div class = "col-10 p-0 m-0">
+          <input [(ngModel)]="searchText" placeholder="Search for Affair or Affair Code" class = "form-control">
+        </div>
+        <div class = "col-2 p-0 m-0">
+    			<button style="margin-left: 35%; margin-top: 4px;" class = "addButton" [routerLink] = "['/affairs/create']"><i style = "color: rgb(233,233,233)"class="fas fa-plus"></i></button>
+        </div>
+      </div>
+
+			<div class = "table-responsive">
+  			<table class="table table-striped">
+  			  <thead>
+						<tr>
+  			      <th (click) = "filterByName()" class = "filterByButton" scope="col">Affair</th>
+  			      <th (click) = "filterByValue()"class = "filterByButton" scope="col">Points</th>
+  						<th (click) = "filterByCode()"class = "filterByButton" scope="col">Code</th>
+							<th (click) = "filterByDate()"class = "filterByButton" scope="col">Date</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+  			    </tr>
+					</thead>
+          <!-- filter by affair name -->
+					<tbody  *ngIf = "filterBy === 'affairName'">
+  			    <tr *ngFor = "let affair of affairs | orderby: 'affairName' | filterEvents : searchText">
+  						<td>{{affair.affairName}}</td>
+  			      <td>{{affair.affairValue}}</td>
+  			      <td>{{affair.affairCode}}</td>
+							<td>{{affair.affairDate | date: 'medium'}}</td>
+              <td><button class = "editButton" [routerLink]="['/affairs', affair._id, 'edit']"><i style = "color: rgb(233,233,233);" class="fas fa-pen"></i></button></td>
+              <td><button class = "deleteButton" data-toggle="modal" data-target="#exampleModal" (click)="deleteModal(affair)"><i style = "color: rgb(233,233,233);" class="fas fa-trash-alt"></i></button></td>
+  			    </tr>
+          </tbody>
+            <!-- filter by points -->
+          <tbody  *ngIf = "filterBy === 'value'">
+  			    <tr *ngFor = "let affair of affairs | orderByNumber: 'affairValue' | filterEvents : searchText">
+  						<td>{{affair.affairName}}</td>
+  			      <td>{{affair.affairValue}}</td>
+  			      <td>{{affair.affairCode}}</td>
+							<td>{{affair.affairDate | date: 'medium'}}</td>
+              <td><button class = "editButton" [routerLink]="['/affairs', affair._id, 'edit']"><i style = "color: rgb(233,233,233);" class="fas fa-pen"></i></button></td>
+              <td><button class = "deleteButton" data-toggle="modal" data-target="#exampleModal" (click)="deleteModal(affair)"><i style = "color: rgb(233,233,233);" class="fas fa-trash-alt"></i></button></td>
+  			    </tr>
+          </tbody>
+          <!-- filter by date -->
+          <tbody  *ngIf = "filterBy === 'date'">
+  			    <tr *ngFor = "let affair of affairs | orderByDate: 'affairDate' | filterEvents : searchText">
+  						<td>{{affair.affairName}}</td>
+  			      <td>{{affair.affairValue}}</td>
+  			      <td>{{affair.affairCode}}</td>
+							<td>{{affair.affairDate | date: 'medium'}}</td>
+              <td><button class = "editButton" [routerLink]="['/affairs', affair._id, 'edit']"><i style = "color: rgb(233,233,233);" class="fas fa-pen"></i></button></td>
+              <td><button class = "deleteButton" data-toggle="modal" data-target="#exampleModal" (click)="deleteModal(affair)"><i style = "color: rgb(233,233,233);" class="fas fa-trash-alt"></i></button></td>
+  			    </tr>
+          </tbody>
+          <!-- filter by code -->
+          <tbody  *ngIf = "filterBy === 'Code' ">
+  			    <tr *ngFor = "let affair of affairs | orderby: 'affairCode' | filterEvents : searchText">
+  						<td>{{affair.affairName}}</td>
+  			      <td>{{affair.affairValue}}</td>
+  			      <td>{{affair.affairCode}}</td>
+							<td>{{affair.affairDate | date: 'medium'}}</td>
+              <td><button class = "editButton" [routerLink]="['/affairs', affair._id, 'edit']"><i style = "color: rgb(233,233,233);" class="fas fa-pen"></i></button></td>
+              <td><button class = "deleteButton" data-toggle="modal" data-target="#exampleModal" (click)="deleteModal(affair)"><i style = "color: rgb(233,233,233);" class="fas fa-trash-alt"></i></button></td>
+  			    </tr>
+          </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

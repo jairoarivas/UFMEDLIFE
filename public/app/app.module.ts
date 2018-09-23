@@ -14,13 +14,15 @@ import { AuthenticationService } from './authentication/authentication.service';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { HeaderModule } from './header/header.module';
 
-import { EventsService } from './events/events.service';
+import { EggsService } from './eggs/eggs.service';
+import { AffairsService } from './affairs/affairs.service';
 
 import { getInvolvedModule } from './getInvolved/getInvolved.module';
 import { contactUsComponent } from './contactUs/contactUs.component';
 import { HomeComponent } from './home/home.component';
 
-import { EventsModule } from './events/events.module';
+import { EggsModule } from './eggs/eggs.module';
+import { AffairsModule } from './affairs/affairs.module';
 
 @NgModule({
   imports: [
@@ -29,7 +31,8 @@ import { EventsModule } from './events/events.module';
     AuthenticationModule,
     HeaderModule,
     getInvolvedModule,
-    EventsModule,
+    EggsModule,
+    AffairsModule,
     FormsModule,
     CommonModule,
     RouterModule.forRoot(AppRoutes)
@@ -41,7 +44,8 @@ import { EventsModule } from './events/events.module';
   ],
   providers: [
     AuthenticationService,
-    EventsService,
+    EggsService,
+    AffairsService,
   ],
   bootstrap: [AppComponent]
 })

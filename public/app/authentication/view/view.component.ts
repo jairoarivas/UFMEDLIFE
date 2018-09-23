@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
-import { EventsService } from '../../events/events.service';
+import { EggsService } from '../../eggs/eggs.service';
 
 @Component({
   selector: 'view',
@@ -17,13 +17,13 @@ export class ViewComponent {
   count: number;
 
   //point request related variables
-  event:any = {};
+  egg:any = {};
   eventCodeRequest: string;
   g: HTMLElement;
   s:HTMLElement;
   request:any = {};
 
-	constructor(private _router:Router, private _route: ActivatedRoute, private _authenticationService: AuthenticationService, private _eventsService: EventsService) {
+	constructor(private _router:Router, private _route: ActivatedRoute, private _authenticationService: AuthenticationService, private _eggsService: EggsService) {
     this.user = this._authenticationService.user;
     this._authenticationService.list().subscribe(members  => {
       this.count = members.length;
@@ -58,7 +58,7 @@ export class ViewComponent {
   createRequest(){
     // var alreadyRequested = false;
     // for(var i = 0; i < this.member.attendedEvents.length; i++){
-    //   if(this.member.attendedEvents[i].eventName === this.event.eventName){
+    //   if(this.member.attendedEvents[i].eggName === this.egg.eggName){
     //     return true;
     //   }
     //   else{
@@ -67,7 +67,7 @@ export class ViewComponent {
     // }
     // console.log('AlreadyRequested: ' + alreadyRequested);
     // if(alreadyRequested){
-    //   this.errorMessage = 'You have already requested points for this event'
+    //   this.errorMessage = 'You have already requested points for this egg'
     //   this.g.style.display = 'none';
     //   this.g.style.display = 'block';
     //   setTimeout(() => {
@@ -75,9 +75,9 @@ export class ViewComponent {
     //   }, 5000);
     // }
     // else{
-    //   this._requestsService.checkEvent(this.event.eventName.replace(/\s+/g, ''),this.member._id).subscribe(requests => {
+    //   this._requestsService.checkEvent(this.egg.eggName.replace(/\s+/g, ''),this.member._id).subscribe(requests => {
     //     //console.log('Search Results: ' + requests);
-    //     // this.errorMessage = 'You have already requested points for this event'
+    //     // this.errorMessage = 'You have already requested points for this egg'
     //     // this.g.style.display = 'none';
     //     // this.g.style.display = 'block';
     //     // setTimeout(() => {
@@ -93,9 +93,9 @@ export class ViewComponent {
     //     }, 5000);
       //   this.request = {
       //     user: this.member._id,
-      //     eventName:this.event.eventName,
-      //     eventValue:this.event.eventValue,
-      //     eventDate: this.event.eventDate
+      //     eggName:this.egg.eggName,
+      //     eggValue:this.egg.eggValue,
+      //     eggDate: this.egg.eggDate
       //   };
       //   this._requestsService.create(this.request).subscribe(result => {
       //     this.s.style.display = 'none';
@@ -118,14 +118,14 @@ export class ViewComponent {
     // }
   }
 
-  // findEvent(){
+  // findEgg(){
   //   this.s.style.display = 'none';
   //   this.g.style.display = 'none';
-  //   this._eventsService.readCode(this.eventCodeRequest).subscribe(event => {
-  //     this.event = event;
+  //   this._eggsService.readCode(this.eggCodeRequest).subscribe(egg => {
+  //     this.egg = egg;
   //   },
   //   error => {
-  //     this.errorMessage = 'There is no event with that event code';
+  //     this.errorMessage = 'There is no egg with that egg code';
   //     this.g.style.display = 'none';
   //     this.g.style.display = 'block';
   //     setTimeout(() => {
@@ -134,7 +134,7 @@ export class ViewComponent {
   //   }, () => {
   //     this.createRequest();
   //   });
-  //   console.log(this.event);
+  //   console.log(this.egg);
   // }
 
 
@@ -160,7 +160,7 @@ export class ViewComponent {
     return ((numberUnderMember/totalMembers) * 100);
   }
 
-  eventsAttendedEmpty(){
+  EventsAttendedEmpty(){
     if(this.member.attendedEvents !== undefined){
       if(this.member.attendedEvents.length > 0){
         return false;
