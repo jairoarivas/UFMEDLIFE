@@ -20,14 +20,14 @@
 	</div>
 </div>
 
-<!-- <div class = "container-fluid p-0 m-0 restOfSite">
+<div class = "container-fluid p-0 m-0 restOfSite">
 	<div class = "row p-0 m-0">
 		<div class = "col p-0 m-0 pointContainer">
       <h2 style = "margin-bottom: 20px;">ENTER EVENT CODE TO RECIEVE POINTS</h2>
-      <form class = "signInForm" (ngSubmit) = "findEvent()">
+      <form class = "signInForm" (ngSubmit) = "findAffair()">
         <div class = "form-group row justify-content-center m-0 p-0">
           <div class=" col-8 m-0 p-0">
-            <input class = "form-control" type = "text" [(ngModel)] = "eventCodeRequest" name = "eventCodeRequest" placeholder="Event Code">
+            <input class = "form-control" type = "text" [(ngModel)] = "affairCodeRequest" name = "affairCodeRequest" placeholder="Event Code">
           </div>
         </div>
         <div class="form-group row m-0 p-0">
@@ -48,7 +48,7 @@
       </form>
     </div>
   </div>
-</div> -->
+</div>
 
 <div class = "container restOfSite">
   <div class = "row">
@@ -80,12 +80,12 @@
   </div>
 </div>
 
-<!-- <div class = "container restOfSite">
+<div class = "container restOfSite">
   <div class = "row">
     <div class = "col pointContainer">
       <h2 style = "margin-bottom: 20px;">ATTENDED EVENTS</h2>
-      <h4 style = "margin-bottom: 20px; padding-top: 20px;" *ngIf = "eventsAttendedEmpty()">No events have been atteneded</h4>
-      <div class = "table-responsive" *ngIf = "!(eventsAttendedEmpty())">
+      <h4 style = "margin-bottom: 20px; padding-top: 20px;" *ngIf = "EventsAttendedEmpty()">No events have been atteneded</h4>
+      <div class = "table-responsive" *ngIf = "!(EventsAttendedEmpty())">
   			<table class="table table-striped">
   			  <thead>
 						<tr>
@@ -105,4 +105,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>

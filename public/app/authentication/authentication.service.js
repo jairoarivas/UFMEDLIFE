@@ -53,6 +53,12 @@ let AuthenticationService = class AuthenticationService {
             .map((res) => res.json())
             .catch(this.handleError);
     }
+    addPoints(user) {
+        return this.http
+            .put(`${this._baseURL}/${user._id}`, user)
+            .map((res) => res.json())
+            .catch(this.handleError);
+    }
     delete(userId) {
         return this.http
             .delete(`${this._baseURL}/${userId}`)

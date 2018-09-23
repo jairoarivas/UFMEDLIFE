@@ -101,6 +101,8 @@ exports.update = function(req, res){
 	user.firstName = req.body.firstName;
 	user.lastName = req.body.lastName;
 	user.username = req.body.username;
+	user.points = req.body.points;
+	user.attendedEvents = req.body.attendedEvents;
 	//user.password = req.body.password;
 	user.role = req.body.role;
 

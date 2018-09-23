@@ -17,12 +17,12 @@ const app_routes_1 = require("./app.routes");
 const authentication_service_1 = require("./authentication/authentication.service");
 const authentication_module_1 = require("./authentication/authentication.module");
 const header_module_1 = require("./header/header.module");
-const eggs_service_1 = require("./eggs/eggs.service");
+const pointRequests_service_1 = require("./pointRequests/pointRequests.service");
 const affairs_service_1 = require("./affairs/affairs.service");
 const getInvolved_module_1 = require("./getInvolved/getInvolved.module");
 const contactUs_component_1 = require("./contactUs/contactUs.component");
 const home_component_1 = require("./home/home.component");
-const eggs_module_1 = require("./eggs/eggs.module");
+const pointRequests_module_1 = require("./pointRequests/pointRequests.module");
 const affairs_module_1 = require("./affairs/affairs.module");
 let AppModule = class AppModule {
 };
@@ -34,7 +34,7 @@ AppModule = __decorate([
             authentication_module_1.AuthenticationModule,
             header_module_1.HeaderModule,
             getInvolved_module_1.getInvolvedModule,
-            eggs_module_1.EggsModule,
+            pointRequests_module_1.PointRequestsModule,
             affairs_module_1.AffairsModule,
             forms_1.FormsModule,
             common_1.CommonModule,
@@ -47,7 +47,7 @@ AppModule = __decorate([
         ],
         providers: [
             authentication_service_1.AuthenticationService,
-            eggs_service_1.EggsService,
+            pointRequests_service_1.PointRequestsService,
             affairs_service_1.AffairsService,
         ],
         bootstrap: [app_component_1.AppComponent]

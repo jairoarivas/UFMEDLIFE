@@ -12,17 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
 const authentication_service_1 = require("../authentication.service");
-const eggs_service_1 = require("../../eggs/eggs.service");
+const affairs_service_1 = require("../../affairs/affairs.service");
+const pointRequests_service_1 = require("../../pointRequests/pointRequests.service");
 let ViewComponent = class ViewComponent {
-    constructor(_router, _route, _authenticationService, _eggsService) {
+    constructor(_router, _route, _authenticationService, _affairsService, _pointRequestsService) {
         this._router = _router;
         this._route = _route;
         this._authenticationService = _authenticationService;
-        this._eggsService = _eggsService;
+        this._affairsService = _affairsService;
+        this._pointRequestsService = _pointRequestsService;
         this.member = {};
         //point request related variables
-        this.egg = {};
-        this.request = {};
+        this.affair = {};
+        this.pointRequest = {};
         this.user = this._authenticationService.user;
         this._authenticationService.list().subscribe(members => {
             this.count = members.length;
@@ -30,10 +32,10 @@ let ViewComponent = class ViewComponent {
         });
     }
     ngOnInit() {
-        // this.g = document.getElementById('errorMessage') as HTMLElement;
-        // this.g.style.display = 'none';
-        // this.s = document.getElementById('successMessage') as HTMLElement;
-        // this.s.style.display = 'none';
+        this.g = document.getElementById('errorMessage');
+        this.g.style.display = 'none';
+        this.s = document.getElementById('successMessage');
+        this.s.style.display = 'none';
         this.paramsObserver = this._route.params.subscribe(params => {
             let userId = params['userId'];
             this._authenticationService
@@ -48,85 +50,84 @@ let ViewComponent = class ViewComponent {
         this.paramsObserver.unsubscribe();
     }
     createRequest() {
-        // var alreadyRequested = false;
-        // for(var i = 0; i < this.member.attendedEvents.length; i++){
-        //   if(this.member.attendedEvents[i].eggName === this.egg.eggName){
-        //     return true;
-        //   }
-        //   else{
-        //     return false;
-        //   }
-        // }
-        // console.log('AlreadyRequested: ' + alreadyRequested);
-        // if(alreadyRequested){
-        //   this.errorMessage = 'You have already requested points for this egg'
-        //   this.g.style.display = 'none';
-        //   this.g.style.display = 'block';
-        //   setTimeout(() => {
-        //     this.g.style.display = 'none';
-        //   }, 5000);
-        // }
-        // else{
-        //   this._requestsService.checkEvent(this.egg.eggName.replace(/\s+/g, ''),this.member._id).subscribe(requests => {
-        //     //console.log('Search Results: ' + requests);
-        //     // this.errorMessage = 'You have already requested points for this egg'
-        //     // this.g.style.display = 'none';
-        //     // this.g.style.display = 'block';
-        //     // setTimeout(() => {
-        //     //   this.g.style.display = 'none';
-        //     // }, 5000);
-        //   },
-        //   error => {
-        //     this.errorMessage = error;
-        //     this.g.style.display = 'none';
-        //     this.g.style.display = 'block';
-        //     setTimeout(() => {
-        //       this.g.style.display = 'none';
-        //     }, 5000);
-        //   this.request = {
-        //     user: this.member._id,
-        //     eggName:this.egg.eggName,
-        //     eggValue:this.egg.eggValue,
-        //     eggDate: this.egg.eggDate
-        //   };
-        //   this._requestsService.create(this.request).subscribe(result => {
-        //     this.s.style.display = 'none';
-        //     this.s.style.display = 'block';
-        //     setTimeout(() => {
-        //       this.s.style.display = 'none';
-        //     }, 5000);
-        //   },
-        //   error => {
-        //     this.errorMessage = 'Unable to send request';
-        //     this.g.style.display = 'none';
-        //     this.g.style.display = 'block';
-        //     setTimeout(() => {
-        //       this.g.style.display = 'none';
-        //     }, 5000);
-        //   }
-        // );
-        // }
-        // );
-        // }
+        var alreadyRequested = false;
+        //console.log(this.member.attendedEvents.length);
+        //console.log(this.member.attendedEvents[0].eventName);
+        //console.log(this.affair.affairName);
+        for (var i = 0; i < this.member.attendedEvents.length; i++) {
+            if (this.member.attendedEvents[i].eventName === this.affair.affairName) {
+                alreadyRequested = true;
+            }
+        }
+        //console.log('AlreadyRequested: ' + alreadyRequested);
+        if (alreadyRequested) {
+            this.errorMessage = 'You have already recieved points for this event';
+            this.g.style.display = 'none';
+            this.g.style.display = 'block';
+            setTimeout(() => {
+                this.g.style.display = 'none';
+            }, 5000);
+        }
+        else {
+            this._pointRequestsService.checkRequest(this.affair.affairName.replace(/\s+/g, ''), this.member).subscribe(requests => {
+                //console.log(requests);
+                if (requests.length > 0) {
+                    this.errorMessage = 'Your previous request for this event is still being approved';
+                    this.g.style.display = 'none';
+                    this.g.style.display = 'block';
+                    setTimeout(() => {
+                        this.g.style.display = 'none';
+                    }, 5000);
+                }
+                else {
+                    this.pointRequest = {
+                        pointRequestUser: this.member,
+                        pointRequestName: this.affair.affairName,
+                        pointRequestValue: this.affair.affairValue,
+                        pointRequestDate: this.affair.affairDate
+                    };
+                    this._pointRequestsService.create(this.pointRequest).subscribe(result => {
+                        this.s.style.display = 'none';
+                        this.s.style.display = 'block';
+                        setTimeout(() => {
+                            this.s.style.display = 'none';
+                        }, 5000);
+                    }, error => {
+                        this.errorMessage = 'Unable to send request';
+                        this.g.style.display = 'none';
+                        this.g.style.display = 'block';
+                        setTimeout(() => {
+                            this.g.style.display = 'none';
+                        }, 5000);
+                    });
+                }
+            }, error => {
+                this.errorMessage = error;
+                this.g.style.display = 'none';
+                this.g.style.display = 'block';
+                setTimeout(() => {
+                    this.g.style.display = 'none';
+                }, 5000);
+            });
+        }
     }
-    // findEgg(){
-    //   this.s.style.display = 'none';
-    //   this.g.style.display = 'none';
-    //   this._eggsService.readCode(this.eggCodeRequest).subscribe(egg => {
-    //     this.egg = egg;
-    //   },
-    //   error => {
-    //     this.errorMessage = 'There is no egg with that egg code';
-    //     this.g.style.display = 'none';
-    //     this.g.style.display = 'block';
-    //     setTimeout(() => {
-    //       this.g.style.display = 'none';
-    //     }, 5000);
-    //   }, () => {
-    //     this.createRequest();
-    //   });
-    //   console.log(this.egg);
-    // }
+    findAffair() {
+        this.s.style.display = 'none';
+        this.g.style.display = 'none';
+        this._affairsService.readCode(this.affairCodeRequest).subscribe(affair => {
+            this.affair = affair;
+        }, error => {
+            this.errorMessage = 'There is no event with that event code';
+            this.g.style.display = 'none';
+            this.g.style.display = 'block';
+            setTimeout(() => {
+                this.g.style.display = 'none';
+            }, 5000);
+        }, () => {
+            //console.log(this.affair);
+            this.createRequest();
+        });
+    }
     percentile() {
         var totalMembers = 0;
         var numberUnderMember = 0;
@@ -164,7 +165,7 @@ ViewComponent = __decorate([
         templateUrl: 'app/authentication/view/view.template.html',
         styleUrls: ['app/app.styles.css']
     }),
-    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService, eggs_service_1.EggsService])
+    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService, affairs_service_1.AffairsService, pointRequests_service_1.PointRequestsService])
 ], ViewComponent);
 exports.ViewComponent = ViewComponent;
 //# sourceMappingURL=view.component.js.map

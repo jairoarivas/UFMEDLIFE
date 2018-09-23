@@ -54,6 +54,12 @@ export class AuthenticationService {
 			.map((res: Response) => res.json())
 			.catch(this.handleError);
   }
+  addPoints(user: any): Observable<any> {
+		return this.http
+			.put(`${this._baseURL}/${user._id}`, user)
+			.map((res: Response) => res.json())
+			.catch(this.handleError);
+  }
   delete(userId: any): Observable<any> {
 		return this.http
 			.delete(`${this._baseURL}/${userId}`)

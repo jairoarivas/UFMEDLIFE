@@ -14,10 +14,10 @@ class FilterEventsPipe {
         if (term === undefined)
             return items;
         return items.filter(function (items) {
-            if (items.eventName.toLowerCase().includes(term.toLowerCase())) {
+            if (items.affairName.toLowerCase().includes(term.toLowerCase())) {
                 return true;
             }
-            else if (items.eventCode.toLowerCase().includes(term.toLowerCase())) {
+            else if (items.affairCode.toLowerCase().includes(term.toLowerCase())) {
                 return true;
             }
             else {
