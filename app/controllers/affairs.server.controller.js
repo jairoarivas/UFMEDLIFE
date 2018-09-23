@@ -102,7 +102,7 @@ exports.affairByID = function(req, res, next, id) {
     // Use the model 'findById' method to find a single affair
     Affair.findById(id).exec((err, affair) => {
         if (err) return next(err);
-        if (!affair) return next(new Error('Failed to load affair ' + id));
+        if (!affair) return next(new Error('Failed to load event ' + id));
 
         // If an affair is found use the 'request' object to pass it to the next middleware
         req.affair = affair;
@@ -115,7 +115,7 @@ exports.affairByID = function(req, res, next, id) {
 exports.affairByCode = function(req,res,next,code){
   Affair.findOne({affairCode: [code]}).exec((err, affair) => {
     if(err) return next(err);
-    if(!affair) return next(new Error('No affair with affair code ' + code + ' was found'));
+    if(!affair) return next(new Error('No event with event code ' + code + ' was found'));
 
     req.affair = affair;
 

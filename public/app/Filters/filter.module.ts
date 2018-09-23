@@ -5,11 +5,12 @@ import { SortPipe } from './orderBy.pipe';
 import { NumberSortPipe } from './orderByValue.pipe';
 import { DateSortPipe } from './orderByDate.pipe';
 import {customDateFormatPipe} from './dateFormat.pipe';
+import { FilterRequestsPipe } from './filterRequests.pipe'
 
  @NgModule({
      imports:        [],
-     declarations:   [  FilterPipe, SortPipe, NumberSortPipe , customDateFormatPipe, DateSortPipe, FilterEventsPipe ],
-     exports:        [  FilterPipe, SortPipe, NumberSortPipe,  customDateFormatPipe, DateSortPipe, FilterEventsPipe ],
+     declarations:   [  FilterPipe, SortPipe, NumberSortPipe , customDateFormatPipe, DateSortPipe, FilterEventsPipe, FilterRequestsPipe ],
+     exports:        [  FilterPipe, SortPipe, NumberSortPipe,  customDateFormatPipe, DateSortPipe, FilterEventsPipe, FilterRequestsPipe ],
  })
 
  export class PipeModule {

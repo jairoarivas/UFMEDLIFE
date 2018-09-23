@@ -2,7 +2,7 @@
 <div class="container-fluid m-0 p-0 restOfSite">
   <div class="row m-0 p-0">
     <div class="col m-0 lightHeader">
-      <h1>EDIT Affair</h1>
+      <h1>EDIT EVENT</h1>
     </div>
   </div>
 </div>
@@ -12,15 +12,15 @@
     <div class = "col p-0 m-0">
       <form class = "signInForm" (ngSubmit)="update()">
         <div class="form-group row justify-content-center m-0 p-0">
-          <label class=" col-form-label col-4 m-0 p-0">Affair Name:</label>
+          <label class=" col-form-label col-4 m-0 p-0">Event Name:</label>
           <div class=" col-8 m-0 p-0">
-            <input class = "form-control" type="text" required [(ngModel)]="affair.affairName" name="affairName" placeholder="Affair Name">
+            <input class = "form-control" type="text" required [(ngModel)]="affair.affairName" name="affairName" placeholder="Event Name">
           </div>
         </div>
         <div class="form-group justify-content-center row m-0 p-0">
           <label class=" col-form-label col-4 m-0 p-0">Points:</label>
           <div class=" col-8 m-0 p-0">
-            <input class = "form-control" type="number" required [(ngModel)]="affair.affairValue" name="affairValue" placeholder="Affair Point Value">
+            <input class = "form-control" type="number" required [(ngModel)]="affair.affairValue" name="affairValue" placeholder="Event Point Value">
           </div>
         </div>
         <div class="form-group justify-content-center row m-0 p-0">
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group row p-0" style = "margin-top:3vh; height: 40px; margin-bottom: 3vh;">
           <div id = "successMessage" class = "col">
-            Update Successful!
+            Event Updated!
           </div>
         </div>
         <div class="form-group row p-0" style = "margin-top:3vh; height: 40px; margin-bottom: 3vh;">

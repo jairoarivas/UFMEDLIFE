@@ -36,8 +36,11 @@ let ListComponent = class ListComponent {
     filterByDate() {
         this.filterBy = 'date';
     }
-    filterByCode() {
+    filterByUser() {
         this.filterBy = 'user';
+    }
+    filterByEmail() {
+        this.filterBy = 'email';
     }
     deleteModal(m) {
         this.s.style.display = 'none';

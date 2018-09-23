@@ -59,30 +59,52 @@
       </div>
       <div class = "row" style = "margin-bottom: 2vh; margin-left: 0; margin-right: 0;">
         <div class = "col p-0 m-0">
-          <input [(ngModel)]="searchText" placeholder="Search for PointRequest or PointRequest Code" class = "form-control">
+          <input [(ngModel)]="searchText" placeholder="Search for events, member name or member email" class = "form-control">
         </div>
       </div>
 
 			<div class = "table-responsive">
   			<table class="table table-striped">
-  			  <thead>
+  			  <thead style = "background-color: rgb(101, 101, 101); color: rgb(233,233,233);">
 						<tr>
-  			      <th scope="col">Event</th>
+  			      <th class = "filterByButton" (click) = "filterByName()" scope="col">Event</th>
   						<th scope="col">Member Name</th>
               <th scope="col">Member Email</th>
-              <th scope="col">Points</th>
-							<th scope="col">Date</th>
+              <th class = "filterByButton" (click) = "filterByValue()" scope="col">Points</th>
+							<th class = "filterByButton" (click) = "filterByDate()"scope="col">Date</th>
               <th scope="col"></th>
               <th scope="col"></th>
   			    </tr>
 					</thead>
-					<tbody>
-  			    <tr *ngFor = "let pointRequest of pointRequests | orderby: 'pointRequestName' | filterEvents : searchText">
+					<tbody *ngIf = "filterBy === 'name'">
+  			    <tr *ngFor = "let pointRequest of pointRequests | orderby: 'pointRequestName' | filterRequests : searchText">
   						<td>{{pointRequest.pointRequestName}}</td>
   			      <td>{{pointRequest.pointRequestUser.firstName}} {{pointRequest.pointRequestUser.lastName}}</td>
               <td>{{pointRequest.pointRequestUser.username}}</td>
               <td>{{pointRequest.pointRequestValue}}</td>
 							<td>{{pointRequest.pointRequestDate | date: 'medium'}}</td>
+              <td>  <button class = "addButton" data-toggle="modal" data-target="#approveModal" (click)="approveModal(pointRequest)"><i style = "color: rgb(233,233,233);" class="fas fa-check"></i></button></td>
+              <td><button class = "deleteButton" data-toggle="modal" data-target="#deleteModal" (click)="deleteModal(pointRequest)"><i style = "color: rgb(233,233,233);" class="fas fa-times"></i></button></td>
+  			    </tr>
+          </tbody>
+          <tbody *ngIf = "filterBy === 'value'">
+  			    <tr *ngFor = "let pointRequest of pointRequests | orderByNumber: 'pointRequestValue' | filterRequests : searchText">
+  						<td>{{pointRequest.pointRequestName}}</td>
+  			      <td>{{pointRequest.pointRequestUser.firstName}} {{pointRequest.pointRequestUser.lastName}}</td>
+              <td>{{pointRequest.pointRequestUser.username}}</td>
+              <td>{{pointRequest.pointRequestValue}}</td>
+							<td>{{pointRequest.pointRequestDate | date: 'medium'}}</td>
+              <td>  <button class = "addButton" data-toggle="modal" data-target="#approveModal" (click)="approveModal(pointRequest)"><i style = "color: rgb(233,233,233);" class="fas fa-check"></i></button></td>
+              <td><button class = "deleteButton" data-toggle="modal" data-target="#deleteModal" (click)="deleteModal(pointRequest)"><i style = "color: rgb(233,233,233);" class="fas fa-times"></i></button></td>
+  			    </tr>
+          </tbody>
+          <tbody *ngIf = "filterBy === 'date'">
+  			    <tr *ngFor = "let pointRequest of pointRequests | orderByDate: 'created' | filterRequests : searchText">
+  						<td>{{pointRequest.pointRequestName}}</td>
+  			      <td>{{pointRequest.pointRequestUser.firstName}} {{pointRequest.pointRequestUser.lastName}}</td>
+              <td>{{pointRequest.pointRequestUser.username}}</td>
+              <td>{{pointRequest.pointRequestValue}}</td>
+							<td>{{pointRequest.created | date: 'medium'}}</td>
               <td>  <button class = "addButton" data-toggle="modal" data-target="#approveModal" (click)="approveModal(pointRequest)"><i style = "color: rgb(233,233,233);" class="fas fa-check"></i></button></td>
               <td><button class = "deleteButton" data-toggle="modal" data-target="#deleteModal" (click)="deleteModal(pointRequest)"><i style = "color: rgb(233,233,233);" class="fas fa-times"></i></button></td>
   			    </tr>

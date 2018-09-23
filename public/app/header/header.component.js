@@ -51,6 +51,9 @@ let HeaderComponent = class HeaderComponent {
         for (var i = 0; i < this.c.length; i++) {
             this.c[i].classList.remove('clicked');
         }
+        for (var i = 0; i < this.g.length; i++) {
+            this.g[i].style.display = 'block';
+        }
         this.wasClicked = false;
     }
     clicker(event) {

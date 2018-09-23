@@ -15,7 +15,7 @@ const AffairSchema = new Schema({
     unique:true,
     default: '',
     trim: true,
-    required: 'Affair must be given a name'
+    required: 'Event must be given a name'
   },
   affairValue: {
     type: Number,
@@ -24,7 +24,7 @@ const AffairSchema = new Schema({
   affairCode: {
     type: String,
     unique: true,
-    required: 'Affair must be given an affair code'
+    required: 'Event must be given an event code'
   }
 });
 mongoose.model('Affair', AffairSchema);

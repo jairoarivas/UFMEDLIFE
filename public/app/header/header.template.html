@@ -34,15 +34,15 @@
           <button (click) = 'navMenuCheck()' type = "button" class = "menuButton" [routerLink]="['/authentication/signin']"><h4 class = "m-0">SIGN IN</h4></button>
         </li>
         <li class = "mx-auto" *ngIf="_authenticationService.isLoggedIn()">
-          <button (click) ='dropDown($event)' type = "button" class = "menuDropButton"><h4 class = "m-0">{{_authenticationService.user.firstName}}</h4></button>
+          <button (click) ='dropDown($event)' type = "button" class = "menuDropButton"><h4 class = "m-0">{{_authenticationService.user.firstName}} <i class="fas fa-caret-down"></i></h4></button>
         </li>
         <ul id = "dropDown" class = "toggleDropMenu">
           <li class = "mx-auto">
             <button (click) = 'navMenuCheck()' class="dropdown-item menuDropButton" [routerLink]="['/authentication/members']">MEMBERS</button>
-            <button (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/events']">EVENTS</button>
+            <button (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/affairs']">EVENTS</button>
             <button (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/pointRequests']">REQUESTS</button>
             <button (click)= 'openAccount()' class="dropdown-item menuDropButton">ACCOUNT</button>
-            <button class="dropdown-item menuDropButton" onclick="location.href='/api/auth/signout'">SIGN OUT</button>
+            <button style = "margin-bottom: 10vh;" class="dropdown-item menuDropButton" onclick="location.href='/api/auth/signout'">SIGN OUT</button>
           </li>
         </ul>
       </ul>

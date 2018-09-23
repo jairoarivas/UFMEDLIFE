@@ -14,6 +14,7 @@ const orderBy_pipe_1 = require("./orderBy.pipe");
 const orderByValue_pipe_1 = require("./orderByValue.pipe");
 const orderByDate_pipe_1 = require("./orderByDate.pipe");
 const dateFormat_pipe_1 = require("./dateFormat.pipe");
+const filterRequests_pipe_1 = require("./filterRequests.pipe");
 let PipeModule = PipeModule_1 = class PipeModule {
     static forRoot() {
         return {
@@ -25,8 +26,8 @@ let PipeModule = PipeModule_1 = class PipeModule {
 PipeModule = PipeModule_1 = __decorate([
     core_1.NgModule({
         imports: [],
-        declarations: [filter_pipe_1.FilterPipe, orderBy_pipe_1.SortPipe, orderByValue_pipe_1.NumberSortPipe, dateFormat_pipe_1.customDateFormatPipe, orderByDate_pipe_1.DateSortPipe, filterEvents_pipe_1.FilterEventsPipe],
-        exports: [filter_pipe_1.FilterPipe, orderBy_pipe_1.SortPipe, orderByValue_pipe_1.NumberSortPipe, dateFormat_pipe_1.customDateFormatPipe, orderByDate_pipe_1.DateSortPipe, filterEvents_pipe_1.FilterEventsPipe],
+        declarations: [filter_pipe_1.FilterPipe, orderBy_pipe_1.SortPipe, orderByValue_pipe_1.NumberSortPipe, dateFormat_pipe_1.customDateFormatPipe, orderByDate_pipe_1.DateSortPipe, filterEvents_pipe_1.FilterEventsPipe, filterRequests_pipe_1.FilterRequestsPipe],
+        exports: [filter_pipe_1.FilterPipe, orderBy_pipe_1.SortPipe, orderByValue_pipe_1.NumberSortPipe, dateFormat_pipe_1.customDateFormatPipe, orderByDate_pipe_1.DateSortPipe, filterEvents_pipe_1.FilterEventsPipe, filterRequests_pipe_1.FilterRequestsPipe],
     })
 ], PipeModule);
 exports.PipeModule = PipeModule;
