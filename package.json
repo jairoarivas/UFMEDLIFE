@@ -9,8 +9,7 @@
     "start-dev": "concurrently \"npm run webpack\" \"npm run app\"",
     "start": "concurrently \"npm run tsc:w\" \"npm run app\"",
     "webpack": "webpack --watch",
-    "app": "node server",
-    "postinstall": "typings install"
+    "app": "node server"
   },
   "keywords": [
     "MongoDB",
@@ -29,15 +28,12 @@
     "@angular/platform-browser": "^5.2.3",
     "@angular/platform-browser-dynamic": "^5.2.3",
     "@angular/router": "^5.2.3",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0",
-    "async": "^2.6.0",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "concurrently": "^3.5.1",
     "connect": "^3.6.5",
     "connect-flash": "^0.1.1",
     "core-js": "^2.5.3",
-    "css-loader": "^0.28.9",
     "ejs": "^2.5.7",
     "express": "4.16.1",
     "express-flash": "0.0.2",
@@ -51,9 +47,7 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.5.6",
-    "style-loader": "^0.20.1",
     "systemjs": "^0.20.19",
-    "typings": "^2.1.1",
     "zone.js": "^0.8.19"
   },
   "engines": {
@@ -61,15 +55,28 @@
     "node": "8.9.4"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.4.1",
+    "@types/angular": "^1.6.51",
+    "@types/angular-mocks": "^1.7.0",
+    "@types/angular-route": "^1.7.0",
+    "@types/angularlocalstorage": "^0.1.32",
+    "@types/express": "^4.16.0",
+    "@types/express-serve-static-core": "^4.16.0",
+    "@types/gulp": "^4.0.5",
+    "@types/jasmine": "^2.8.8",
+    "@types/jquery": "^3.3.9",
+    "@types/mime": "^2.0.0",
+    "@types/node": "^10.10.3",
+    "@types/orchestrator": "^0.3.2",
+    "@types/q": "^1.5.1",
+    "@types/serve-static": "^1.13.2",
+    "@types/socket.io": "^1.4.38",
+    "@types/socket.io-client": "^1.4.32",
+    "@types/vinyl": "^2.0.2",
     "concurrently": "^3.5.1",
-    "css-loader": "^0.28.9",
     "eslint": "^4.16.0",
     "nodemon": "^1.18.4",
-    "style-loader": "^0.20.1",
     "traceur": "0.0.111",
     "typescript": "^2.7.1",
-    "typings": "^2.1.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   }

@@ -9,47 +9,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var authentication_service_1 = require("../authentication.service");
-var SignupComponent = /** @class */ (function () {
-    function SignupComponent(_authenticationService, _router) {
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const authentication_service_1 = require("../authentication.service");
+let SignupComponent = class SignupComponent {
+    constructor(_authenticationService, _router) {
         this._authenticationService = _authenticationService;
         this._router = _router;
         this.user = {};
         //roles = ['Admin', 'Officer', 'Member'];
         this.showPassword = false;
     }
-    SignupComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         this.g = document.getElementById('errorMessage');
         this.g.style.display = 'none';
         this.s = document.getElementById('successMessage');
         this.s.style.display = 'none';
-    };
-    SignupComponent.prototype.signup = function () {
-        var _this = this;
+    }
+    signup() {
         this.g.style.display = 'none';
-        this._authenticationService.signup(this.user).subscribe(function (result) {
-            _this.s.style.display = 'none';
-            _this.s.style.display = 'block';
-            setTimeout(function () {
-                _this._router.navigate(['/authentication/signin']);
+        this._authenticationService.signup(this.user).subscribe(result => {
+            this.s.style.display = 'none';
+            this.s.style.display = 'block';
+            setTimeout(() => {
+                this._router.navigate(['/authentication/signin']);
             }, 1500);
-        }, function (error) {
-            _this.errorMessage = error;
-            _this.g.style.display = 'none';
-            _this.g.style.display = 'block';
+        }, error => {
+            this.errorMessage = error;
+            this.g.style.display = 'none';
+            this.g.style.display = 'block';
         });
-    };
-    SignupComponent = __decorate([
-        core_1.Component({
-            selector: 'signup',
-            templateUrl: 'app/authentication/signup/signup.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
-    ], SignupComponent);
-    return SignupComponent;
-}());
+    }
+};
+SignupComponent = __decorate([
+    core_1.Component({
+        selector: 'signup',
+        templateUrl: 'app/authentication/signup/signup.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
+], SignupComponent);
 exports.SignupComponent = SignupComponent;
 //# sourceMappingURL=signup.component.js.map

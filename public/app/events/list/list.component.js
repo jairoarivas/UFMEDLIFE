@@ -9,53 +9,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var events_service_1 = require("../events.service");
-var ListComponent = /** @class */ (function () {
-    function ListComponent(_eventsService) {
-        var _this = this;
+const core_1 = require("@angular/core");
+const events_service_1 = require("../events.service");
+let ListComponent = class ListComponent {
+    constructor(_eventsService) {
         this._eventsService = _eventsService;
-        this._eventsService.list().subscribe(function (events) { return _this.events = events; });
+        this._eventsService.list().subscribe(events => this.events = events);
         this.filterBy = 'eventName';
     }
-    ListComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this._eventsService.list().subscribe(function (events) { return _this.events = events; });
-    };
-    ListComponent.prototype.filterByName = function () {
+    ngOnInit() {
+        this._eventsService.list().subscribe(events => this.events = events);
+    }
+    filterByName() {
         this.filterBy = 'eventName';
-    };
-    ListComponent.prototype.filterByValue = function () {
+    }
+    filterByValue() {
         this.filterBy = 'value';
-    };
-    ListComponent.prototype.filterByDate = function () {
+    }
+    filterByDate() {
         this.filterBy = 'date';
-        console.log(this.filterBy);
-    };
-    ListComponent.prototype.filterByCode = function () {
+        //console.log(this.filterBy);
+    }
+    filterByCode() {
         this.filterBy = 'Code';
-    };
-    ListComponent.prototype.deleteModal = function (m) {
-        console.log("delete button clicked");
-        console.log(m);
+    }
+    deleteModal(m) {
+        //console.log("delete button clicked");
+        //console.log(m);
         this.currentEvent = m;
-    };
-    ListComponent.prototype.delete = function () {
-        var _this = this;
-        this._eventsService.delete(this.currentEvent._id).subscribe(function (deletedEvent) {
-            _this._eventsService.list().subscribe(function (events) { return _this.events = events; });
-            _this.currentEvent = undefined;
-        }, function (error) { return _this.errorMessage = error; });
-    };
-    ListComponent = __decorate([
-        core_1.Component({
-            selector: 'list',
-            templateUrl: 'app/events/list/list.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [events_service_1.EventsService])
-    ], ListComponent);
-    return ListComponent;
-}());
+    }
+    delete() {
+        this._eventsService.delete(this.currentEvent._id).subscribe(deletedEvent => {
+            this._eventsService.list().subscribe(events => this.events = events);
+            this.currentEvent = undefined;
+        }, error => this.errorMessage = error);
+    }
+};
+ListComponent = __decorate([
+    core_1.Component({
+        selector: 'list',
+        templateUrl: 'app/events/list/list.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [events_service_1.EventsService])
+], ListComponent);
 exports.ListComponent = ListComponent;
 //# sourceMappingURL=list.component.js.map

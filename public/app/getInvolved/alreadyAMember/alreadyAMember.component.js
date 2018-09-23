@@ -6,18 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var alreadyAMemberComponent = /** @class */ (function () {
-    function alreadyAMemberComponent() {
-    }
-    alreadyAMemberComponent = __decorate([
-        core_1.Component({
-            selector: 'alreadyAMember',
-            templateUrl: 'app/getInvolved/alreadyAMember/alreadyAMember.template.html',
-            styleUrls: ['app/app.styles.css']
-        })
-    ], alreadyAMemberComponent);
-    return alreadyAMemberComponent;
-}());
+const core_1 = require("@angular/core");
+let alreadyAMemberComponent = class alreadyAMemberComponent {
+};
+alreadyAMemberComponent = __decorate([
+    core_1.Component({
+        selector: 'alreadyAMember',
+        templateUrl: 'app/getInvolved/alreadyAMember/alreadyAMember.template.html',
+        styleUrls: ['app/app.styles.css']
+    })
+], alreadyAMemberComponent);
 exports.alreadyAMemberComponent = alreadyAMemberComponent;
 //# sourceMappingURL=alreadyAMember.component.js.map

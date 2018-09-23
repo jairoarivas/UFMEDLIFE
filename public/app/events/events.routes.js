@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var events_component_1 = require("./events.component");
-var create_component_1 = require("./create/create.component");
-var list_component_1 = require("./list/list.component");
-var edit_component_1 = require("./edit/edit.component");
+const events_component_1 = require("./events.component");
+const create_component_1 = require("./create/create.component");
+const list_component_1 = require("./list/list.component");
+const edit_component_1 = require("./edit/edit.component");
 exports.EventsRoutes = [{
         path: 'events',
         component: events_component_1.EventsComponent,

@@ -6,22 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var customDateFormatPipe = /** @class */ (function () {
-    function customDateFormatPipe() {
-    }
-    customDateFormatPipe.prototype.transform = function (value) {
+const core_1 = require("@angular/core");
+const common_1 = require("@angular/common");
+let customDateFormatPipe = class customDateFormatPipe {
+    transform(value) {
         var datePipe = new common_1.DatePipe("EST");
         value = datePipe.transform(value, 'MM/dd/yyyy');
         return value;
-    };
-    customDateFormatPipe = __decorate([
-        core_1.Pipe({
-            name: 'customDateFormat',
-        })
-    ], customDateFormatPipe);
-    return customDateFormatPipe;
-}());
+    }
+};
+customDateFormatPipe = __decorate([
+    core_1.Pipe({
+        name: 'customDateFormat',
+    })
+], customDateFormatPipe);
 exports.customDateFormatPipe = customDateFormatPipe;
 //# sourceMappingURL=dateFormat.pipe.js.map

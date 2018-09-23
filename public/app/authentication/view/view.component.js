@@ -9,13 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var authentication_service_1 = require("../authentication.service");
-var events_service_1 = require("../../events/events.service");
-var ViewComponent = /** @class */ (function () {
-    function ViewComponent(_router, _route, _authenticationService, _eventsService) {
-        var _this = this;
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const authentication_service_1 = require("../authentication.service");
+const events_service_1 = require("../../events/events.service");
+let ViewComponent = class ViewComponent {
+    constructor(_router, _route, _authenticationService, _eventsService) {
         this._router = _router;
         this._route = _route;
         this._authenticationService = _authenticationService;
@@ -25,31 +24,30 @@ var ViewComponent = /** @class */ (function () {
         this.event = {};
         this.request = {};
         this.user = this._authenticationService.user;
-        this._authenticationService.list().subscribe(function (members) {
-            _this.count = members.length;
-            _this.members = members;
+        this._authenticationService.list().subscribe(members => {
+            this.count = members.length;
+            this.members = members;
         });
     }
-    ViewComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         // this.g = document.getElementById('errorMessage') as HTMLElement;
         // this.g.style.display = 'none';
         // this.s = document.getElementById('successMessage') as HTMLElement;
         // this.s.style.display = 'none';
-        var _this = this;
-        this.paramsObserver = this._route.params.subscribe(function (params) {
-            var userId = params['userId'];
-            _this._authenticationService
+        this.paramsObserver = this._route.params.subscribe(params => {
+            let userId = params['userId'];
+            this._authenticationService
                 .read(userId)
-                .subscribe(function (member) {
-                _this.member = member;
-                _this._authenticationService.list().subscribe(function (members) { return _this.members = members; });
-            }, function (error) { return _this._router.navigate(['/']); });
+                .subscribe(member => {
+                this.member = member;
+                this._authenticationService.list().subscribe(members => this.members = members);
+            }, error => this._router.navigate(['/']));
         });
-    };
-    ViewComponent.prototype.ngOnDestroy = function () {
+    }
+    ngOnDestroy() {
         this.paramsObserver.unsubscribe();
-    };
-    ViewComponent.prototype.createRequest = function () {
+    }
+    createRequest() {
         // var alreadyRequested = false;
         // for(var i = 0; i < this.member.attendedEvents.length; i++){
         //   if(this.member.attendedEvents[i].eventName === this.event.eventName){
@@ -110,7 +108,7 @@ var ViewComponent = /** @class */ (function () {
         // }
         // );
         // }
-    };
+    }
     // findEvent(){
     //   this.s.style.display = 'none';
     //   this.g.style.display = 'none';
@@ -129,7 +127,7 @@ var ViewComponent = /** @class */ (function () {
     //   });
     //   console.log(this.event);
     // }
-    ViewComponent.prototype.percentile = function () {
+    percentile() {
         var totalMembers = 0;
         var numberUnderMember = 0;
         var numPoints = this.member.points;
@@ -148,8 +146,8 @@ var ViewComponent = /** @class */ (function () {
         //console.log(numberUnderMember);
         //console.log(totalMembers);
         return ((numberUnderMember / totalMembers) * 100);
-    };
-    ViewComponent.prototype.eventsAttendedEmpty = function () {
+    }
+    eventsAttendedEmpty() {
         if (this.member.attendedEvents !== undefined) {
             if (this.member.attendedEvents.length > 0) {
                 return false;
@@ -158,16 +156,15 @@ var ViewComponent = /** @class */ (function () {
                 return true;
             }
         }
-    };
-    ViewComponent = __decorate([
-        core_1.Component({
-            selector: 'view',
-            templateUrl: 'app/authentication/view/view.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService, events_service_1.EventsService])
-    ], ViewComponent);
-    return ViewComponent;
-}());
+    }
+};
+ViewComponent = __decorate([
+    core_1.Component({
+        selector: 'view',
+        templateUrl: 'app/authentication/view/view.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService, events_service_1.EventsService])
+], ViewComponent);
 exports.ViewComponent = ViewComponent;
 //# sourceMappingURL=view.component.js.map

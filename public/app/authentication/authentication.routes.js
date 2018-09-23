@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var authentication_component_1 = require("./authentication.component");
-var signin_component_1 = require("./signin/signin.component");
-var signup_component_1 = require("./signup/signup.component");
-var list_component_1 = require("./list/list.component");
-var view_component_1 = require("./view/view.component");
-var edit_component_1 = require("./edit/edit.component");
-var forgotPassword_component_1 = require("./forgotPassword/forgotPassword.component");
-var resetPassword_component_1 = require("./resetPassword/resetPassword.component");
+const authentication_component_1 = require("./authentication.component");
+const signin_component_1 = require("./signin/signin.component");
+const signup_component_1 = require("./signup/signup.component");
+const list_component_1 = require("./list/list.component");
+const view_component_1 = require("./view/view.component");
+const edit_component_1 = require("./edit/edit.component");
+const forgotPassword_component_1 = require("./forgotPassword/forgotPassword.component");
+const resetPassword_component_1 = require("./resetPassword/resetPassword.component");
 // import { PointListComponent } from './pointList/pointList.component';
 // import { AddPointComponent } from './addPoint/addPoint.component';
 exports.AuthenticationRoutes = [{

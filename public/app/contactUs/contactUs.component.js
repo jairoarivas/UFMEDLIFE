@@ -6,18 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var contactUsComponent = /** @class */ (function () {
-    function contactUsComponent() {
-    }
-    contactUsComponent = __decorate([
-        core_1.Component({
-            selector: 'contactUs',
-            templateUrl: './app/contactUs/contactUs.template.html',
-            styleUrls: ['app/app.styles.css']
-        })
-    ], contactUsComponent);
-    return contactUsComponent;
-}());
+const core_1 = require("@angular/core");
+let contactUsComponent = class contactUsComponent {
+};
+contactUsComponent = __decorate([
+    core_1.Component({
+        selector: 'contactUs',
+        templateUrl: './app/contactUs/contactUs.template.html',
+        styleUrls: ['app/app.styles.css']
+    })
+], contactUsComponent);
 exports.contactUsComponent = contactUsComponent;
 //# sourceMappingURL=contactUs.component.js.map

@@ -6,18 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var serviceTripsComponent = /** @class */ (function () {
-    function serviceTripsComponent() {
-    }
-    serviceTripsComponent = __decorate([
-        core_1.Component({
-            selector: 'serviceTrips',
-            templateUrl: 'app/getInvolved/serviceTrips/serviceTrips.template.html',
-            styleUrls: ['app/app.styles.css']
-        })
-    ], serviceTripsComponent);
-    return serviceTripsComponent;
-}());
+const core_1 = require("@angular/core");
+let serviceTripsComponent = class serviceTripsComponent {
+};
+serviceTripsComponent = __decorate([
+    core_1.Component({
+        selector: 'serviceTrips',
+        templateUrl: 'app/getInvolved/serviceTrips/serviceTrips.template.html',
+        styleUrls: ['app/app.styles.css']
+    })
+], serviceTripsComponent);
 exports.serviceTripsComponent = serviceTripsComponent;
 //# sourceMappingURL=serviceTrips.component.js.map

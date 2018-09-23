@@ -9,45 +9,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var authentication_service_1 = require("../authentication.service");
-var router_1 = require("@angular/router");
-var ForgotPasswordComponent = /** @class */ (function () {
-    function ForgotPasswordComponent(_authenticationService, _router) {
+const core_1 = require("@angular/core");
+const authentication_service_1 = require("../authentication.service");
+const router_1 = require("@angular/router");
+let ForgotPasswordComponent = class ForgotPasswordComponent {
+    constructor(_authenticationService, _router) {
         this._authenticationService = _authenticationService;
         this._router = _router;
         this.credentials = {};
     }
-    ForgotPasswordComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         this.g = document.getElementById('errorMessage');
         this.g.style.display = 'none';
         this.s = document.getElementById('successMessage');
         this.s.style.display = 'none';
-    };
-    ForgotPasswordComponent.prototype.forgotPassword = function () {
-        var _this = this;
+    }
+    forgotPassword() {
         this.g.style.display = 'none';
-        this._authenticationService.forgotPassword(this.credentials).subscribe(function (result) {
-            _this.s.style.display = 'none';
-            _this.s.style.display = 'block';
-            setTimeout(function () {
-                _this._router.navigate(['/authentication/signin']);
+        this._authenticationService.forgotPassword(this.credentials).subscribe(result => {
+            this.s.style.display = 'none';
+            this.s.style.display = 'block';
+            setTimeout(() => {
+                this._router.navigate(['/authentication/signin']);
             }, 3000);
-        }, function (error) {
-            _this.errorMessage = error;
-            _this.g.style.display = 'none';
-            _this.g.style.display = 'block';
+        }, error => {
+            this.errorMessage = error;
+            this.g.style.display = 'none';
+            this.g.style.display = 'block';
         });
-    };
-    ForgotPasswordComponent = __decorate([
-        core_1.Component({
-            selector: 'forgotPassword',
-            templateUrl: './app/authentication/forgotPassword/forgotPassword.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
-    ], ForgotPasswordComponent);
-    return ForgotPasswordComponent;
-}());
+    }
+};
+ForgotPasswordComponent = __decorate([
+    core_1.Component({
+        selector: 'forgotPassword',
+        templateUrl: './app/authentication/forgotPassword/forgotPassword.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
+], ForgotPasswordComponent);
 exports.ForgotPasswordComponent = ForgotPasswordComponent;
 //# sourceMappingURL=forgotPassword.component.js.map

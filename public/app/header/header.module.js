@@ -6,26 +6,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var router_1 = require("@angular/router");
-var header_routes_1 = require("./header.routes");
-var header_component_1 = require("./header.component");
-var HeaderModule = /** @class */ (function () {
-    function HeaderModule() {
-    }
-    HeaderModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                common_1.CommonModule,
-                router_1.RouterModule.forChild(header_routes_1.HeaderRoutes),
-            ],
-            declarations: [
-                header_component_1.HeaderComponent,
-            ]
-        })
-    ], HeaderModule);
-    return HeaderModule;
-}());
+const core_1 = require("@angular/core");
+const common_1 = require("@angular/common");
+const router_1 = require("@angular/router");
+const header_routes_1 = require("./header.routes");
+const header_component_1 = require("./header.component");
+let HeaderModule = class HeaderModule {
+};
+HeaderModule = __decorate([
+    core_1.NgModule({
+        imports: [
+            common_1.CommonModule,
+            router_1.RouterModule.forChild(header_routes_1.HeaderRoutes),
+        ],
+        declarations: [
+            header_component_1.HeaderComponent,
+        ]
+    })
+], HeaderModule);
 exports.HeaderModule = HeaderModule;
 //# sourceMappingURL=header.module.js.map

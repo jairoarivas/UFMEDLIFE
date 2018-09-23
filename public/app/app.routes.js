@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var home_component_1 = require("./home/home.component");
-var contactUs_component_1 = require("./contactUs/contactUs.component");
-var header_component_1 = require("./header/header.component");
+const home_component_1 = require("./home/home.component");
+const contactUs_component_1 = require("./contactUs/contactUs.component");
+const header_component_1 = require("./header/header.component");
 exports.AppRoutes = [
     {
         path: '',

@@ -6,12 +6,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var FilterPipe = /** @class */ (function () {
-    //filters based in first and last names, and username/email
-    function FilterPipe() {
-    }
-    FilterPipe.prototype.transform = function (items, term) {
+const core_1 = require("@angular/core");
+let FilterPipe = 
+//filters based in first and last names, and username/email
+class FilterPipe {
+    transform(items, term) {
         if (term === undefined)
             return items;
         return items.filter(function (items) {
@@ -28,14 +27,13 @@ var FilterPipe = /** @class */ (function () {
                 return false;
             }
         });
-    };
-    FilterPipe = __decorate([
-        core_1.Pipe({
-            name: 'filter'
-        })
-        //filters based in first and last names, and username/email
-    ], FilterPipe);
-    return FilterPipe;
-}());
+    }
+};
+FilterPipe = __decorate([
+    core_1.Pipe({
+        name: 'filter'
+    })
+    //filters based in first and last names, and username/email
+], FilterPipe);
 exports.FilterPipe = FilterPipe;
 //# sourceMappingURL=filter.pipe.js.map

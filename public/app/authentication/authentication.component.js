@@ -6,17 +6,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var AuthenticationComponent = /** @class */ (function () {
-    function AuthenticationComponent() {
-    }
-    AuthenticationComponent = __decorate([
-        core_1.Component({
-            selector: 'authentication',
-            templateUrl: 'app/authentication/authentication.template.html',
-        })
-    ], AuthenticationComponent);
-    return AuthenticationComponent;
-}());
+const core_1 = require("@angular/core");
+let AuthenticationComponent = class AuthenticationComponent {
+};
+AuthenticationComponent = __decorate([
+    core_1.Component({
+        selector: 'authentication',
+        templateUrl: 'app/authentication/authentication.template.html',
+    })
+], AuthenticationComponent);
 exports.AuthenticationComponent = AuthenticationComponent;
 //# sourceMappingURL=authentication.component.js.map

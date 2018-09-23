@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var getInvolved_component_1 = require("./getInvolved.component");
-var becomeAMember_component_1 = require("./becomeAMember/becomeAMember.component");
-var alreadyAMember_component_1 = require("./alreadyAMember/alreadyAMember.component");
-var serviceTrips_component_1 = require("./serviceTrips/serviceTrips.component");
+const getInvolved_component_1 = require("./getInvolved.component");
+const becomeAMember_component_1 = require("./becomeAMember/becomeAMember.component");
+const alreadyAMember_component_1 = require("./alreadyAMember/alreadyAMember.component");
+const serviceTrips_component_1 = require("./serviceTrips/serviceTrips.component");
 exports.getInvolvedRoutes = [{
         path: 'getInvolved',
         component: getInvolved_component_1.getInvolvedComponent,

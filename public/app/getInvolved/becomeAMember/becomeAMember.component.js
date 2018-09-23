@@ -6,18 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var becomeAMemberComponent = /** @class */ (function () {
-    function becomeAMemberComponent() {
-    }
-    becomeAMemberComponent = __decorate([
-        core_1.Component({
-            selector: 'becomeAMember',
-            templateUrl: 'app/getInvolved/becomeAMember/becomeAMember.template.html',
-            styleUrls: ['app/app.styles.css']
-        })
-    ], becomeAMemberComponent);
-    return becomeAMemberComponent;
-}());
+const core_1 = require("@angular/core");
+let becomeAMemberComponent = class becomeAMemberComponent {
+};
+becomeAMemberComponent = __decorate([
+    core_1.Component({
+        selector: 'becomeAMember',
+        templateUrl: 'app/getInvolved/becomeAMember/becomeAMember.template.html',
+        styleUrls: ['app/app.styles.css']
+    })
+], becomeAMemberComponent);
 exports.becomeAMemberComponent = becomeAMemberComponent;
 //# sourceMappingURL=becomeAMember.component.js.map

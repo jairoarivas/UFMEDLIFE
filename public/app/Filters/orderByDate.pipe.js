@@ -6,13 +6,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var DateSortPipe = /** @class */ (function () {
-    function DateSortPipe() {
-    }
-    DateSortPipe.prototype.transform = function (array, args) {
+const core_1 = require("@angular/core");
+let DateSortPipe = class DateSortPipe {
+    transform(array, args) {
         if (array !== undefined) {
-            array.sort(function (a, b) {
+            array.sort((a, b) => {
                 if (a[args] < b[args]) {
                     return 1;
                 }
@@ -25,13 +23,12 @@ var DateSortPipe = /** @class */ (function () {
             });
         }
         return array;
-    };
-    DateSortPipe = __decorate([
-        core_1.Pipe({
-            name: "orderByDate"
-        })
-    ], DateSortPipe);
-    return DateSortPipe;
-}());
+    }
+};
+DateSortPipe = __decorate([
+    core_1.Pipe({
+        name: "orderByDate"
+    })
+], DateSortPipe);
 exports.DateSortPipe = DateSortPipe;
 //# sourceMappingURL=orderByDate.pipe.js.map

@@ -6,18 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var HomeComponent = /** @class */ (function () {
-    function HomeComponent() {
-    }
-    HomeComponent = __decorate([
-        core_1.Component({
-            selector: 'home',
-            templateUrl: './app/home/home.template.html',
-            styleUrls: ['app/app.styles.css']
-        })
-    ], HomeComponent);
-    return HomeComponent;
-}());
+const core_1 = require("@angular/core");
+let HomeComponent = class HomeComponent {
+};
+HomeComponent = __decorate([
+    core_1.Component({
+        selector: 'home',
+        templateUrl: './app/home/home.template.html',
+        styleUrls: ['app/app.styles.css']
+    })
+], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

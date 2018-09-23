@@ -9,57 +9,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var events_service_1 = require("../events.service");
-var EditComponent = /** @class */ (function () {
-    function EditComponent(_router, _route, _eventsService) {
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const events_service_1 = require("../events.service");
+let EditComponent = class EditComponent {
+    constructor(_router, _route, _eventsService) {
         this._router = _router;
         this._route = _route;
         this._eventsService = _eventsService;
         this.event = {};
     }
-    EditComponent.prototype.ngOnInit = function () {
-        var _this = this;
+    ngOnInit() {
         this.g = document.getElementById('errorMessage');
         this.g.style.display = 'none';
         this.s = document.getElementById('successMessage');
         this.s.style.display = 'none';
-        this.paramsObserver = this._route.params.subscribe(function (params) {
-            var eventId = params['eventId'];
-            _this._eventsService.read(eventId).subscribe(function (event) {
-                _this.event = event;
-            }, function (error) { return _this._router.navigate(['/events']); });
+        this.paramsObserver = this._route.params.subscribe(params => {
+            let eventId = params['eventId'];
+            this._eventsService.read(eventId).subscribe(event => {
+                this.event = event;
+            }, error => this._router.navigate(['/events']));
         });
-    };
-    EditComponent.prototype.ngOnDestroy = function () {
+    }
+    ngOnDestroy() {
         this.paramsObserver.unsubscribe();
-    };
-    EditComponent.prototype.update = function () {
-        var _this = this;
-        this._eventsService.update(this.event).subscribe(function (savedEvent) {
-            _this.s.style.display = 'none';
-            _this.s.style.display = 'block';
-            setTimeout(function () {
-                _this._router.navigate(['/events']);
+    }
+    update() {
+        this._eventsService.update(this.event).subscribe(savedEvent => {
+            this.s.style.display = 'none';
+            this.s.style.display = 'block';
+            setTimeout(() => {
+                this._router.navigate(['/events']);
             }, 1500);
-        }, function (error) {
-            _this.errorMessage = error;
-            _this.g.style.display = 'none';
-            _this.g.style.display = 'block';
+        }, error => {
+            this.errorMessage = error;
+            this.g.style.display = 'none';
+            this.g.style.display = 'block';
         });
-    };
-    EditComponent = __decorate([
-        core_1.Component({
-            selector: 'edit',
-            templateUrl: 'app/events/edit/edit.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [router_1.Router,
-            router_1.ActivatedRoute,
-            events_service_1.EventsService])
-    ], EditComponent);
-    return EditComponent;
-}());
+    }
+};
+EditComponent = __decorate([
+    core_1.Component({
+        selector: 'edit',
+        templateUrl: 'app/events/edit/edit.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [router_1.Router,
+        router_1.ActivatedRoute,
+        events_service_1.EventsService])
+], EditComponent);
 exports.EditComponent = EditComponent;
 //# sourceMappingURL=edit.component.js.map

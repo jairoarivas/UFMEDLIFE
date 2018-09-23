@@ -6,51 +6,48 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var router_1 = require("@angular/router");
-var forms_1 = require("@angular/forms");
-var http_1 = require("@angular/http");
-var common_1 = require("@angular/common");
-var app_component_1 = require("./app.component");
-var app_routes_1 = require("./app.routes");
-var authentication_service_1 = require("./authentication/authentication.service");
-var authentication_module_1 = require("./authentication/authentication.module");
-var header_module_1 = require("./header/header.module");
-var events_service_1 = require("./events/events.service");
-var getInvolved_module_1 = require("./getInvolved/getInvolved.module");
-var contactUs_component_1 = require("./contactUs/contactUs.component");
-var home_component_1 = require("./home/home.component");
-var events_module_1 = require("./events/events.module");
-var AppModule = /** @class */ (function () {
-    function AppModule() {
-    }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                platform_browser_1.BrowserModule,
-                http_1.HttpModule,
-                authentication_module_1.AuthenticationModule,
-                header_module_1.HeaderModule,
-                getInvolved_module_1.getInvolvedModule,
-                events_module_1.EventsModule,
-                forms_1.FormsModule,
-                common_1.CommonModule,
-                router_1.RouterModule.forRoot(app_routes_1.AppRoutes)
-            ],
-            declarations: [
-                home_component_1.HomeComponent,
-                contactUs_component_1.contactUsComponent,
-                app_component_1.AppComponent
-            ],
-            providers: [
-                authentication_service_1.AuthenticationService,
-                events_service_1.EventsService,
-            ],
-            bootstrap: [app_component_1.AppComponent]
-        })
-    ], AppModule);
-    return AppModule;
-}());
+const core_1 = require("@angular/core");
+const platform_browser_1 = require("@angular/platform-browser");
+const router_1 = require("@angular/router");
+const forms_1 = require("@angular/forms");
+const http_1 = require("@angular/http");
+const common_1 = require("@angular/common");
+const app_component_1 = require("./app.component");
+const app_routes_1 = require("./app.routes");
+const authentication_service_1 = require("./authentication/authentication.service");
+const authentication_module_1 = require("./authentication/authentication.module");
+const header_module_1 = require("./header/header.module");
+const events_service_1 = require("./events/events.service");
+const getInvolved_module_1 = require("./getInvolved/getInvolved.module");
+const contactUs_component_1 = require("./contactUs/contactUs.component");
+const home_component_1 = require("./home/home.component");
+const events_module_1 = require("./events/events.module");
+let AppModule = class AppModule {
+};
+AppModule = __decorate([
+    core_1.NgModule({
+        imports: [
+            platform_browser_1.BrowserModule,
+            http_1.HttpModule,
+            authentication_module_1.AuthenticationModule,
+            header_module_1.HeaderModule,
+            getInvolved_module_1.getInvolvedModule,
+            events_module_1.EventsModule,
+            forms_1.FormsModule,
+            common_1.CommonModule,
+            router_1.RouterModule.forRoot(app_routes_1.AppRoutes)
+        ],
+        declarations: [
+            home_component_1.HomeComponent,
+            contactUs_component_1.contactUsComponent,
+            app_component_1.AppComponent
+        ],
+        providers: [
+            authentication_service_1.AuthenticationService,
+            events_service_1.EventsService,
+        ],
+        bootstrap: [app_component_1.AppComponent]
+    })
+], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

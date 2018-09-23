@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var members_service_1 = require("../members.service");
-var events_service_1 = require("../../events/events.service");
-var authentication_service_1 = require("../authentication.service");
-var AddPointComponent = /** @class */ (function () {
-    function AddPointComponent(_router, _route, _membersService, _eventsService, _authenticationService) {
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const members_service_1 = require("../members.service");
+const events_service_1 = require("../../events/events.service");
+const authentication_service_1 = require("../authentication.service");
+let AddPointComponent = class AddPointComponent {
+    constructor(_router, _route, _membersService, _eventsService, _authenticationService) {
         this._router = _router;
         this._route = _route;
         this._membersService = _membersService;
@@ -27,44 +27,40 @@ var AddPointComponent = /** @class */ (function () {
             return (this.member.tempEvent === event);
         };
     }
-    AddPointComponent.prototype.ngOnInit = function () {
-        var _this = this;
+    ngOnInit() {
         this.user = this._authenticationService.user;
-        this.paramsObserver = this._route.params.subscribe(function (params) {
-            var userId = params['userId'];
-            _this._membersService.read(userId).subscribe(function (member) {
-                _this.allowEdit = (_this.user && (_this.user.role === 'Admin' || _this.user.role === 'Officer'));
-                _this.member = member;
-            }, function (error) { return _this._router.navigate(['/authentication/addPoint']); });
-            _this._eventsService.list().subscribe(function (events) { return _this.events = events; });
+        this.paramsObserver = this._route.params.subscribe(params => {
+            let userId = params['userId'];
+            this._membersService.read(userId).subscribe(member => {
+                this.allowEdit = (this.user && (this.user.role === 'Admin' || this.user.role === 'Officer'));
+                this.member = member;
+            }, error => this._router.navigate(['/authentication/addPoint']));
+            this._eventsService.list().subscribe(events => this.events = events);
         });
-    };
-    AddPointComponent.prototype.ngOnDestroy = function () {
+    }
+    ngOnDestroy() {
         this.paramsObserver.unsubscribe();
-    };
-    AddPointComponent.prototype.temp = function (event) {
+    }
+    temp(event) {
         this.member.tempEvent = event;
-    };
-    AddPointComponent.prototype.addPoint = function () {
-        var _this = this;
-        this._membersService.addPoint(this.member).subscribe(function (savedUser) { return _this._router.navigate(['/authentication/addPoint']); }, function (error) { return _this.errorMessage = error; });
-    };
-    AddPointComponent.prototype.removePoint = function () {
-        var _this = this;
-        this._membersService.removePoint(this.member).subscribe(function (savedUser) { return _this._router.navigate(['/authentication/addPoint']); }, function (error) { return _this.errorMessage = error; });
-    };
-    AddPointComponent = __decorate([
-        core_1.Component({
-            selector: 'addPoint',
-            templateUrl: 'app/authentication/addPoint/addPoint.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [router_1.Router,
-            router_1.ActivatedRoute,
-            members_service_1.MembersService,
-            events_service_1.EventsService, authentication_service_1.AuthenticationService])
-    ], AddPointComponent);
-    return AddPointComponent;
-}());
+    }
+    addPoint() {
+        this._membersService.addPoint(this.member).subscribe(savedUser => this._router.navigate(['/authentication/addPoint']), error => this.errorMessage = error);
+    }
+    removePoint() {
+        this._membersService.removePoint(this.member).subscribe(savedUser => this._router.navigate(['/authentication/addPoint']), error => this.errorMessage = error);
+    }
+};
+AddPointComponent = __decorate([
+    core_1.Component({
+        selector: 'addPoint',
+        templateUrl: 'app/authentication/addPoint/addPoint.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [router_1.Router,
+        router_1.ActivatedRoute,
+        members_service_1.MembersService,
+        events_service_1.EventsService, authentication_service_1.AuthenticationService])
+], AddPointComponent);
 exports.AddPointComponent = AddPointComponent;
 //# sourceMappingURL=addPoint.component.js.map

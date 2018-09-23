@@ -9,60 +9,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var authentication_service_1 = require("../authentication.service");
-var ListComponent = /** @class */ (function () {
-    function ListComponent(_router, _route, _authenticationService) {
-        var _this = this;
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const authentication_service_1 = require("../authentication.service");
+let ListComponent = class ListComponent {
+    constructor(_router, _route, _authenticationService) {
         this._router = _router;
         this._route = _route;
         this._authenticationService = _authenticationService;
-        this._authenticationService.list().subscribe(function (members) { return _this.members = members; });
+        this._authenticationService.list().subscribe(members => this.members = members);
         this.user = this._authenticationService.user;
     }
-    ListComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         this.filterBy = 'firstName';
-    };
-    ListComponent.prototype.filterByRole = function () {
+    }
+    filterByRole() {
         this.filterBy = 'role';
-    };
-    ListComponent.prototype.filterByfirstName = function () {
+    }
+    filterByfirstName() {
         this.filterBy = 'firstName';
-    };
-    ListComponent.prototype.filterBylastName = function () {
+    }
+    filterBylastName() {
         this.filterBy = 'lastName';
-    };
-    ListComponent.prototype.filterByEmail = function () {
+    }
+    filterByEmail() {
         this.filterBy = 'email';
-    };
-    ListComponent.prototype.filterByPoints = function () {
+    }
+    filterByPoints() {
         this.filterBy = 'points';
-    };
-    ListComponent.prototype.deleteModal = function (m) {
+    }
+    deleteModal(m) {
         // console.log("delete button clicked");
         // console.log(m);
         this.currentMember = m;
-    };
-    ListComponent.prototype.memberViewPage = function (member) {
+    }
+    memberViewPage(member) {
         this._router.navigate(['/authentication/members', member]);
-    };
-    ListComponent.prototype.delete = function () {
-        var _this = this;
-        this._authenticationService.delete(this.currentMember._id).subscribe(function (deletedUser) {
-            _this._authenticationService.list().subscribe(function (members) { return _this.members = members; });
-            _this.currentMember = undefined;
-        }, function (error) { return _this.errorMessage = error; });
-    };
-    ListComponent = __decorate([
-        core_1.Component({
-            selector: 'list',
-            templateUrl: 'app/authentication/list/list.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService])
-    ], ListComponent);
-    return ListComponent;
-}());
+    }
+    delete() {
+        this._authenticationService.delete(this.currentMember._id).subscribe(deletedUser => {
+            this._authenticationService.list().subscribe(members => this.members = members);
+            this.currentMember = undefined;
+        }, error => this.errorMessage = error);
+    }
+};
+ListComponent = __decorate([
+    core_1.Component({
+        selector: 'list',
+        templateUrl: 'app/authentication/list/list.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService])
+], ListComponent);
 exports.ListComponent = ListComponent;
 //# sourceMappingURL=list.component.js.map

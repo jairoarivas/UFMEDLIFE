@@ -6,18 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var getInvolvedComponent = /** @class */ (function () {
-    function getInvolvedComponent() {
-    }
-    getInvolvedComponent = __decorate([
-        core_1.Component({
-            selector: 'getInvolved',
-            template: '<router-outlet></router-outlet>',
-            styleUrls: ['app/app.styles.css']
-        })
-    ], getInvolvedComponent);
-    return getInvolvedComponent;
-}());
+const core_1 = require("@angular/core");
+let getInvolvedComponent = class getInvolvedComponent {
+};
+getInvolvedComponent = __decorate([
+    core_1.Component({
+        selector: 'getInvolved',
+        template: '<router-outlet></router-outlet>',
+        styleUrls: ['app/app.styles.css']
+    })
+], getInvolvedComponent);
 exports.getInvolvedComponent = getInvolvedComponent;
 //# sourceMappingURL=getInvolved.component.js.map

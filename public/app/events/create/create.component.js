@@ -9,46 +9,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var events_service_1 = require("../events.service");
-var CreateComponent = /** @class */ (function () {
-    function CreateComponent(_router, _eventsService) {
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const events_service_1 = require("../events.service");
+let CreateComponent = class CreateComponent {
+    constructor(_router, _eventsService) {
         this._router = _router;
         this._eventsService = _eventsService;
         this.event = {};
     }
-    CreateComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         this.g = document.getElementById('errorMessage');
         this.g.style.display = 'none';
         this.s = document.getElementById('successMessage');
         this.s.style.display = 'none';
-    };
-    CreateComponent.prototype.create = function () {
-        var _this = this;
+    }
+    create() {
         this.event.eventName = this.event.eventName.replace(/\s+/g, '');
-        this._eventsService.create(this.event).subscribe(function (createdEvent) {
-            _this.s.style.display = 'none';
-            _this.s.style.display = 'block';
-            setTimeout(function () {
-                _this._router.navigate(['/events']);
+        this._eventsService.create(this.event).subscribe(createdEvent => {
+            this.s.style.display = 'none';
+            this.s.style.display = 'block';
+            setTimeout(() => {
+                this._router.navigate(['/events']);
             }, 1500);
-        }, function (error) {
-            _this.errorMessage = error;
-            _this.g.style.display = 'none';
-            _this.g.style.display = 'block';
+        }, error => {
+            this.errorMessage = error;
+            this.g.style.display = 'none';
+            this.g.style.display = 'block';
         });
-    };
-    CreateComponent = __decorate([
-        core_1.Component({
-            selector: 'create',
-            templateUrl: 'app/events/create/create.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [router_1.Router,
-            events_service_1.EventsService])
-    ], CreateComponent);
-    return CreateComponent;
-}());
+    }
+};
+CreateComponent = __decorate([
+    core_1.Component({
+        selector: 'create',
+        templateUrl: 'app/events/create/create.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [router_1.Router,
+        events_service_1.EventsService])
+], CreateComponent);
 exports.CreateComponent = CreateComponent;
 //# sourceMappingURL=create.component.js.map

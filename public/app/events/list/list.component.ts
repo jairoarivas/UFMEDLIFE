@@ -31,7 +31,7 @@ export class ListComponent{
 
 	filterByDate(){
 		this.filterBy = 'date';
-		console.log(this.filterBy);
+		//console.log(this.filterBy);
 	}
 
 	filterByCode(){
@@ -39,8 +39,8 @@ export class ListComponent{
 	}
 
 	deleteModal(m){
-		console.log("delete button clicked");
-		console.log(m);
+		//console.log("delete button clicked");
+		//console.log(m);
 		this.currentEvent = m;
 	}
 

@@ -10,66 +10,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("rxjs/Rx");
-var Observable_1 = require("rxjs/Observable");
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var MembersService = /** @class */ (function () {
-    function MembersService(_http) {
+const Observable_1 = require("rxjs/Observable");
+const core_1 = require("@angular/core");
+const http_1 = require("@angular/http");
+let MembersService = class MembersService {
+    constructor(_http) {
         this._http = _http;
         this._baseURL = 'api/members';
         this._pointURL = 'api/addPoint';
         this._removeURL = 'api/removePoint';
     }
-    MembersService.prototype.read = function (userId) {
+    read(userId) {
         return this._http
-            .get(this._baseURL + "/" + userId)
-            .map(function (res) { return res.json(); })
+            .get(`${this._baseURL}/${userId}`)
+            .map((res) => res.json())
             .catch(this.handleError);
-    };
-    MembersService.prototype.pointList = function () {
+    }
+    pointList() {
         return this._http
             .get(this._pointURL)
-            .map(function (res) { return res.json(); })
+            .map((res) => res.json())
             .catch(this.handleError);
-    };
-    MembersService.prototype.addPoint = function (user) {
+    }
+    addPoint(user) {
         return this._http
-            .put(this._pointURL + "/" + user._id, user)
-            .map(function (res) { return res.json(); })
+            .put(`${this._pointURL}/${user._id}`, user)
+            .map((res) => res.json())
             .catch(this.handleError);
-    };
-    MembersService.prototype.removePoint = function (user) {
+    }
+    removePoint(user) {
         return this._http
-            .put(this._removeURL + "/" + user._id, user)
-            .map(function (res) { return res.json(); })
+            .put(`${this._removeURL}/${user._id}`, user)
+            .map((res) => res.json())
             .catch(this.handleError);
-    };
-    MembersService.prototype.update = function (user) {
+    }
+    update(user) {
         return this._http
-            .put(this._baseURL + "/" + user._id, user)
-            .map(function (res) { return res.json(); })
+            .put(`${this._baseURL}/${user._id}`, user)
+            .map((res) => res.json())
             .catch(this.handleError);
-    };
-    MembersService.prototype.delete = function (userId) {
+    }
+    delete(userId) {
         return this._http
-            .delete(this._baseURL + "/" + userId)
-            .map(function (res) { return res.json(); })
+            .delete(`${this._baseURL}/${userId}`)
+            .map((res) => res.json())
             .catch(this.handleError);
-    };
-    MembersService.prototype.list = function () {
+    }
+    list() {
         return this._http
             .get(this._baseURL)
-            .map(function (res) { return res.json(); })
+            .map((res) => res.json())
             .catch(this.handleError);
-    };
-    MembersService.prototype.handleError = function (error) {
+    }
+    handleError(error) {
         return Observable_1.Observable.throw(error.json().message || 'Server error');
-    };
-    MembersService = __decorate([
-        core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http])
-    ], MembersService);
-    return MembersService;
-}());
+    }
+};
+MembersService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], MembersService);
 exports.MembersService = MembersService;
 //# sourceMappingURL=members.service.js.map

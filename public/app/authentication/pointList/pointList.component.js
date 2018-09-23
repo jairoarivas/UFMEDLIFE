@@ -9,25 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var members_service_1 = require("../members.service");
-var PointListComponent = /** @class */ (function () {
-    function PointListComponent(_membersService) {
+const core_1 = require("@angular/core");
+const members_service_1 = require("../members.service");
+let PointListComponent = class PointListComponent {
+    constructor(_membersService) {
         this._membersService = _membersService;
     }
-    PointListComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this._membersService.pointList().subscribe(function (members) { return _this.members = members; });
-    };
-    PointListComponent = __decorate([
-        core_1.Component({
-            selector: 'pointList',
-            templateUrl: 'app/authentication/pointList/pointList.template.html',
-            styleUrls: ['app/app.styles.css']
-        }),
-        __metadata("design:paramtypes", [members_service_1.MembersService])
-    ], PointListComponent);
-    return PointListComponent;
-}());
+    ngOnInit() {
+        this._membersService.pointList().subscribe(members => this.members = members);
+    }
+};
+PointListComponent = __decorate([
+    core_1.Component({
+        selector: 'pointList',
+        templateUrl: 'app/authentication/pointList/pointList.template.html',
+        styleUrls: ['app/app.styles.css']
+    }),
+    __metadata("design:paramtypes", [members_service_1.MembersService])
+], PointListComponent);
 exports.PointListComponent = PointListComponent;
 //# sourceMappingURL=pointList.component.js.map
