@@ -26,6 +26,7 @@ var CreateComponent = /** @class */ (function () {
     };
     CreateComponent.prototype.create = function () {
         var _this = this;
+        this.event.eventName = this.event.eventName.replace(/\s+/g, '');
         this._eventsService.create(this.event).subscribe(function (createdEvent) {
             _this.s.style.display = 'none';
             _this.s.style.display = 'block';

@@ -12,6 +12,7 @@ const EventSchema = new Schema({
   },
   eventName: {
     type: String,
+    unique:true,
     default: '',
     trim: true,
     required: 'Event must be given a name'
@@ -22,6 +23,7 @@ const EventSchema = new Schema({
   },
   eventCode: {
     type: String,
+    unique: true,
     required: 'Event must be given an event code'
   }
 });

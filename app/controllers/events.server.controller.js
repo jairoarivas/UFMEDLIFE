@@ -112,6 +112,17 @@ exports.eventByID = function(req, res, next, id) {
     });
 };
 
+exports.eventByCode = function(req,res,next,code){
+  Event.findOne({eventCode: [code]}).exec((err, event) => {
+    if(err) return next(err);
+    if(!event) return next(new Error('No event with event code ' + code + ' was found'));
+
+    req.event = event;
+
+    next();
+  });
+};
+
 // Create a new controller middleware that is used to authorize an event operation
 exports.hasAuthorization = function(req, res, next) {
     // If the current user is not the creator of the event send the appropriate error message

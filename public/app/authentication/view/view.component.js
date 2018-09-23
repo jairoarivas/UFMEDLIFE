@@ -12,21 +12,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var authentication_service_1 = require("../authentication.service");
+var events_service_1 = require("../../events/events.service");
 var ViewComponent = /** @class */ (function () {
-    function ViewComponent(_router, _route, _authenticationService) {
+    function ViewComponent(_router, _route, _authenticationService, _eventsService) {
         var _this = this;
         this._router = _router;
         this._route = _route;
         this._authenticationService = _authenticationService;
+        this._eventsService = _eventsService;
         this.member = {};
+        //point request related variables
+        this.event = {};
+        this.request = {};
+        this.user = this._authenticationService.user;
         this._authenticationService.list().subscribe(function (members) {
             _this.count = members.length;
             _this.members = members;
         });
     }
     ViewComponent.prototype.ngOnInit = function () {
+        // this.g = document.getElementById('errorMessage') as HTMLElement;
+        // this.g.style.display = 'none';
+        // this.s = document.getElementById('successMessage') as HTMLElement;
+        // this.s.style.display = 'none';
         var _this = this;
-        this.user = this._authenticationService.user;
         this.paramsObserver = this._route.params.subscribe(function (params) {
             var userId = params['userId'];
             _this._authenticationService
@@ -40,6 +49,86 @@ var ViewComponent = /** @class */ (function () {
     ViewComponent.prototype.ngOnDestroy = function () {
         this.paramsObserver.unsubscribe();
     };
+    ViewComponent.prototype.createRequest = function () {
+        // var alreadyRequested = false;
+        // for(var i = 0; i < this.member.attendedEvents.length; i++){
+        //   if(this.member.attendedEvents[i].eventName === this.event.eventName){
+        //     return true;
+        //   }
+        //   else{
+        //     return false;
+        //   }
+        // }
+        // console.log('AlreadyRequested: ' + alreadyRequested);
+        // if(alreadyRequested){
+        //   this.errorMessage = 'You have already requested points for this event'
+        //   this.g.style.display = 'none';
+        //   this.g.style.display = 'block';
+        //   setTimeout(() => {
+        //     this.g.style.display = 'none';
+        //   }, 5000);
+        // }
+        // else{
+        //   this._requestsService.checkEvent(this.event.eventName.replace(/\s+/g, ''),this.member._id).subscribe(requests => {
+        //     //console.log('Search Results: ' + requests);
+        //     // this.errorMessage = 'You have already requested points for this event'
+        //     // this.g.style.display = 'none';
+        //     // this.g.style.display = 'block';
+        //     // setTimeout(() => {
+        //     //   this.g.style.display = 'none';
+        //     // }, 5000);
+        //   },
+        //   error => {
+        //     this.errorMessage = error;
+        //     this.g.style.display = 'none';
+        //     this.g.style.display = 'block';
+        //     setTimeout(() => {
+        //       this.g.style.display = 'none';
+        //     }, 5000);
+        //   this.request = {
+        //     user: this.member._id,
+        //     eventName:this.event.eventName,
+        //     eventValue:this.event.eventValue,
+        //     eventDate: this.event.eventDate
+        //   };
+        //   this._requestsService.create(this.request).subscribe(result => {
+        //     this.s.style.display = 'none';
+        //     this.s.style.display = 'block';
+        //     setTimeout(() => {
+        //       this.s.style.display = 'none';
+        //     }, 5000);
+        //   },
+        //   error => {
+        //     this.errorMessage = 'Unable to send request';
+        //     this.g.style.display = 'none';
+        //     this.g.style.display = 'block';
+        //     setTimeout(() => {
+        //       this.g.style.display = 'none';
+        //     }, 5000);
+        //   }
+        // );
+        // }
+        // );
+        // }
+    };
+    // findEvent(){
+    //   this.s.style.display = 'none';
+    //   this.g.style.display = 'none';
+    //   this._eventsService.readCode(this.eventCodeRequest).subscribe(event => {
+    //     this.event = event;
+    //   },
+    //   error => {
+    //     this.errorMessage = 'There is no event with that event code';
+    //     this.g.style.display = 'none';
+    //     this.g.style.display = 'block';
+    //     setTimeout(() => {
+    //       this.g.style.display = 'none';
+    //     }, 5000);
+    //   }, () => {
+    //     this.createRequest();
+    //   });
+    //   console.log(this.event);
+    // }
     ViewComponent.prototype.percentile = function () {
         var totalMembers = 0;
         var numberUnderMember = 0;
@@ -76,7 +165,7 @@ var ViewComponent = /** @class */ (function () {
             templateUrl: 'app/authentication/view/view.template.html',
             styleUrls: ['app/app.styles.css']
         }),
-        __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService])
+        __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, authentication_service_1.AuthenticationService, events_service_1.EventsService])
     ], ViewComponent);
     return ViewComponent;
 }());

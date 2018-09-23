@@ -7,15 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var events_service_1 = require("./events.service");
 var EventsComponent = /** @class */ (function () {
     function EventsComponent() {
     }
     EventsComponent = __decorate([
         core_1.Component({
             selector: 'events',
-            template: "<div style = \"overflow: auto;\">\n      <router-outlet></router-outlet>\n  </div>",
-            providers: [events_service_1.EventsService]
+            template: '<router-outlet></router-outlet>'
         })
     ], EventsComponent);
     return EventsComponent;

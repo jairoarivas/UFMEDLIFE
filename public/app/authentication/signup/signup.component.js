@@ -28,6 +28,7 @@ var SignupComponent = /** @class */ (function () {
     };
     SignupComponent.prototype.signup = function () {
         var _this = this;
+        this.g.style.display = 'none';
         this._authenticationService.signup(this.user).subscribe(function (result) {
             _this.s.style.display = 'none';
             _this.s.style.display = 'block';

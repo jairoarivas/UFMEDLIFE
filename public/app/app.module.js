@@ -45,7 +45,7 @@ var AppModule = /** @class */ (function () {
             ],
             providers: [
                 authentication_service_1.AuthenticationService,
-                events_service_1.EventsService
+                events_service_1.EventsService,
             ],
             bootstrap: [app_component_1.AppComponent]
         })

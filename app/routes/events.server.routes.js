@@ -11,5 +11,9 @@ module.exports = function(app) {
         .put(users.requiresLogin, events.hasAuthorization, events.update)
         .delete(users.requiresLogin, events.hasAuthorization, events.delete);
 
+    app.route('/api/eventCode/:eventCode')
+      .get(events.read);
+
     app.param('eventId', events.eventByID);
+    app.param('eventCode', events.eventByCode);
 };

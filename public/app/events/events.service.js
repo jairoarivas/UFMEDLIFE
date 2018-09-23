@@ -17,6 +17,7 @@ var EventsService = /** @class */ (function () {
     function EventsService(_http) {
         this._http = _http;
         this._baseURL = 'api/events';
+        this._codeURL = 'api/eventCode';
     }
     EventsService.prototype.create = function (event) {
         return this._http
@@ -27,6 +28,12 @@ var EventsService = /** @class */ (function () {
     EventsService.prototype.read = function (eventId) {
         return this._http
             .get(this._baseURL + "/" + eventId)
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    EventsService.prototype.readCode = function (eventCode) {
+        return this._http
+            .get(this._codeURL + "/" + eventCode)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };

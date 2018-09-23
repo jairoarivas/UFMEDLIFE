@@ -8,6 +8,7 @@ import {Http, Headers, Request, RequestMethod, Response} from '@angular/http';
 @Injectable()
 export class EventsService {
 	private _baseURL = 'api/events';
+	private _codeURL = 'api/eventCode';
 
 	constructor (private _http: Http) {}
 
@@ -21,6 +22,13 @@ export class EventsService {
 	read(eventId: string): Observable<any> {
 		return this._http
 			.get(`${this._baseURL}/${eventId}`)
+			.map((res: Response) => res.json())
+			.catch(this.handleError);
+	}
+
+	readCode(eventCode: string): Observable<any> {
+		return this._http
+			.get(`${this._codeURL}/${eventCode}`)
 			.map((res: Response) => res.json())
 			.catch(this.handleError);
 	}

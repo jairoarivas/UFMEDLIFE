@@ -23,6 +23,7 @@ var PipeModule = /** @class */ (function () {
             providers: [],
         };
     };
+    var PipeModule_1;
     PipeModule = PipeModule_1 = __decorate([
         core_1.NgModule({
             imports: [],
@@ -31,7 +32,6 @@ var PipeModule = /** @class */ (function () {
         })
     ], PipeModule);
     return PipeModule;
-    var PipeModule_1;
 }());
 exports.PipeModule = PipeModule;
 //# sourceMappingURL=filter.module.js.map

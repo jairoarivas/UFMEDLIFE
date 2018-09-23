@@ -26,6 +26,7 @@ export class SignupComponent {
   }
 
   signup() {
+    this.g.style.display = 'none';
     this._authenticationService.signup(
       this.user).subscribe(result => {
         this.s.style.display = 'none';

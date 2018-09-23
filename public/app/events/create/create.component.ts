@@ -26,6 +26,7 @@ export class CreateComponent {
   }
 
 	create() {
+    this.event.eventName = this.event.eventName.replace(/\s+/g, '');
 		this._eventsService.create(this.event).subscribe(createdEvent => {
       this.s.style.display = 'none';
       this.s.style.display = 'block';

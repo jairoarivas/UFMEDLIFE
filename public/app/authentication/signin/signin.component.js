@@ -24,6 +24,7 @@ var SigninComponent = /** @class */ (function () {
     };
     SigninComponent.prototype.signin = function () {
         var _this = this;
+        this.g.style.display = 'none';
         this._authenticationService.signin(this.credentials).subscribe(function (result) {
             return _this._router.navigate(['/authentication/members', _this._authenticationService.user._id]);
         }, function (error) {

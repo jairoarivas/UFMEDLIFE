@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 module.exports = function() {
-  const db = mongoose.connect(config.db);
+  const db = mongoose.connect(config.db, { useNewUrlParser: true });
 
   //including the user schema in order to register the User model
   require('../app/models/user.server.model');

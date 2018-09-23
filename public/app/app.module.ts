@@ -15,6 +15,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { HeaderModule } from './header/header.module';
 
 import { EventsService } from './events/events.service';
+
 import { getInvolvedModule } from './getInvolved/getInvolved.module';
 import { contactUsComponent } from './contactUs/contactUs.component';
 import { HomeComponent } from './home/home.component';
@@ -40,7 +41,7 @@ import { EventsModule } from './events/events.module';
   ],
   providers: [
     AuthenticationService,
-    EventsService
+    EventsService,
   ],
   bootstrap: [AppComponent]
 })

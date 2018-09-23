@@ -38,6 +38,7 @@ export class ResetPasswordComponent {
   }
 
   resetPassword() {
+    this.g.style.display = 'none';
     this._authenticationService.resetPassword(this.user).subscribe(savedUser => {
       this.s.style.display = 'none';
       this.s.style.display = 'block';

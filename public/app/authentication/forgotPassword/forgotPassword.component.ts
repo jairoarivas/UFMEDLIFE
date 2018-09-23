@@ -24,6 +24,7 @@ export class ForgotPasswordComponent {
   }
 
   forgotPassword() {
+    this.g.style.display = 'none';
     this._authenticationService.forgotPassword(
       this.credentials).subscribe(result => {
         this.s.style.display = 'none';

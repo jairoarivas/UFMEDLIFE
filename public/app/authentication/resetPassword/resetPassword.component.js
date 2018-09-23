@@ -37,6 +37,7 @@ var ResetPasswordComponent = /** @class */ (function () {
     };
     ResetPasswordComponent.prototype.resetPassword = function () {
         var _this = this;
+        this.g.style.display = 'none';
         this._authenticationService.resetPassword(this.user).subscribe(function (savedUser) {
             _this.s.style.display = 'none';
             _this.s.style.display = 'block';

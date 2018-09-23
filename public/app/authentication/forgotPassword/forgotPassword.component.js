@@ -26,6 +26,7 @@ var ForgotPasswordComponent = /** @class */ (function () {
     };
     ForgotPasswordComponent.prototype.forgotPassword = function () {
         var _this = this;
+        this.g.style.display = 'none';
         this._authenticationService.forgotPassword(this.credentials).subscribe(function (result) {
             _this.s.style.display = 'none';
             _this.s.style.display = 'block';
