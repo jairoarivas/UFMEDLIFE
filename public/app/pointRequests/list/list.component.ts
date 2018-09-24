@@ -29,6 +29,15 @@ export class ListComponent{
 		this._pointRequestsService.list().subscribe(pointRequests  => this.pointRequests = pointRequests);
 	}
 
+	isAuthorized(){
+		if(this._authenticationService.user.role === 'Admin'){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	filterByName(){
 		this.filterBy = 'name';
 	}

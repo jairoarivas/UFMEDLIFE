@@ -6,8 +6,8 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "start-dev": "concurrently \"npm run webpack\" \"npm run app\"",
-    "start": "concurrently \"npm run tsc:w\" \"npm run app\"",
+    "start": "concurrently \"npm run webpack\" \"npm run app\"",
+    "start-dev": "concurrently \"npm run tsc:w\" \"npm run app\"",
     "webpack": "webpack --watch",
     "app": "node server"
   },

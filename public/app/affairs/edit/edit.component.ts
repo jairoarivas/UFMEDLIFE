@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { AuthenticationService } from '../../authentication/authentication.service';
 import { AffairsService } from '../affairs.service';
 
 
@@ -18,7 +18,18 @@ export class EditComponent {
 
 	constructor(private _router:Router,
 				private _route: ActivatedRoute,
-				private _affairsService: AffairsService) {}
+				private _affairsService: AffairsService, private _authenticationService: AuthenticationService) {}
+
+
+
+  isAuthorized(){
+		if(this._authenticationService.user.role === 'Admin'){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 
 	ngOnInit() {
     this.g = document.getElementById('errorMessage') as HTMLElement;

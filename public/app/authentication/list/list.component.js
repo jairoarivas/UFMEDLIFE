@@ -21,7 +21,7 @@ let ListComponent = class ListComponent {
         this.user = this._authenticationService.user;
     }
     ngOnInit() {
-        this.filterBy = 'firstName';
+        this.filterBy = 'role';
     }
     filterByRole() {
         this.filterBy = 'role';
@@ -37,6 +37,14 @@ let ListComponent = class ListComponent {
     }
     filterByPoints() {
         this.filterBy = 'points';
+    }
+    isAuthorized() {
+        if (this._authenticationService.user.role === 'Admin') {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     deleteModal(m) {
         // console.log("delete button clicked");

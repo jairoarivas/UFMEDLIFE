@@ -150,20 +150,16 @@ export class ViewComponent {
     var numberUnderMember = 0;
     var numPoints = this.member.points;
     for(var i = 0 ; i < this.count ; i ++){
-      if(this.member._id === this.members[i]._id){
+      //console.log(numPoints);
+      if(numPoints > this.members[i].points){
+        numberUnderMember ++;
       }
-      else{
-        //console.log(numPoints);
-        if(numPoints >= this.members[i].points){
-          numberUnderMember ++;
-        }
-        //console.log(totalMembers);
-        totalMembers ++;
-      }
+      //console.log(totalMembers);
+      totalMembers ++;
     }
     //console.log(numberUnderMember);
     //console.log(totalMembers);
-    return ((numberUnderMember/totalMembers) * 100);
+    return Math.floor(((numberUnderMember/totalMembers) * 100));
   }
 
   EventsAttendedEmpty(){

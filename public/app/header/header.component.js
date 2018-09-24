@@ -38,6 +38,15 @@ let HeaderComponent = class HeaderComponent {
         this.d = document.getElementById('dropDown');
         this.d.style.display = 'none';
     }
+    isAuthorized() {
+        console.log(this._authenticationService.user);
+        if (this._authenticationService.user.role === 'Admin') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     openAccount() {
         this.c = document.getElementsByClassName('clicked');
         for (var i = 0; i < this.c.length; i++) {

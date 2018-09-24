@@ -20,7 +20,7 @@ export class ListComponent{
 				}
 
 	ngOnInit() {
-		this.filterBy = 'firstName';
+		this.filterBy = 'role';
 	}
 
 	filterByRole(){
@@ -41,6 +41,15 @@ export class ListComponent{
 
 	filterByPoints(){
 		this.filterBy = 'points';
+	}
+
+	isAuthorized(){
+		if(this._authenticationService.user.role === 'Admin'){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	deleteModal(m){

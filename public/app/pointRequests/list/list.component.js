@@ -27,6 +27,14 @@ let ListComponent = class ListComponent {
         this.s.style.display = 'none';
         this._pointRequestsService.list().subscribe(pointRequests => this.pointRequests = pointRequests);
     }
+    isAuthorized() {
+        if (this._authenticationService.user.role === 'Admin') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     filterByName() {
         this.filterBy = 'name';
     }

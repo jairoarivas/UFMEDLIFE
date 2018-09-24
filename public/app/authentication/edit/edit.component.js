@@ -19,6 +19,7 @@ let EditComponent = class EditComponent {
         this._authenticationService = _authenticationService;
         this.member = {};
         this.roles = ['Admin', 'Member'];
+        this.user = {};
     }
     ngOnInit() {
         this.g = document.getElementById('errorMessage');
@@ -35,12 +36,26 @@ let EditComponent = class EditComponent {
     ngOnDestroy() {
         this.paramsObserver.unsubscribe();
     }
+    isAuthorized() {
+        this.user = this._authenticationService.user;
+        if (this._authenticationService.user.role === 'Admin' || this.user._id === this.member._id) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     update() {
         this._authenticationService.update(this.member).subscribe(savedUser => {
             this.s.style.display = 'none';
             this.s.style.display = 'block';
             setTimeout(() => {
-                this._router.navigate(['authentication/members']);
+                if (this.member.role === 'Admin') {
+                    this._router.navigate(['authentication/members']);
+                }
+                else {
+                    this._router.navigate(['/authentication/members', this._authenticationService.user._id]);
+                }
             }, 1500);
         }, error => {
             this.errorMessage = error;

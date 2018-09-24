@@ -38,9 +38,9 @@
         </li>
         <ul id = "dropDown" class = "toggleDropMenu">
           <li class = "mx-auto">
-            <button (click) = 'navMenuCheck()' class="dropdown-item menuDropButton" [routerLink]="['/authentication/members']">MEMBERS</button>
-            <button (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/affairs']">EVENTS</button>
-            <button (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/pointRequests']">REQUESTS</button>
+            <button *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Admin'" (click) = 'navMenuCheck()' class="dropdown-item menuDropButton" [routerLink]="['/authentication/members']">MEMBERS</button>
+            <button *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Admin'" (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/affairs']">EVENTS</button>
+            <button *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Admin'" (click) = 'navMenuCheck()'class="dropdown-item menuDropButton" [routerLink]="['/pointRequests']">REQUESTS</button>
             <button (click)= 'openAccount()' class="dropdown-item menuDropButton">ACCOUNT</button>
             <button style = "margin-bottom: 10vh;" class="dropdown-item menuDropButton" onclick="location.href='/api/auth/signout'">SIGN OUT</button>
           </li>
@@ -81,9 +81,9 @@
                 <div class="dropdown">
                   <button class = "userButton dropwdown-toggle" type = "button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h4> {{_authenticationService.user.firstName}} <i class="fas fa-caret-down"></i></h4></button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" [routerLink]="['/authentication/members']">MEMBERS</a>
-                    <a class="dropdown-item" [routerLink]="['/affairs']">EVENTS</a>
-                    <a class="dropdown-item" [routerLink]="['/pointRequests']">REQUESTS</a>
+                    <a *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Admin'" class="dropdown-item" [routerLink]="['/authentication/members']">MEMBERS</a>
+                    <a *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Admin'" class="dropdown-item" [routerLink]="['/affairs']">EVENTS</a>
+                    <a *ngIf="_authenticationService.isLoggedIn() && _authenticationService.user.role === 'Admin'" class="dropdown-item" [routerLink]="['/pointRequests']">REQUESTS</a>
                     <a class="dropdown-item" [routerLink]="['/authentication/members', _authenticationService.user._id]">ACCOUNT</a>
                     <a class="dropdown-item" href = "/api/auth/signout">SIGN OUT</a>
                   </div>

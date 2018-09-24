@@ -6,58 +6,43 @@
     </div>
   </div>
 </div>
-<div class = "container-fluid p-0 m-0 restOfSite">
+<div class = "container restOfSite">
   <div class = "row p-0 m-0">
     <div class = "col p-0 m-0">
-      <form class = "signInForm" (ngSubmit)="signup()">
+      <form (ngSubmit)="signup()">
         <div class="form-group row justify-content-center m-0 p-0">
-          <label class=" col-form-label col-4 m-0 p-0">First Name:</label>
-          <div class=" col-8 m-0 p-0">
+          <label class="col-form-label col-sm-2">First Name:</label>
+          <div class=" col-sm-8">
             <input class = "form-control" type="text" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name">
           </div>
         </div>
         <div class="form-group justify-content-center row m-0 p-0">
-          <label class=" col-form-label col-4 m-0 p-0">Last Name:</label>
-          <div class=" col-8 m-0 p-0">
+          <label class="col-form-label col-sm-2">Last Name:</label>
+          <div class=" col-sm-8">
             <input class = "form-control" type="text" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name">
           </div>
         </div>
         <div class="form-group justify-content-center row m-0 p-0">
-          <label class=" col-form-label col-4 m-0 p-0">Email:</label>
-          <div class=" col-8 m-0 p-0">
+          <label class="col-form-label col-sm-2">Email:</label>
+          <div class=" col-sm-8">
             <input class = "form-control" type="text" [(ngModel)]="user.username" name="username" placeholder="Email">
           </div>
         </div>
-        <!-- <div class="form-group justify-content-center row">
-          <label class=" col-form-label col-4">Username:</label>
-          <div class=" col-8">
-            <input class = "form-control" type="text" [(ngModel)]="user.username" name="username" placeholder="Username">
-          </div>
-        </div> -->
         <div class="form-group justify-content-center row m-0 p-0">
-          <label class=" col-form-label col-sm-4 m-0 p-0">Password:</label>
-          <div class="col-6 m-0 p-0" *ngIf="!(this.showPassword)">
+          <label class="col-form-label col-sm-2">Password:</label>
+          <div class="col-sm-6" *ngIf="!(this.showPassword)">
             <input class = "form-control" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
           </div>
-          <div class = "col-2 m-0 p-0" style = "text-align:center;" *ngIf="!(showPassword)">
+          <div class = "col-sm-2 hoverPop" style = "text-align:center; padding-left: 0; margin-top: 12px;" *ngIf="!(showPassword)">
             <a style = "color:rgb(28,28,28);" (click)="showPassword = true">SHOW</a>
           </div>
-          <div class="col-6 m-0 p-0" *ngIf="(this.showPassword)">
+          <div class="col-sm-6" *ngIf="(this.showPassword)">
             <input  class = "form-control"type="text" [(ngModel)]="user.password" name="password" placeholder="Password">
           </div>
-          <div class = "col-2 m-0 p-0" style = "text-align:center;" *ngIf="(showPassword)">
+          <div class = "col-sm-2 hoverPop" style = "text-align:center; padding-left: 0; margin-top: 12px;" *ngIf="(showPassword)">
           <a style = "color:rgb(28,28,28);" (click)="showPassword = false">HIDE</a>
           </div>
         </div>
-        <!-- <div class="form-group justify-content-center row m-0 p-0">
-          <label class=" col-form-label col-4">Member role:</label>
-          <div class="col-8">
-            <select class="form-control" id="role" required [(ngModel)]="user.role" name="role">
-            <option *ngFor = "let role of roles" [value] = "role">{{role}}
-            </option>
-          </select>
-          </div>
-        </div> -->
         <div class="form-group row m-0 p-0">
           <div class="col m-0" style = "text-align:center; padding-top:5vh;">
             <button type="submit" class="memberButton m-0">SIGN UP</button>

@@ -11,11 +11,11 @@ module.exports = function(app){
 
   //crud module
   app.route('/api/auth/users')
-    .get(users.list);
+    .get(users.requiresLogin, users.list);
   app.route('/api/auth/users/:userId')
-    .get(users.read)
+    .get(users.requiresLogin, users.read)
     .put(users.requiresLogin,users.update)
-    .delete(users.requiresLogin, users.delete);
+    .delete(users.requiresLogin,users.delete);
 
   //password reset
   app.route('/api/forgotPassword')

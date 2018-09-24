@@ -11,11 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const affairs_service_1 = require("../affairs.service");
+const authentication_service_1 = require("../../authentication/authentication.service");
 let ListComponent = class ListComponent {
-    constructor(_affairsService) {
+    constructor(_affairsService, _authenticationService) {
         this._affairsService = _affairsService;
+        this._authenticationService = _authenticationService;
         this._affairsService.list().subscribe(affairs => this.affairs = affairs);
         this.filterBy = 'affairName';
+    }
+    isAuthorized() {
+        if (this._authenticationService.user.role === 'Admin') {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     ngOnInit() {
         this._affairsService.list().subscribe(affairs => this.affairs = affairs);
@@ -51,7 +61,7 @@ ListComponent = __decorate([
         templateUrl: 'app/affairs/list/list.template.html',
         styleUrls: ['app/app.styles.css']
     }),
-    __metadata("design:paramtypes", [affairs_service_1.AffairsService])
+    __metadata("design:paramtypes", [affairs_service_1.AffairsService, authentication_service_1.AuthenticationService])
 ], ListComponent);
 exports.ListComponent = ListComponent;
 //# sourceMappingURL=list.component.js.map

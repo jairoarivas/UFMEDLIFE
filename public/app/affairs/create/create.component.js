@@ -11,12 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
+const authentication_service_1 = require("../../authentication/authentication.service");
 const affairs_service_1 = require("../affairs.service");
 let CreateComponent = class CreateComponent {
-    constructor(_router, _affairsService) {
+    constructor(_router, _affairsService, _authenticationService) {
         this._router = _router;
         this._affairsService = _affairsService;
+        this._authenticationService = _authenticationService;
         this.affair = {};
+    }
+    isAuthorized() {
+        if (this._authenticationService.user.role === 'Admin') {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     ngOnInit() {
         this.g = document.getElementById('errorMessage');
@@ -46,7 +56,7 @@ CreateComponent = __decorate([
         styleUrls: ['app/app.styles.css']
     }),
     __metadata("design:paramtypes", [router_1.Router,
-        affairs_service_1.AffairsService])
+        affairs_service_1.AffairsService, authentication_service_1.AuthenticationService])
 ], CreateComponent);
 exports.CreateComponent = CreateComponent;
 //# sourceMappingURL=create.component.js.map

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 
 import {AffairsService} from '../affairs.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 @Component({
 	selector: 'list',
@@ -12,9 +13,18 @@ export class ListComponent{
 	errorMessage: string;
 	currentAffair: any;
 	filterBy: string;
-	constructor(private _affairsService: AffairsService) {
+	constructor(private _affairsService: AffairsService,private _authenticationService: AuthenticationService) {
 		this._affairsService.list().subscribe(affairs  => this.affairs = affairs);
 		this.filterBy = 'affairName';
+	}
+
+	isAuthorized(){
+		if(this._authenticationService.user.role === 'Admin'){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	ngOnInit() {

@@ -57,13 +57,13 @@
           {{errorMessage}}
         </div>
       </div>
-      <div class = "row" style = "margin-bottom: 2vh; margin-left: 0; margin-right: 0;">
+      <div class = "row" style = "margin-bottom: 2vh; margin-left: 0; margin-right: 0;" *ngIf = "isAuthorized()">
         <div class = "col p-0 m-0">
           <input [(ngModel)]="searchText" placeholder="Search for events, member name or member email" class = "form-control">
         </div>
       </div>
 
-			<div class = "table-responsive">
+			<div class = "table-responsive" *ngIf = "isAuthorized()">
   			<table class="table table-striped">
   			  <thead style = "background-color: rgb(101, 101, 101); color: rgb(233,233,233);">
 						<tr>

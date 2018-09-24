@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete this event?
+        Are you sure you want to delete <b *ngIf = "currentAffair !== undefined">{{currentAffair.affairName}}</b> from the event list?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -26,7 +26,7 @@
     </div>
   </div>
 </div>
-<div class="container restOfSite">
+<div class="container restOfSite" *ngIf = "isAuthorized()">
   <div class="row m-0 p-0">
     <div class="col m-0 p-0">
       <div class = "row" style = "margin-bottom: 2vh; margin-left: 0; margin-right: 0;">

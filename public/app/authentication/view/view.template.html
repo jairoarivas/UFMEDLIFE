@@ -23,7 +23,7 @@
 <div class = "container-fluid p-0 m-0 restOfSite">
 	<div class = "row p-0 m-0">
 		<div class = "col p-0 m-0 pointContainer">
-      <h2 style = "margin-bottom: 20px;">ENTER EVENT CODE TO RECIEVE POINTS</h2>
+      <h2 style = "margin-bottom: 20px;">ENTER EVENT CODE TO RECEIVE POINTS</h2>
       <form class = "signInForm" (ngSubmit) = "findAffair()">
         <div class = "form-group row justify-content-center m-0 p-0">
           <div class=" col-8 m-0 p-0">
@@ -53,7 +53,10 @@
 <div class = "container restOfSite">
   <div class = "row">
     <div class = "col pointContainer">
-      <h2 style = "margin-bottom: 20px;">MEMBER INFORMATION</h2>
+      <div class = "row justify-content-center">
+        <h2 style = "margin-bottom: 20px;">MEMBER INFORMATION</h2>
+        <button style = "margin-left: 20px;" class = "editButton" [routerLink]="['/authentication/members', member._id, 'edit']"><i style = "color: rgb(233,233,233); " class="fas fa-pen"></i></button>
+      </div>
       <div class = "table-responsive">
         <table class="table table-borderless" style = "text-align: left;">
           <tbody>
@@ -84,7 +87,7 @@
   <div class = "row">
     <div class = "col pointContainer">
       <h2 style = "margin-bottom: 20px;">ATTENDED EVENTS</h2>
-      <h4 style = "margin-bottom: 20px; padding-top: 20px;" *ngIf = "EventsAttendedEmpty()">No events have been atteneded</h4>
+      <h4 style = "margin-bottom: 20px; padding-top: 20px;" *ngIf = "EventsAttendedEmpty()">No events have been attended</h4>
       <div class = "table-responsive" *ngIf = "!(EventsAttendedEmpty())">
   			<table class="table table-striped">
   			  <thead>
